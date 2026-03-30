@@ -4,6 +4,13 @@ import { Layout } from '../../shared/layout/Layout'
 
 export const router = createBrowserRouter([
   {
+    path: 'auth-layout',
+    lazy: async () => {
+      const module = await import('../../pages/auth-layout/AuthLayoutPage')
+      return { Component: module.default }
+    },
+  },
+  {
     path: 'sign-in',
     lazy: async () => {
       const module = await import('../../pages/sign-in/SignInPage')
