@@ -97,10 +97,7 @@ export const AuthLayout = observer(function AuthLayout() {
           </Typography>
 
           {isDesktop && (
-            <Typography
-              variant="body1"
-              sx={{ mt: 2, color: alpha('#fff', 0.75), maxWidth: 480, lineHeight: 1.7 }}
-            >
+            <Typography variant="body1" sx={{ mt: 2, color: alpha('#fff', 0.75), maxWidth: 480, lineHeight: 1.7 }}>
               {t('auth.siteDesc')}
             </Typography>
           )}

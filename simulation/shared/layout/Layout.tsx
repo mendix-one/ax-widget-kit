@@ -78,10 +78,7 @@ export const Layout = observer(function Layout() {
           <AppSidebar isMobile={isMobile} />
 
           {/* Main body: scrollable */}
-          <Box
-            component="main"
-            sx={{ flex: 1, overflowY: 'auto', minWidth: 0, p: { xs: 2, sm: 3 } }}
-          >
+          <Box component="main" sx={{ flex: 1, overflowY: 'auto', minWidth: 0, p: { xs: 2, sm: 3 } }}>
             <Outlet />
           </Box>
         </Box>

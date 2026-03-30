@@ -49,8 +49,7 @@ const en = {
   },
   notifications: {
     defectRateTitle: 'Defect rate critical',
-    defectRateDesc:
-      'Defect rate exceeded 3% threshold on Etching line — immediate review required.',
+    defectRateDesc: 'Defect rate exceeded 3% threshold on Etching line — immediate review required.',
     yieldDropTitle: 'Yield drop on Line 3',
     yieldDropDesc: 'Overall yield dropped below 90% on Line 3 during the last shift.',
     calibrationTitle: 'CMP tool calibration overdue',
@@ -60,13 +59,11 @@ const en = {
     yieldReportTitle: 'Weekly yield report ready',
     yieldReportDesc: 'The yield analysis report for Week 12 is now available for review.',
     modelRetrainedTitle: 'aQuality model retrained',
-    modelRetrainedDesc:
-      'The defect classification model has been retrained with latest production data.',
+    modelRetrainedDesc: 'The defect classification model has been retrained with latest production data.',
   },
   dashboard: {
     title: 'Production dashboard',
-    subtitle:
-      'Plan smarter. Produce faster. Real-time wafer manufacturing intelligence at a glance.',
+    subtitle: 'Plan smarter. Produce faster. Real-time wafer manufacturing intelligence at a glance.',
     overallYield: 'Overall Yield',
     throughput: 'Throughput',
     defectRate: 'Defect Rate',
@@ -110,8 +107,7 @@ const en = {
     tagline: 'AI for Real Life. Real Impact.',
     description:
       'This wafer manufacturing dashboard is part of the <strong>Amoza MAKE</strong> pillar — AI-powered planning, monitoring, quality, and yield optimization for factories that think ahead.',
-    subtitle:
-      'Plan smarter. Produce faster. Built with modern tooling from the Amoza One ecosystem.',
+    subtitle: 'Plan smarter. Produce faster. Built with modern tooling from the Amoza One ecosystem.',
     techStack: 'Tech stack',
   },
   notFound: {
@@ -123,8 +119,7 @@ const en = {
     title: 'AI Assistant',
     welcome: "Hi! I'm your aPlanner assistant. How can I help you today?",
     placeholder: 'Type a message...',
-    defaultReply:
-      "Thanks for your message. I'm analyzing your production data — I'll have an answer shortly.",
+    defaultReply: "Thanks for your message. I'm analyzing your production data — I'll have an answer shortly.",
     conversations: 'Conversations',
     newConversation: 'New conversation',
     noConversations: 'No conversations yet. Start a new one!',

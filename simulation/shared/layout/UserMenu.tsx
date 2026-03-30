@@ -34,11 +34,7 @@ interface UserMenuProps {
   menuWidth: Record<string, unknown>
 }
 
-export const UserMenu = observer(function UserMenu({
-  anchorEl,
-  onClose,
-  menuWidth,
-}: UserMenuProps) {
+export const UserMenu = observer(function UserMenu({ anchorEl, onClose, menuWidth }: UserMenuProps) {
   const { t, i18n } = useTranslation()
   const { ui, auth } = useStore()
   const user = auth.user

@@ -42,12 +42,7 @@ export const AppSidebar = observer(function AppSidebar({ isMobile }: AppSidebarP
     if (isMobile) ui.setMobileOpen(false)
   }
 
-  const drawerWidth =
-    ui.sidebarMode === 'show'
-      ? DRAWER_WIDTH_FULL
-      : ui.sidebarMode === 'mini'
-        ? DRAWER_WIDTH_MINI
-        : 0
+  const drawerWidth = ui.sidebarMode === 'show' ? DRAWER_WIDTH_FULL : ui.sidebarMode === 'mini' ? DRAWER_WIDTH_MINI : 0
 
   const navLinkSx = (mode: SidebarMode) => ({
     justifyContent: mode === 'mini' ? 'center' : 'initial',
@@ -81,12 +76,7 @@ export const AppSidebar = observer(function AppSidebar({ isMobile }: AppSidebarP
       <Divider />
       <List>
         <Tooltip title={mode === 'mini' ? t('nav.about') : ''} placement="right">
-          <ListItemButton
-            component={NavLink}
-            to="/about"
-            onClick={handleNavClick}
-            sx={navLinkSx(mode)}
-          >
+          <ListItemButton component={NavLink} to="/about" onClick={handleNavClick} sx={navLinkSx(mode)}>
             <ListItemIcon sx={{ minWidth: mode === 'mini' ? 0 : 40, justifyContent: 'center' }}>
               <InfoIcon />
             </ListItemIcon>

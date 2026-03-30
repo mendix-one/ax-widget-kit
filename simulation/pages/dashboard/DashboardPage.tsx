@@ -156,17 +156,11 @@ export default function DashboardPage() {
         {kpis.map((kpi) => (
           <Grid key={kpi.label} size={{ xs: 6, sm: 6, md: 3 }}>
             <Card>
-              <CardContent
-                sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}
-              >
+              <CardContent sx={{ p: { xs: 1.5, sm: 2 }, '&:last-child': { pb: { xs: 1.5, sm: 2 } } }}>
                 <Typography variant="body2" color="text.secondary" noWrap>
                   {kpi.label}
                 </Typography>
-                <Typography
-                  variant={isMobile ? 'h6' : 'h5'}
-                  sx={{ fontWeight: 700, color: kpi.color, mt: 0.5 }}
-                  noWrap
-                >
+                <Typography variant={isMobile ? 'h6' : 'h5'} sx={{ fontWeight: 700, color: kpi.color, mt: 0.5 }} noWrap>
                   {kpi.value}
                 </Typography>
               </CardContent>

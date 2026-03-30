@@ -20,14 +20,7 @@ interface TasksMenuProps {
   dropdownWidth: Record<string, unknown>
 }
 
-export function TasksMenu({
-  anchorEl,
-  onClose,
-  tasks,
-  onMarkDone,
-  onMarkAllDone,
-  dropdownWidth,
-}: TasksMenuProps) {
+export function TasksMenu({ anchorEl, onClose, tasks, onMarkDone, onMarkAllDone, dropdownWidth }: TasksMenuProps) {
   const { t } = useTranslation()
   const pendingCount = tasks.filter((task) => !task.done).length
 
@@ -65,9 +58,7 @@ export function TasksMenu({
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Typography variant="subtitle2">{t('layout.urgentTasks')}</Typography>
-          {pendingCount > 0 && (
-            <Chip label={pendingCount} size="small" color="error" sx={{ height: 20 }} />
-          )}
+          {pendingCount > 0 && <Chip label={pendingCount} size="small" color="error" sx={{ height: 20 }} />}
         </Box>
         <Button
           size="small"
@@ -136,11 +127,7 @@ export function TasksMenu({
               >
                 {t(task.descKey)}
               </Typography>
-              <Typography
-                variant="caption"
-                color="text.disabled"
-                sx={{ mt: 0.5, display: 'block' }}
-              >
+              <Typography variant="caption" color="text.disabled" sx={{ mt: 0.5, display: 'block' }}>
                 {timeAgo(task.timestamp, t)}
               </Typography>
             </Box>

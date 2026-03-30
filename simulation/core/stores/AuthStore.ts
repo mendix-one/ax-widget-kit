@@ -33,8 +33,7 @@ export class AuthStore {
   signIn(usernameOrEmail: string, password: string): boolean {
     const id = usernameOrEmail.trim().toLowerCase()
     const match =
-      (id === SAMPLE_ACCOUNT.username || id === SAMPLE_ACCOUNT.email) &&
-      password === SAMPLE_ACCOUNT.password
+      (id === SAMPLE_ACCOUNT.username || id === SAMPLE_ACCOUNT.email) && password === SAMPLE_ACCOUNT.password
 
     if (!match) return false
 

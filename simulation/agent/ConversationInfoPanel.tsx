@@ -101,12 +101,7 @@ export const ConversationInfoPanel = observer(function ConversationInfoPanel({
           <Typography variant="subtitle2" sx={{ mb: 0.5 }}>
             {conv.title}
           </Typography>
-          <Chip
-            label={conv.label}
-            size="small"
-            variant="outlined"
-            sx={{ fontSize: 11, height: 20 }}
-          />
+          <Chip label={conv.label} size="small" variant="outlined" sx={{ fontSize: 11, height: 20 }} />
         </Box>
         <Divider />
 
@@ -127,10 +122,7 @@ export const ConversationInfoPanel = observer(function ConversationInfoPanel({
                   sx={{ width: 28, height: 28, borderRadius: 0.5, objectFit: 'cover' }}
                 />
               </ListItemIcon>
-              <ListItemText
-                primary={img.name}
-                primaryTypographyProps={{ variant: 'caption', noWrap: true }}
-              />
+              <ListItemText primary={img.name} primaryTypographyProps={{ variant: 'caption', noWrap: true }} />
             </ListItem>
           ))}
         </AssetSection>
@@ -147,10 +139,7 @@ export const ConversationInfoPanel = observer(function ConversationInfoPanel({
               <ListItemIcon sx={{ minWidth: 28 }}>
                 <InsertDriveFileOutlinedIcon sx={{ fontSize: 16 }} />
               </ListItemIcon>
-              <ListItemText
-                primary={file.name}
-                primaryTypographyProps={{ variant: 'caption', noWrap: true }}
-              />
+              <ListItemText primary={file.name} primaryTypographyProps={{ variant: 'caption', noWrap: true }} />
             </ListItem>
           ))}
         </AssetSection>
@@ -174,10 +163,7 @@ export const ConversationInfoPanel = observer(function ConversationInfoPanel({
               <ListItemIcon sx={{ minWidth: 28 }}>
                 <LinkIcon sx={{ fontSize: 16 }} />
               </ListItemIcon>
-              <ListItemText
-                primary={link}
-                primaryTypographyProps={{ variant: 'caption', noWrap: true }}
-              />
+              <ListItemText primary={link} primaryTypographyProps={{ variant: 'caption', noWrap: true }} />
             </ListItem>
           ))}
         </AssetSection>

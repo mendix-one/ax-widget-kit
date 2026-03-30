@@ -328,38 +328,10 @@ export const AiBg = memo(function AiBg() {
       {/* ── AI planning connections ─────────────────── */}
       <g fill="none" strokeWidth="0.5">
         <line className="conn" x1="380" y1="280" x2="95" y2="234" stroke="rgba(128,216,255,0.1)" />
-        <line
-          className="conn conn-d1"
-          x1="380"
-          y1="280"
-          x2="691"
-          y2="201"
-          stroke="rgba(179,136,255,0.1)"
-        />
-        <line
-          className="conn conn-d2"
-          x1="380"
-          y1="280"
-          x2="620"
-          y2="76"
-          stroke="rgba(128,216,255,0.08)"
-        />
-        <line
-          className="conn conn-d3"
-          x1="380"
-          y1="280"
-          x2="120"
-          y2="480"
-          stroke="rgba(179,136,255,0.08)"
-        />
-        <line
-          className="conn conn-d4"
-          x1="380"
-          y1="280"
-          x2="680"
-          y2="480"
-          stroke="rgba(128,216,255,0.08)"
-        />
+        <line className="conn conn-d1" x1="380" y1="280" x2="691" y2="201" stroke="rgba(179,136,255,0.1)" />
+        <line className="conn conn-d2" x1="380" y1="280" x2="620" y2="76" stroke="rgba(128,216,255,0.08)" />
+        <line className="conn conn-d3" x1="380" y1="280" x2="120" y2="480" stroke="rgba(179,136,255,0.08)" />
+        <line className="conn conn-d4" x1="380" y1="280" x2="680" y2="480" stroke="rgba(128,216,255,0.08)" />
       </g>
 
       {/* ── Yield trend line (bottom-left) ─────────── */}
@@ -377,11 +349,7 @@ export const AiBg = memo(function AiBg() {
           opacity="0.6"
         />
         {/* Area under curve */}
-        <path
-          d="M0,70 C20,65 40,55 60,40 S90,20 120,10 L120,80 L0,80 Z"
-          fill="url(#yieldGrad)"
-          opacity="0.3"
-        />
+        <path d="M0,70 C20,65 40,55 60,40 S90,20 120,10 L120,80 L0,80 Z" fill="url(#yieldGrad)" opacity="0.3" />
       </g>
 
       {/* ── KPI bar chart (bottom-right) ───────────── */}
@@ -390,40 +358,16 @@ export const AiBg = memo(function AiBg() {
           <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite" />
         </rect>
         <rect x="16" y="25" width="10" height="55" rx="1" fill="#b388ff">
-          <animate
-            attributeName="opacity"
-            values="0.6;1;0.6"
-            dur="4s"
-            begin="0.3s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" begin="0.3s" repeatCount="indefinite" />
         </rect>
         <rect x="32" y="15" width="10" height="65" rx="1" fill="#80d8ff">
-          <animate
-            attributeName="opacity"
-            values="0.6;1;0.6"
-            dur="4s"
-            begin="0.6s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" begin="0.6s" repeatCount="indefinite" />
         </rect>
         <rect x="48" y="5" width="10" height="75" rx="1" fill="#b388ff">
-          <animate
-            attributeName="opacity"
-            values="0.6;1;0.6"
-            dur="4s"
-            begin="0.9s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" begin="0.9s" repeatCount="indefinite" />
         </rect>
         <rect x="64" y="0" width="10" height="80" rx="1" fill="#69f0ae">
-          <animate
-            attributeName="opacity"
-            values="0.6;1;0.6"
-            dur="4s"
-            begin="1.2s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="4s" begin="1.2s" repeatCount="indefinite" />
         </rect>
       </g>
 
@@ -509,65 +453,23 @@ export const AiBg = memo(function AiBg() {
         {/* Brain stem / center line */}
         <line x1="0" y1="-12" x2="0" y2="10" stroke="#b388ff" strokeWidth="0.6" opacity="0.5" />
         {/* Brain folds — left */}
-        <path
-          d="M-2,-5 C-6,-5 -8,-3 -8,-1"
-          fill="none"
-          stroke="#b388ff"
-          strokeWidth="0.6"
-          opacity="0.6"
-        />
-        <path
-          d="M-2,2 C-6,2 -9,4 -8,7"
-          fill="none"
-          stroke="#b388ff"
-          strokeWidth="0.6"
-          opacity="0.6"
-        />
+        <path d="M-2,-5 C-6,-5 -8,-3 -8,-1" fill="none" stroke="#b388ff" strokeWidth="0.6" opacity="0.6" />
+        <path d="M-2,2 C-6,2 -9,4 -8,7" fill="none" stroke="#b388ff" strokeWidth="0.6" opacity="0.6" />
         {/* Brain folds — right */}
-        <path
-          d="M2,-5 C6,-5 8,-3 8,-1"
-          fill="none"
-          stroke="#b388ff"
-          strokeWidth="0.6"
-          opacity="0.6"
-        />
-        <path
-          d="M2,2 C6,2 9,4 8,7"
-          fill="none"
-          stroke="#b388ff"
-          strokeWidth="0.6"
-          opacity="0.6"
-        />
+        <path d="M2,-5 C6,-5 8,-3 8,-1" fill="none" stroke="#b388ff" strokeWidth="0.6" opacity="0.6" />
+        <path d="M2,2 C6,2 9,4 8,7" fill="none" stroke="#b388ff" strokeWidth="0.6" opacity="0.6" />
         {/* Circuit nodes on brain */}
         <circle cx="-7" cy="-3" r="1" fill="#80d8ff">
           <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite" />
         </circle>
         <circle cx="7" cy="-3" r="1" fill="#80d8ff">
-          <animate
-            attributeName="opacity"
-            values="0.5;1;0.5"
-            dur="2s"
-            begin="0.5s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0.5s" repeatCount="indefinite" />
         </circle>
         <circle cx="-6" cy="6" r="1" fill="#80d8ff">
-          <animate
-            attributeName="opacity"
-            values="0.5;1;0.5"
-            dur="2s"
-            begin="1s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite" />
         </circle>
         <circle cx="6" cy="6" r="1" fill="#80d8ff">
-          <animate
-            attributeName="opacity"
-            values="0.5;1;0.5"
-            dur="2s"
-            begin="1.5s"
-            repeatCount="indefinite"
-          />
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1.5s" repeatCount="indefinite" />
         </circle>
       </g>
     </svg>

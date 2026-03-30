@@ -1,12 +1,7 @@
 import i18next from 'i18next'
 import { makeAutoObservable, reaction, runInAction, toJS } from 'mobx'
 
-import {
-  type Attachment,
-  type ConvAssets,
-  type Conversation,
-  type Message,
-} from '../../agent/types'
+import { type Attachment, type ConvAssets, type Conversation, type Message } from '../../agent/types'
 import { StorageKeys, loadSetting, saveSetting } from '../storage'
 
 const timestamp = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })

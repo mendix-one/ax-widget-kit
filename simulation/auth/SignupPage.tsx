@@ -108,11 +108,7 @@ const SignupPage = observer(function SignupPage() {
             input: {
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
-                    edge="end"
-                    size="small"
-                  >
+                  <IconButton onClick={() => setShowPassword(!showPassword)} edge="end" size="small">
                     {showPassword ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
@@ -136,14 +132,7 @@ const SignupPage = observer(function SignupPage() {
           </Typography>
         )}
 
-        <LoadingButton
-          type="submit"
-          variant="contained"
-          fullWidth
-          size="large"
-          loading={loading}
-          sx={{ mb: 2 }}
-        >
+        <LoadingButton type="submit" variant="contained" fullWidth size="large" loading={loading} sx={{ mb: 2 }}>
           {t('auth.signup')}
         </LoadingButton>
 

@@ -53,8 +53,7 @@ const ko = {
     yieldDropTitle: '라인 3 수율 저하',
     yieldDropDesc: '마지막 교대 근무 중 라인 3의 전체 수율이 90% 이하로 떨어졌습니다.',
     calibrationTitle: 'CMP 장비 교정 기한 초과',
-    calibrationDesc:
-      'CMP-04 교정이 2일 지연되었습니다. 드리프트를 방지하기 위해 유지보수를 예약하세요.',
+    calibrationDesc: 'CMP-04 교정이 2일 지연되었습니다. 드리프트를 방지하기 위해 유지보수를 예약하세요.',
     maintenanceTitle: '유지보수 예정',
     maintenanceDesc: 'Litho-07의 예방 유지보수가 내일 06:00–10:00에 예정되어 있습니다.',
     yieldReportTitle: '주간 수율 보고서 준비 완료',
@@ -108,8 +107,7 @@ const ko = {
     tagline: 'AI for Real Life. Real Impact.',
     description:
       '이 웨이퍼 제조 대시보드는 <strong>Amoza MAKE</strong> 필러의 일부입니다 — 미래를 내다보는 공장을 위한 AI 기반 계획, 모니터링, 품질 및 수율 최적화.',
-    subtitle:
-      '더 스마트하게 계획하고, 더 빠르게 생산하세요. Amoza One 생태계의 최신 도구로 구축되었습니다.',
+    subtitle: '더 스마트하게 계획하고, 더 빠르게 생산하세요. Amoza One 생태계의 최신 도구로 구축되었습니다.',
     techStack: '기술 스택',
   },
   notFound: {

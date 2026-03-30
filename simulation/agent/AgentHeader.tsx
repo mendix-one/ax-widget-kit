@@ -33,11 +33,7 @@ const headerSx = {
   borderColor: 'divider',
 }
 
-export const AgentHeader = observer(function AgentHeader({
-  onClose,
-  infoOpen,
-  onToggleInfo,
-}: AgentHeaderProps) {
+export const AgentHeader = observer(function AgentHeader({ onClose, infoOpen, onToggleInfo }: AgentHeaderProps) {
   const { t } = useTranslation()
   const { agent } = useStore()
   const searchRef = useRef<HTMLInputElement>(null)
@@ -56,9 +52,7 @@ export const AgentHeader = observer(function AgentHeader({
           fullWidth
           size="small"
           variant="standard"
-          placeholder={
-            agent.activeConversation ? t('agent.searchMessages') : t('agent.searchConversations')
-          }
+          placeholder={agent.activeConversation ? t('agent.searchMessages') : t('agent.searchConversations')}
           value={agent.searchQuery}
           onChange={(e) => agent.setSearchQuery(e.target.value)}
           slotProps={{
@@ -98,11 +92,7 @@ export const AgentHeader = observer(function AgentHeader({
             </IconButton>
           </Tooltip>
           <Tooltip title={t('agent.options')}>
-            <IconButton
-              size="small"
-              onClick={onToggleInfo}
-              sx={{ color: infoOpen ? 'primary.main' : undefined }}
-            >
+            <IconButton size="small" onClick={onToggleInfo} sx={{ color: infoOpen ? 'primary.main' : undefined }}>
               <MoreVertIcon fontSize="small" />
             </IconButton>
           </Tooltip>

@@ -37,11 +37,7 @@ export const AgentPanel = observer(function AgentPanel() {
         bgcolor: 'background.default',
       }}
     >
-      <AgentHeader
-        onClose={handleClose}
-        infoOpen={infoOpen}
-        onToggleInfo={() => setInfoOpen((prev) => !prev)}
-      />
+      <AgentHeader onClose={handleClose} infoOpen={infoOpen} onToggleInfo={() => setInfoOpen((prev) => !prev)} />
 
       {/* Label suggestions in list search mode */}
       {agent.searchMode && !agent.activeConversation && (
@@ -63,12 +59,8 @@ export const AgentPanel = observer(function AgentPanel() {
               key={label}
               label={label}
               size="small"
-              variant={
-                agent.searchQuery.toLowerCase() === label.toLowerCase() ? 'filled' : 'outlined'
-              }
-              color={
-                agent.searchQuery.toLowerCase() === label.toLowerCase() ? 'primary' : 'default'
-              }
+              variant={agent.searchQuery.toLowerCase() === label.toLowerCase() ? 'filled' : 'outlined'}
+              color={agent.searchQuery.toLowerCase() === label.toLowerCase() ? 'primary' : 'default'}
               onClick={() => agent.setSearchQuery(label)}
               sx={{ fontSize: 11, height: 22, cursor: 'pointer' }}
             />
@@ -87,9 +79,7 @@ export const AgentPanel = observer(function AgentPanel() {
         }}
       >
         {/* Info panel overlay */}
-        {agent.activeConversation && (
-          <ConversationInfoPanel open={infoOpen} onDelete={handleDelete} />
-        )}
+        {agent.activeConversation && <ConversationInfoPanel open={infoOpen} onDelete={handleDelete} />}
 
         {agent.activeConversation ? (
           <ConversationDetail />

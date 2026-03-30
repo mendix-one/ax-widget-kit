@@ -59,13 +59,11 @@ const vi = {
     yieldReportTitle: 'Báo cáo năng suất tuần sẵn sàng',
     yieldReportDesc: 'Báo cáo phân tích năng suất Tuần 12 đã sẵn sàng để xem xét.',
     modelRetrainedTitle: 'Mô hình aQuality đã huấn luyện lại',
-    modelRetrainedDesc:
-      'Mô hình phân loại lỗi đã được huấn luyện lại với dữ liệu sản xuất mới nhất.',
+    modelRetrainedDesc: 'Mô hình phân loại lỗi đã được huấn luyện lại với dữ liệu sản xuất mới nhất.',
   },
   dashboard: {
     title: 'Bảng điều khiển sản xuất',
-    subtitle:
-      'Lên kế hoạch thông minh hơn. Sản xuất nhanh hơn. Thông tin sản xuất wafer thời gian thực.',
+    subtitle: 'Lên kế hoạch thông minh hơn. Sản xuất nhanh hơn. Thông tin sản xuất wafer thời gian thực.',
     overallYield: 'Năng suất tổng',
     throughput: 'Thông lượng',
     defectRate: 'Tỷ lệ lỗi',

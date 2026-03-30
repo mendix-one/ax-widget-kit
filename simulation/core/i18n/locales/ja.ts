@@ -41,11 +41,9 @@ const ja = {
   },
   tasks: {
     yieldDropTitle: 'ライン3の歩留まり低下',
-    yieldDropDesc:
-      '全体の歩留まりが90%を下回りました — 根本原因を調査しエスカレーションしてください。',
+    yieldDropDesc: '全体の歩留まりが90%を下回りました — 根本原因を調査しエスカレーションしてください。',
     calibrationTitle: 'CMP装置キャリブレーション期限超過',
-    calibrationDesc:
-      'CMP-04のキャリブレーションが2日遅延しています。直ちにメンテナンスを予約してください。',
+    calibrationDesc: 'CMP-04のキャリブレーションが2日遅延しています。直ちにメンテナンスを予約してください。',
     lotHoldTitle: 'ロット #W-4821 保留レビュー',
     lotHoldDesc: '汚染フラグによりロットが保留されました — レビューおよび処置してください。',
   },
@@ -92,13 +90,11 @@ const ja = {
   },
   yield: {
     title: '歩留まり分析',
-    description:
-      'AI搭載の歩留まり分析 — ロット、工程ステップ、装置全体で+20-30%の予測精度を提供します。近日公開。',
+    description: 'AI搭載の歩留まり分析 — ロット、工程ステップ、装置全体で+20-30%の予測精度を提供します。近日公開。',
   },
   defects: {
     title: '欠陥分析',
-    description:
-      'インテリジェントな欠陥分類と根本原因分析 — 歩留まりに影響する前に品質問題を検出します。近日公開。',
+    description: 'インテリジェントな欠陥分類と根本原因分析 — 歩留まりに影響する前に品質問題を検出します。近日公開。',
   },
   lots: {
     title: 'ロット追跡',
@@ -110,8 +106,7 @@ const ja = {
     tagline: 'AI for Real Life. Real Impact.',
     description:
       'このウェーハ製造ダッシュボードは<strong>Amoza MAKE</strong>ピラーの一部です — 先を見据える工場のためのAI搭載の計画、監視、品質、歩留まり最適化。',
-    subtitle:
-      'よりスマートに計画し、より速く生産する。Amoza Oneエコシステムの最新ツールで構築されています。',
+    subtitle: 'よりスマートに計画し、より速く生産する。Amoza Oneエコシステムの最新ツールで構築されています。',
     techStack: '技術スタック',
   },
   notFound: {
@@ -123,8 +118,7 @@ const ja = {
     title: 'AIアシスタント',
     welcome: 'こんにちは！aPlannerアシスタントです。何かお手伝いできますか？',
     placeholder: 'メッセージを入力...',
-    defaultReply:
-      'メッセージありがとうございます。生産データを分析中です — まもなく回答いたします。',
+    defaultReply: 'メッセージありがとうございます。生産データを分析中です — まもなく回答いたします。',
     conversations: '会話一覧',
     newConversation: '新しい会話',
     noConversations: '会話がありません。新しい会話を始めましょう！',

@@ -113,11 +113,7 @@ const decisions = [
 
 function TimelineChart() {
   return (
-    <svg
-      viewBox="0 0 1200 460"
-      width="100%"
-      style={{ display: 'block', fontFamily: 'Roboto, Arial, sans-serif' }}
-    >
+    <svg viewBox="0 0 1200 460" width="100%" style={{ display: 'block', fontFamily: 'Roboto, Arial, sans-serif' }}>
       {/* Background */}
       <rect width={1200} height={460} fill="#FAFAFA" rx={8} />
 
@@ -145,15 +141,7 @@ function TimelineChart() {
       </g>
 
       {/* "Today" Marker (March 2026 ≈ end of Q1'26) */}
-      <line
-        x1={490}
-        y1={56}
-        x2={490}
-        y2={440}
-        stroke="#F44336"
-        strokeWidth={2}
-        strokeDasharray="6,3"
-      />
+      <line x1={490} y1={56} x2={490} y2={440} stroke="#F44336" strokeWidth={2} strokeDasharray="6,3" />
       <rect x={472} y={48} width={36} height={16} fill="#F44336" rx={3} />
       <text x={490} y={59} fontSize={8} fill="white" textAnchor="middle" fontWeight={600}>
         TODAY
@@ -186,16 +174,7 @@ function TimelineChart() {
         Wind-Down
       </text>
       {/* V8 EOL */}
-      <rect
-        x={700}
-        y={104}
-        width={68}
-        height={32}
-        fill="#F5F5F5"
-        rx={4}
-        stroke="#E0E0E0"
-        strokeDasharray="4,2"
-      />
+      <rect x={700} y={104} width={68} height={32} fill="#F5F5F5" rx={4} stroke="#E0E0E0" strokeDasharray="4,2" />
       <text x={734} y={124} fontSize={9} fill="#9E9E9E" textAnchor="middle">
         EOL
       </text>
@@ -437,30 +416,13 @@ function TimelineChart() {
       <text x={264} y={438} fontSize={8} fill="#757575">
         Wind-Down
       </text>
-      <rect
-        x={324}
-        y={428}
-        width={16}
-        height={10}
-        fill="#F5F5F5"
-        rx={2}
-        stroke="#E0E0E0"
-        strokeDasharray="3,1"
-      />
+      <rect x={324} y={428} width={16} height={10} fill="#F5F5F5" rx={2} stroke="#E0E0E0" strokeDasharray="3,1" />
       <text x={344} y={438} fontSize={8} fill="#757575">
         EOL/R&D
       </text>
 
       {/* Yield */}
-      <line
-        x1={400}
-        y1={433}
-        x2={430}
-        y2={433}
-        stroke="#424242"
-        strokeWidth={1.5}
-        strokeDasharray="3,2"
-      />
+      <line x1={400} y1={433} x2={430} y2={433} stroke="#424242" strokeWidth={1.5} strokeDasharray="3,2" />
       <text x={436} y={438} fontSize={8} fill="#757575">
         Yield Curve
       </text>
@@ -484,15 +446,7 @@ function TimelineChart() {
       </text>
 
       {/* Today */}
-      <line
-        x1={720}
-        y1={428}
-        x2={720}
-        y2={438}
-        stroke="#F44336"
-        strokeWidth={2}
-        strokeDasharray="4,2"
-      />
+      <line x1={720} y1={428} x2={720} y2={438} stroke="#F44336" strokeWidth={2} strokeDasharray="4,2" />
       <text x={726} y={438} fontSize={8} fill="#757575">
         Today
       </text>
@@ -674,9 +628,7 @@ function MetricsCards() {
 
       {/* Card 3: Supply-Demand Gap */}
       <Grid size={{ xs: 12, sm: 6, md: 2.4 }}>
-        <Card
-          sx={{ height: '100%', borderColor: '#F44336', borderWidth: 1.5, borderStyle: 'solid' }}
-        >
+        <Card sx={{ height: '100%', borderColor: '#F44336', borderWidth: 1.5, borderStyle: 'solid' }}>
           <CardContent sx={{ p: 2, '&:last-child': { pb: 2 } }}>
             <Typography variant="caption" color="text.secondary">
               Supply-Demand Gap
@@ -711,13 +663,7 @@ function MetricsCards() {
             <Typography variant="caption" color="text.secondary">
               Weighted Avg Yield
             </Typography>
-            <Typography
-              variant="h4"
-              fontWeight={700}
-              fontFamily="monospace"
-              color="success.main"
-              sx={{ mt: 0.5 }}
-            >
+            <Typography variant="h4" fontWeight={700} fontFamily="monospace" color="success.main" sx={{ mt: 0.5 }}>
               89.2%
             </Typography>
             {[
@@ -735,11 +681,7 @@ function MetricsCards() {
                     opacity: 0.7,
                   }}
                 />
-                <Typography
-                  variant="caption"
-                  color="text.secondary"
-                  sx={{ fontSize: 10, whiteSpace: 'nowrap' }}
-                >
+                <Typography variant="caption" color="text.secondary" sx={{ fontSize: 10, whiteSpace: 'nowrap' }}>
                   {t.name}: {t.pct}%
                 </Typography>
               </Box>
@@ -755,18 +697,10 @@ function MetricsCards() {
             <Typography variant="caption" color="text.secondary">
               Transition Risk Score
             </Typography>
-            <Typography
-              variant="h4"
-              fontWeight={700}
-              fontFamily="monospace"
-              color="warning.main"
-              sx={{ mt: 0.5 }}
-            >
+            <Typography variant="h4" fontWeight={700} fontFamily="monospace" color="warning.main" sx={{ mt: 0.5 }}>
               Medium
             </Typography>
-            <Box
-              sx={{ mt: 1, position: 'relative', height: 8, bgcolor: '#E0E0E0', borderRadius: 4 }}
-            >
+            <Box sx={{ mt: 1, position: 'relative', height: 8, bgcolor: '#E0E0E0', borderRadius: 4 }}>
               <Box sx={{ height: 8, width: '58%', bgcolor: '#FF9800', borderRadius: 4 }} />
               <Box
                 sx={{
@@ -830,9 +764,7 @@ function DecisionTable() {
                 />
               </TableCell>
               <TableCell sx={{ maxWidth: 320 }}>{d.decision}</TableCell>
-              <TableCell sx={{ fontFamily: 'monospace', whiteSpace: 'nowrap' }}>
-                {d.timeline}
-              </TableCell>
+              <TableCell sx={{ fontFamily: 'monospace', whiteSpace: 'nowrap' }}>{d.timeline}</TableCell>
               <TableCell sx={{ whiteSpace: 'nowrap' }}>{d.owner}</TableCell>
               <TableCell sx={{ maxWidth: 200 }}>{d.impact}</TableCell>
               <TableCell>

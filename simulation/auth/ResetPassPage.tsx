@@ -79,14 +79,7 @@ const ResetPassPage = observer(function ResetPassPage() {
             </Typography>
           )}
 
-          <LoadingButton
-            type="submit"
-            variant="contained"
-            fullWidth
-            size="large"
-            loading={loading}
-            sx={{ mb: 2 }}
-          >
+          <LoadingButton type="submit" variant="contained" fullWidth size="large" loading={loading} sx={{ mb: 2 }}>
             {t('auth.sendResetLink')}
           </LoadingButton>
 

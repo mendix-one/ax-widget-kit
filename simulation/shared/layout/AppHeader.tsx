@@ -87,9 +87,7 @@ export const AppHeader = observer(function AppHeader({ logo, onToggleSidebar }: 
 
           <Tooltip title={t('layout.account')}>
             <IconButton onClick={(e) => setUserMenuAnchor(e.currentTarget)} sx={{ ml: 1 }}>
-              <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main', fontSize: 14 }}>
-                OP
-              </Avatar>
+              <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main', fontSize: 14 }}>OP</Avatar>
             </IconButton>
           </Tooltip>
         </Box>
@@ -112,11 +110,7 @@ export const AppHeader = observer(function AppHeader({ logo, onToggleSidebar }: 
           dropdownWidth={dropdownWidth}
         />
 
-        <UserMenu
-          anchorEl={userMenuAnchor}
-          onClose={() => setUserMenuAnchor(null)}
-          menuWidth={userMenuWidth}
-        />
+        <UserMenu anchorEl={userMenuAnchor} onClose={() => setUserMenuAnchor(null)} menuWidth={userMenuWidth} />
       </Toolbar>
     </AppBar>
   )

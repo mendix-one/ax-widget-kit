@@ -22,12 +22,7 @@ interface ChatInputProps {
   hasAttachments: boolean
 }
 
-export function ChatInput({
-  onSend,
-  attachments,
-  onAttachmentsChange,
-  hasAttachments,
-}: ChatInputProps) {
+export function ChatInput({ onSend, attachments, onAttachmentsChange, hasAttachments }: ChatInputProps) {
   const { t } = useTranslation()
   const [input, setInput] = useState('')
   const [addMenuAnchor, setAddMenuAnchor] = useState<null | HTMLElement>(null)
@@ -115,14 +110,7 @@ export function ChatInput({
         flexShrink: 0,
       }}
     >
-      <input
-        ref={fileInputRef}
-        type="file"
-        multiple
-        hidden
-        accept="*"
-        onChange={handleFileSelect}
-      />
+      <input ref={fileInputRef} type="file" multiple hidden accept="*" onChange={handleFileSelect} />
       <input
         ref={cameraInputRef}
         type="file"

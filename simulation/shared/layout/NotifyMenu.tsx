@@ -74,9 +74,7 @@ export function NotifyMenu({
       >
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <Typography variant="subtitle2">{t('layout.notifications')}</Typography>
-          {unreadCount > 0 && (
-            <Chip label={unreadCount} size="small" color="error" sx={{ height: 20 }} />
-          )}
+          {unreadCount > 0 && <Chip label={unreadCount} size="small" color="error" sx={{ height: 20 }} />}
         </Box>
         <Button
           size="small"
@@ -118,11 +116,7 @@ export function NotifyMenu({
               <Box sx={{ mt: 0.25 }}>{config.icon}</Box>
               <Box sx={{ flex: 1, minWidth: 0 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.25 }}>
-                  <Typography
-                    variant="body2"
-                    sx={{ fontWeight: n.read ? 400 : 600, flex: 1 }}
-                    noWrap
-                  >
+                  <Typography variant="body2" sx={{ fontWeight: n.read ? 400 : 600, flex: 1 }} noWrap>
                     {t(n.titleKey)}
                   </Typography>
                   {!n.read && <FiberManualRecordIcon sx={{ fontSize: 8, color: 'primary.main' }} />}
@@ -140,11 +134,7 @@ export function NotifyMenu({
                 >
                   {t(n.descKey)}
                 </Typography>
-                <Typography
-                  variant="caption"
-                  color="text.disabled"
-                  sx={{ mt: 0.5, display: 'block' }}
-                >
+                <Typography variant="caption" color="text.disabled" sx={{ mt: 0.5, display: 'block' }}>
                   {timeAgo(n.timestamp, t)}
                 </Typography>
               </Box>

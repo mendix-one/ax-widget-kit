@@ -59,12 +59,7 @@ export const ConversationList = observer(function ConversationList() {
                 {conv.title}
               </Typography>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mt: 0.5 }}>
-                <Chip
-                  label={conv.label}
-                  size="small"
-                  variant="outlined"
-                  sx={{ height: 18, fontSize: 11 }}
-                />
+                <Chip label={conv.label} size="small" variant="outlined" sx={{ height: 18, fontSize: 11 }} />
                 <Typography variant="caption" color="text.disabled" sx={{ lineHeight: 1 }}>
                   {timeAgo(conv.updatedAt)}
                 </Typography>
