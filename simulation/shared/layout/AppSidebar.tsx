@@ -1,11 +1,4 @@
-import AccountTreeIcon from '@mui/icons-material/AccountTree'
-import BugReportIcon from '@mui/icons-material/BugReport'
 import DashboardIcon from '@mui/icons-material/Dashboard'
-import InfoIcon from '@mui/icons-material/Info'
-import InventoryIcon from '@mui/icons-material/Inventory'
-import LayoutIcon from '@mui/icons-material/ViewQuilt'
-import TrendingUpIcon from '@mui/icons-material/TrendingUp'
-import Divider from '@mui/material/Divider'
 import Drawer from '@mui/material/Drawer'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
@@ -32,12 +25,7 @@ export const AppSidebar = observer(function AppSidebar({ isMobile }: AppSidebarP
   const { ui } = useStore()
 
   const navItems = [
-    { label: 'Auth Layout', icon: <LayoutIcon />, to: '/' },
-    { label: t('nav.dashboard'), icon: <DashboardIcon />, to: '/dashboard' },
-    { label: t('nav.yieldAnalysis'), icon: <TrendingUpIcon />, to: '/yield' },
-    { label: t('nav.defectAnalysis'), icon: <BugReportIcon />, to: '/defects' },
-    { label: t('nav.lotTracking'), icon: <InventoryIcon />, to: '/lots' },
-    { label: t('nav.technologyRoadmap'), icon: <AccountTreeIcon />, to: '/technology-roadmap' },
+    { label: t('nav.dashboard'), icon: <DashboardIcon />, to: '/' },
   ]
 
   const handleNavClick = () => {
@@ -56,37 +44,24 @@ export const AppSidebar = observer(function AppSidebar({ isMobile }: AppSidebarP
   })
 
   const drawerContent = (mode: SidebarMode) => (
-    <>
-      <List>
-        {navItems.map((item) => (
-          <Tooltip key={item.to} title={mode === 'mini' ? item.label : ''} placement="right">
-            <ListItemButton
-              component={NavLink}
-              to={item.to}
-              end={item.to === '/'}
-              onClick={handleNavClick}
-              sx={navLinkSx(mode)}
-            >
-              <ListItemIcon sx={{ minWidth: mode === 'mini' ? 0 : 40, justifyContent: 'center' }}>
-                {item.icon}
-              </ListItemIcon>
-              {mode === 'show' && <ListItemText primary={item.label} />}
-            </ListItemButton>
-          </Tooltip>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        <Tooltip title={mode === 'mini' ? t('nav.about') : ''} placement="right">
-          <ListItemButton component={NavLink} to="/about" onClick={handleNavClick} sx={navLinkSx(mode)}>
+    <List>
+      {navItems.map((item) => (
+        <Tooltip key={item.to} title={mode === 'mini' ? item.label : ''} placement="right">
+          <ListItemButton
+            component={NavLink}
+            to={item.to}
+            end={item.to === '/'}
+            onClick={handleNavClick}
+            sx={navLinkSx(mode)}
+          >
             <ListItemIcon sx={{ minWidth: mode === 'mini' ? 0 : 40, justifyContent: 'center' }}>
-              <InfoIcon />
+              {item.icon}
             </ListItemIcon>
-            {mode === 'show' && <ListItemText primary={t('nav.about')} />}
+            {mode === 'show' && <ListItemText primary={item.label} />}
           </ListItemButton>
         </Tooltip>
-      </List>
-    </>
+      ))}
+    </List>
   )
 
   if (isMobile) {
