@@ -9,14 +9,7 @@ export const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => {
-          const module = await import('../../pages/sample-widget/SampleWidgetPage')
-          return { Component: module.default }
-        },
-      },
-      {
-        path: 'auth-widget',
-        lazy: async () => {
-          const module = await import('../../pages/auth-widget/AuthWidgetPage')
+          const module = await import('../../pages/auth-layout/AuthLayoutPage')
           return { Component: module.default }
         },
       },
