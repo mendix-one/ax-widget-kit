@@ -27,7 +27,12 @@
     /* Path aliases for widget packages */
     "paths": {
       "@ax/shared": ["./packages/ax-shared/src"],
-      "@ax/shared/*": ["./packages/ax-shared/src/*"]
+      "@ax/shared/*": ["./packages/ax-shared/src/*"],
+      "@ax/auth-layout/*": ["./packages/ax-auth-layout/*"],
+      "@ax/signin-form/*": ["./packages/ax-signin-form/*"],
+      "@ax/signup-form/*": ["./packages/ax-signup-form/*"],
+      "@ax/resetpsw-form/*": ["./packages/ax-resetpsw-form/*"],
+      "@ax/setpsw-form/*": ["./packages/ax-setpsw-form/*"]
     }
   },
   "include": ["simulation"]
