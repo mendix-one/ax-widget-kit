@@ -17,5 +17,5 @@ export function preview({ page }: AXAuthPagePreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./ui/AXAuthPage.css')
+  return require('./ui/AXAuthPage.scss')
 }

@@ -7,5 +7,5 @@ export function preview({ sampleText }: AXWidgetKitPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./ui/AXWidgetKit.css')
+  return require('./ui/AXWidgetKit.scss')
 }

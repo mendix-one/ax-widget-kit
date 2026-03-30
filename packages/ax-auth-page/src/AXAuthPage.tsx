@@ -6,7 +6,7 @@ import { ResetPassForm } from './components/auth/ResetPassForm'
 import { SignInForm } from './components/auth/SignInForm'
 import { SignUpForm } from './components/auth/SignUpForm'
 
-import './ui/AXAuthPage.css'
+import './ui/AXAuthPage.scss'
 
 export function AXAuthPage(props: AXAuthPageContainerProps): ReactElement {
   const email = props.emailAttr?.value ?? ''
