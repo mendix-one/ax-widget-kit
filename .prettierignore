@@ -1,1 +1,4 @@
 tests/testProject/
+dist
+node_modules
+typings
