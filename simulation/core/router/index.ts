@@ -14,6 +14,13 @@ export const router = createBrowserRouter([
         },
       },
       {
+        path: 'auth-widget',
+        lazy: async () => {
+          const module = await import('../../pages/auth-widget/AuthWidgetPage')
+          return { Component: module.default }
+        },
+      },
+      {
         path: 'dashboard',
         lazy: async () => {
           const module = await import('../../pages/dashboard/DashboardPage')

@@ -1,29 +1,25 @@
 {
-  "name": "axwidgetkit",
-  "widgetName": "AXWidgetKit",
+  "name": "ax-widget-kit-monorepo",
   "version": "1.0.0",
-  "description": "AX Widget Kit",
-  "copyright": "Mendix One",
+  "private": true,
+  "description": "AX Widget Kit Monorepo",
   "author": "Danniel Ng",
+  "license": "Apache-2.0",
   "engines": {
     "node": ">=16"
   },
-  "license": "Apache-2.0",
-  "config": {
-    "projectPath": "./tests/testProject",
-    "mendixHost": "http://localhost:8080",
-    "developmentPort": 3000
-  },
-  "packagePath": "mendixone",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "vite": "vite",
-    "start": "pluggable-widgets-tools start:server",
-    "dev": "pluggable-widgets-tools start:web",
-    "build": "pluggable-widgets-tools build:web",
-    "lint": "pluggable-widgets-tools lint",
-    "lint:fix": "pluggable-widgets-tools lint:fix",
-    "prerelease": "npm run lint",
-    "release": "pluggable-widgets-tools release:web",
+    "build:all": "npm run build --workspaces",
+    "dev:widget-kit": "npm run dev -w @ax/widget-kit",
+    "dev:auth-page": "npm run dev -w @ax/auth-page",
+    "build:widget-kit": "npm run build -w @ax/widget-kit",
+    "build:auth-page": "npm run build -w @ax/auth-page",
+    "lint": "npm run lint --workspaces",
+    "lint:fix": "npm run lint:fix --workspaces",
     "format": "prettier --write \"./**/*.{js,jsx,ts,tsx,json,css,scss,xml}\""
   },
   "devDependencies": {
@@ -31,7 +27,6 @@
     "@emotion/styled": "^11.14.1",
     "@eslint/js": "^9.39.1",
     "@fontsource/roboto": "^5.2.9",
-    "@mendix/pluggable-widgets-tools": "^11.8.1",
     "@mui/icons-material": "^7.3.7",
     "@mui/lab": "^7.0.1-beta.23",
     "@mui/material": "^7.3.7",
@@ -65,15 +60,6 @@
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4"
-  },
-  "dependencies": {
-    "classnames": "^2.2.6"
-  },
-  "resolutions": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0"
   },
   "overrides": {
     "react": "^19.2.0",

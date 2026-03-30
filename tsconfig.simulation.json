@@ -22,7 +22,15 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Path aliases for widget packages */
+    "paths": {
+      "@ax/shared": ["./packages/shared/src"],
+      "@ax/shared/*": ["./packages/shared/src/*"],
+      "@ax/widget-kit/*": ["./packages/ax-widget-kit/*"],
+      "@ax/auth-page/*": ["./packages/ax-auth-page/*"]
+    }
   },
   "include": ["simulation"]
 }

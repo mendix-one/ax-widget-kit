@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import { useState } from 'react'
 
-import { AXWidgetKit } from '../../../src/AXWidgetKit'
+import { AXWidgetKit } from '@ax/widget-kit/src/AXWidgetKit'
 
 export default function SampleWidgetPage() {
   const [sampleText, setSampleText] = useState('World')

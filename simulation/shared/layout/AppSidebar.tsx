@@ -3,6 +3,7 @@ import BugReportIcon from '@mui/icons-material/BugReport'
 import DashboardIcon from '@mui/icons-material/Dashboard'
 import InfoIcon from '@mui/icons-material/Info'
 import InventoryIcon from '@mui/icons-material/Inventory'
+import LockOpenIcon from '@mui/icons-material/LockOpen'
 import TrendingUpIcon from '@mui/icons-material/TrendingUp'
 import WidgetsIcon from '@mui/icons-material/Widgets'
 import Divider from '@mui/material/Divider'
@@ -33,6 +34,7 @@ export const AppSidebar = observer(function AppSidebar({ isMobile }: AppSidebarP
 
   const navItems = [
     { label: 'Sample Widget', icon: <WidgetsIcon />, to: '/' },
+    { label: 'Auth Page', icon: <LockOpenIcon />, to: '/auth-widget' },
     { label: t('nav.dashboard'), icon: <DashboardIcon />, to: '/dashboard' },
     { label: t('nav.yieldAnalysis'), icon: <TrendingUpIcon />, to: '/yield' },
     { label: t('nav.defectAnalysis'), icon: <BugReportIcon />, to: '/defects' },
