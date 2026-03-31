@@ -1,12 +1,6 @@
 import { type ReactElement, useCallback, useEffect, useMemo, useState } from 'react'
 
-import {
-  type AxEvent,
-  AxThemeProvider,
-  parseThemeTokens,
-  setGlobalThemeTokens,
-  useWidgetEvents,
-} from '@ax/shared'
+import { type AxEvent, AxThemeProvider, parseThemeTokens, setGlobalThemeTokens, useWidgetEvents } from '@ax/shared'
 
 import type { AXWebAppContainerProps } from '../typings/AXWebAppProps'
 

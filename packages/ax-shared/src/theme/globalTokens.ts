@@ -7,8 +7,8 @@ const GLOBAL_KEY = '__AX_THEME_TOKENS__'
  * Called by layout widgets (AXWebApp, AXAuthLayout) to share theme config with child widgets.
  */
 export function setGlobalThemeTokens(tokens: ThemeOptions): void {
-  ; // @ts-ignore
-  (window as Record<string, unknown>)[GLOBAL_KEY] = tokens
+  // @ts-ignore
+  ;(window as Record<string, unknown>)[GLOBAL_KEY] = tokens
 }
 
 /**
