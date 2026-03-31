@@ -85,24 +85,13 @@ export const SetPasswordForm = observer(function SetPasswordForm(): ReactElement
             </Typography>
           )}
 
-          <Button
-            type="submit"
-            variant="contained"
-            fullWidth
-            disabled={store.loading || store.readOnly}
-            sx={{ mb: 2 }}
-          >
+          <Button type="submit" variant="contained" fullWidth disabled={store.loading || store.readOnly} sx={{ mb: 2 }}>
             {store.loading ? 'Updating\u2026' : 'Set Password'}
           </Button>
 
           {store.onNavigateSignIn && (
             <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
-              <Link
-                component="button"
-                type="button"
-                underline="hover"
-                onClick={() => store.onNavigateSignIn?.()}
-              >
+              <Link component="button" type="button" underline="hover" onClick={() => store.onNavigateSignIn?.()}>
                 Back to Sign In
               </Link>
             </Typography>
