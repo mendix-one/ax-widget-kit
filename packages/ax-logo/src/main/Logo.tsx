@@ -1,3 +1,5 @@
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import { type ReactElement } from 'react'
 
 interface LogoProps {
@@ -10,18 +12,33 @@ interface LogoProps {
 export function Logo({ src, alt = 'Logo', height = 24, onClick }: LogoProps): ReactElement {
   if (!src) {
     return (
-      <span className="ax-logo-text" onClick={onClick} style={{ cursor: onClick ? 'pointer' : 'default' }}>
+      <Typography
+        variant="subtitle1"
+        sx={{
+          fontWeight: 700,
+          color: 'primary.main',
+          letterSpacing: -0.5,
+          cursor: onClick ? 'pointer' : 'default',
+          userSelect: 'none',
+        }}
+        onClick={onClick}
+      >
         {alt}
-      </span>
+      </Typography>
     )
   }
 
   return (
-    <img
-      className="ax-logo-img"
+    <Box
+      component="img"
       src={src}
       alt={alt}
-      style={{ height, cursor: onClick ? 'pointer' : 'default' }}
+      sx={{
+        height,
+        objectFit: 'contain',
+        display: 'block',
+        cursor: onClick ? 'pointer' : 'default',
+      }}
       onClick={onClick}
     />
   )

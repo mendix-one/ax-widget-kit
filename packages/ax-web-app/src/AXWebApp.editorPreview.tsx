@@ -17,5 +17,5 @@ export function preview({ content }: AXWebAppPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXWebApp.scss')
+  return require('./styles/AXWebAppPreview.scss')
 }

@@ -4,8 +4,6 @@ import type { AXLogoContainerProps } from '../typings/AXLogoProps'
 
 import { Logo } from './main/Logo'
 
-import './styles/AXLogo.scss'
-
 export function AXLogo(props: AXLogoContainerProps): ReactElement {
   return (
     <Logo

@@ -9,5 +9,5 @@ export function preview(): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXAgentChat.scss')
+  return require('./styles/AXAgentChatPreview.scss')
 }

@@ -1,6 +1,11 @@
+import SendIcon from '@mui/icons-material/Send'
+import SmartToyIcon from '@mui/icons-material/SmartToy'
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import IconButton from '@mui/material/IconButton'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import { type ReactElement, useEffect, useRef, useState } from 'react'
-
-import { cn } from '@ax/shared'
 
 interface ChatMessage {
   id: number
@@ -26,7 +31,12 @@ const sampleMessages: ChatMessage[] = [
     text: "Line 3 is currently running at 87.2% yield, which is below the 90% target. The drop started approximately 4 hours ago. I've identified a potential correlation with the CMP tool calibration drift on CMP-04. Would you like me to generate a detailed root cause analysis?",
     time: '09:01',
   },
-  { id: 4, role: 'user', text: 'Yes, please generate the analysis and also check if any lots are affected.', time: '09:02' },
+  {
+    id: 4,
+    role: 'user',
+    text: 'Yes, please generate the analysis and also check if any lots are affected.',
+    time: '09:02',
+  },
   {
     id: 5,
     role: 'agent',
@@ -49,6 +59,8 @@ export function AgentChat({ title = 'AI Assistant', welcomeMessage, onSendMessag
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages.length])
 
+  const canSend = input.trim().length > 0
+
   const handleSend = () => {
     const text = input.trim()
     if (!text) return
@@ -58,7 +70,6 @@ export function AgentChat({ title = 'AI Assistant', welcomeMessage, onSendMessag
     setInput('')
     onSendMessage?.(text)
 
-    // Simulate agent reply
     setTimeout(() => {
       setMessages((prev) => [
         ...prev,
@@ -73,36 +84,97 @@ export function AgentChat({ title = 'AI Assistant', welcomeMessage, onSendMessag
   }
 
   return (
-    <div className="ax-agent-chat">
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', bgcolor: 'background.default' }}>
       {/* Header */}
-      <div className="ax-agent-chat-header">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#3f51b5">
-          <path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zM7.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S9.83 13 9 13s-1.5-.67-1.5-1.5zM16 17H8v-2h8v2zm-1-4c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13z" />
-        </svg>
-        <span className="ax-agent-chat-title">{title}</span>
-      </div>
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1,
+          px: 1.5,
+          minHeight: 48,
+          flexShrink: 0,
+          bgcolor: 'background.paper',
+          borderBottom: '2px solid',
+          borderColor: 'divider',
+        }}
+      >
+        <SmartToyIcon color="primary" sx={{ fontSize: 20 }} />
+        <Typography variant="subtitle2" sx={{ flex: 1, ml: 0.5 }} noWrap>
+          {title}
+        </Typography>
+      </Box>
 
       {/* Messages */}
-      <div className="ax-agent-chat-messages">
-        {messages.map((msg) => (
-          <div key={msg.id} className={cn('ax-agent-chat-msg', `ax-agent-chat-msg--${msg.role}`)}>
-            <div className="ax-agent-chat-msg-row">
-              {msg.role === 'agent' && <span className="ax-agent-chat-avatar">AI</span>}
-              <div className={cn('ax-agent-chat-bubble', `ax-agent-chat-bubble--${msg.role}`)}>
-                {msg.text}
-              </div>
-            </div>
-            <div className={cn('ax-agent-chat-time', `ax-agent-chat-time--${msg.role}`)}>{msg.time}</div>
-          </div>
-        ))}
+      <Box sx={{ flex: 1, overflowY: 'auto', px: 2, py: 2 }}>
+        {messages.map((msg) => {
+          const isUser = msg.role === 'user'
+          return (
+            <Box key={msg.id} sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', mb: 2 }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  gap: 1,
+                  maxWidth: '85%',
+                  flexDirection: isUser ? 'row-reverse' : 'row',
+                  alignItems: 'flex-start',
+                }}
+              >
+                {!isUser && (
+                  <Avatar sx={{ width: 28, height: 28, bgcolor: 'primary.main', flexShrink: 0, mt: 0.5 }}>
+                    <SmartToyIcon sx={{ fontSize: 16 }} />
+                  </Avatar>
+                )}
+                <Box sx={{ minWidth: 0 }}>
+                  <Box
+                    sx={{
+                      px: 1.5,
+                      py: 1,
+                      borderRadius: 2,
+                      bgcolor: isUser ? 'primary.main' : 'background.paper',
+                      color: isUser ? 'primary.contrastText' : 'text.primary',
+                      border: !isUser ? '1px solid' : 'none',
+                      borderColor: 'divider',
+                    }}
+                  >
+                    <Typography variant="body2" sx={{ whiteSpace: 'pre-wrap' }}>
+                      {msg.text}
+                    </Typography>
+                  </Box>
+                  <Typography
+                    variant="caption"
+                    color="text.disabled"
+                    sx={{ mt: 0.5, display: 'block', textAlign: isUser ? 'right' : 'left', px: 0.5 }}
+                  >
+                    {msg.time}
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          )
+        })}
         <div ref={bottomRef} />
-      </div>
+      </Box>
 
       {/* Input */}
-      <div className="ax-agent-chat-input">
-        <input
-          className="ax-agent-chat-field"
-          type="text"
+      <Box
+        sx={{
+          px: 1.5,
+          py: 1,
+          borderTop: '1px solid',
+          borderColor: 'divider',
+          bgcolor: 'background.paper',
+          display: 'flex',
+          alignItems: 'flex-end',
+          gap: 0.5,
+          flexShrink: 0,
+        }}
+      >
+        <TextField
+          fullWidth
+          size="small"
+          multiline
+          maxRows={4}
           placeholder="Type a message..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
@@ -112,19 +184,12 @@ export function AgentChat({ title = 'AI Assistant', welcomeMessage, onSendMessag
               handleSend()
             }
           }}
+          sx={{ flex: 1, '& .MuiOutlinedInput-root': { py: 0.75, fontSize: 14 } }}
         />
-        <button
-          className="ax-agent-chat-send"
-          onClick={handleSend}
-          disabled={!input.trim()}
-          type="button"
-          aria-label="Send"
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-          </svg>
-        </button>
-      </div>
-    </div>
+        <IconButton size="small" onClick={handleSend} disabled={!canSend} sx={{ mb: 0.5 }}>
+          <SendIcon fontSize="small" color={canSend ? 'primary' : 'disabled'} />
+        </IconButton>
+      </Box>
+    </Box>
   )
 }

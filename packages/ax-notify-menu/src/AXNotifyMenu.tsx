@@ -4,8 +4,6 @@ import type { AXNotifyMenuContainerProps } from '../typings/AXNotifyMenuProps'
 
 import { NotifyMenu } from './main/NotifyMenu'
 
-import './styles/AXNotifyMenu.scss'
-
 const sampleNotifications = [
   {
     id: 1,

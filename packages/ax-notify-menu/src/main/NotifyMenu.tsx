@@ -1,8 +1,27 @@
-import { type ReactElement, useState } from 'react'
-
-import { cn } from '@ax/shared'
+import DoneAllIcon from '@mui/icons-material/DoneAll'
+import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord'
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined'
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
+import WarningAmberIcon from '@mui/icons-material/WarningAmber'
+import Badge from '@mui/material/Badge'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Chip from '@mui/material/Chip'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
+import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import { type ReactElement, type ReactNode, useState } from 'react'
 
 type NotifyType = 'danger' | 'warning' | 'info'
+
+const notifyConfig: Record<NotifyType, { color: string; icon: ReactNode }> = {
+  danger: { color: 'error.main', icon: <ErrorOutlineIcon color="error" /> },
+  warning: { color: 'warning.main', icon: <WarningAmberIcon color="warning" /> },
+  info: { color: 'info.main', icon: <InfoOutlinedIcon color="info" /> },
+}
 
 interface NotifyItem {
   id: number
@@ -19,20 +38,8 @@ interface NotifyMenuProps {
   onNotifyClick?: (id: number) => void
 }
 
-const typeColors: Record<NotifyType, string> = {
-  danger: '#d32f2f',
-  warning: '#ed6c02',
-  info: '#0288d1',
-}
-
-const typeIcons: Record<NotifyType, string> = {
-  danger: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z',
-  warning: 'M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z',
-  info: 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z',
-}
-
 export function NotifyMenu({ title = 'Notifications', notifications, onNotifyClick }: NotifyMenuProps): ReactElement {
-  const [open, setOpen] = useState(false)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [items, setItems] = useState(notifications)
   const unreadCount = items.filter((n) => !n.read).length
 
@@ -46,59 +53,109 @@ export function NotifyMenu({ title = 'Notifications', notifications, onNotifyCli
   }
 
   return (
-    <div className="ax-notify-menu">
-      <button className="ax-notify-menu-trigger" onClick={() => setOpen((p) => !p)} type="button" aria-label={title}>
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z" />
-        </svg>
-        {unreadCount > 0 && <span className="ax-notify-menu-badge">{unreadCount}</span>}
-      </button>
+    <>
+      <Tooltip title={title}>
+        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit">
+          <Badge badgeContent={unreadCount} color="error">
+            <NotificationsNoneIcon sx={{ color: 'text.secondary' }} />
+          </Badge>
+        </IconButton>
+      </Tooltip>
 
-      {open && (
-        <>
-          <div className="ax-notify-menu-backdrop" onClick={() => setOpen(false)} />
-          <div className="ax-notify-menu-dropdown">
-            <div className="ax-notify-menu-header">
-              <span className="ax-notify-menu-title">
-                {title}
-                {unreadCount > 0 && <span className="ax-notify-menu-count">{unreadCount}</span>}
-              </span>
-              <button
-                className="ax-notify-menu-action"
-                onClick={handleMarkAllRead}
-                disabled={unreadCount === 0}
-                type="button"
+      <Menu
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={() => setAnchorEl(null)}
+        slotProps={{
+          paper: {
+            sx: { width: 400, maxHeight: 520, display: 'flex', flexDirection: 'column' },
+          },
+        }}
+        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+      >
+        {/* Header */}
+        <Box
+          sx={{
+            px: 2,
+            py: 1.5,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            position: 'sticky',
+            top: 0,
+            bgcolor: 'background.paper',
+            zIndex: 1,
+          }}
+        >
+          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+            <Typography variant="subtitle2">{title}</Typography>
+            {unreadCount > 0 && <Chip label={unreadCount} size="small" color="error" sx={{ height: 20 }} />}
+          </Box>
+          <Button
+            size="small"
+            startIcon={<DoneAllIcon sx={{ fontSize: 16 }} />}
+            onClick={handleMarkAllRead}
+            disabled={unreadCount === 0}
+            sx={{ textTransform: 'none', fontSize: 12 }}
+          >
+            Mark all as read
+          </Button>
+        </Box>
+        <Divider sx={{ position: 'sticky', top: 48, zIndex: 1 }} />
+
+        {/* Notification list */}
+        <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }}>
+          {items.map((n) => {
+            const config = notifyConfig[n.type]
+            return (
+              <Box
+                key={n.id}
+                sx={{
+                  px: 2,
+                  py: 1.5,
+                  display: 'flex',
+                  gap: 1.5,
+                  alignItems: 'flex-start',
+                  bgcolor: n.read ? 'transparent' : 'action.hover',
+                  borderLeft: '3px solid',
+                  borderColor: config.color,
+                  cursor: 'pointer',
+                  '&:hover': { bgcolor: 'action.selected' },
+                  '&:not(:last-child)': { borderBottom: '1px solid', borderBottomColor: 'divider' },
+                }}
+                onClick={() => handleMarkRead(n.id)}
               >
-                Mark all as read
-              </button>
-            </div>
-            <div className="ax-notify-menu-list">
-              {items.map((n) => (
-                <div
-                  key={n.id}
-                  className={cn('ax-notify-menu-item', n.read && 'ax-notify-menu-item--read')}
-                  style={{ borderLeftColor: typeColors[n.type] }}
-                  onClick={() => handleMarkRead(n.id)}
-                >
-                  <div className="ax-notify-menu-item-icon">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill={typeColors[n.type]}>
-                      <path d={typeIcons[n.type]} />
-                    </svg>
-                  </div>
-                  <div className="ax-notify-menu-item-body">
-                    <div className="ax-notify-menu-item-title">
+                <Box sx={{ mt: 0.25 }}>{config.icon}</Box>
+                <Box sx={{ flex: 1, minWidth: 0 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5, mb: 0.25 }}>
+                    <Typography variant="body2" sx={{ fontWeight: n.read ? 400 : 600, flex: 1 }} noWrap>
                       {n.title}
-                      {!n.read && <span className="ax-notify-menu-dot" />}
-                    </div>
-                    <div className="ax-notify-menu-item-desc">{n.description}</div>
-                    <div className="ax-notify-menu-item-time">{n.timestamp}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
-    </div>
+                    </Typography>
+                    {!n.read && <FiberManualRecordIcon sx={{ fontSize: 8, color: 'primary.main' }} />}
+                  </Box>
+                  <Typography
+                    variant="caption"
+                    color="text.secondary"
+                    sx={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                      lineHeight: 1.4,
+                    }}
+                  >
+                    {n.description}
+                  </Typography>
+                  <Typography variant="caption" color="text.disabled" sx={{ mt: 0.5, display: 'block' }}>
+                    {n.timestamp}
+                  </Typography>
+                </Box>
+              </Box>
+            )
+          })}
+        </Box>
+      </Menu>
+    </>
   )
 }

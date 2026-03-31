@@ -11,5 +11,5 @@ export function preview({ altText }: AXLogoPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXLogo.scss')
+  return require('./styles/AXLogoPreview.scss')
 }

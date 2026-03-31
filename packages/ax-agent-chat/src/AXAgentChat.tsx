@@ -4,8 +4,6 @@ import type { AXAgentChatContainerProps } from '../typings/AXAgentChatProps'
 
 import { AgentChat } from './main/AgentChat'
 
-import './styles/AXAgentChat.scss'
-
 export function AXAgentChat(props: AXAgentChatContainerProps): ReactElement {
   return (
     <AgentChat

@@ -1,6 +1,14 @@
+import MenuIcon from '@mui/icons-material/Menu'
+import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import IconButton from '@mui/material/IconButton'
+import Toolbar from '@mui/material/Toolbar'
+import Tooltip from '@mui/material/Tooltip'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
 import { type ReactElement, type ReactNode, useCallback, useState } from 'react'
-
-import { cn } from '@ax/shared'
 
 interface WebAppLayoutProps {
   logo?: ReactNode
@@ -14,7 +22,10 @@ interface WebAppLayoutProps {
 
 type SidebarMode = 'show' | 'mini' | 'hide'
 
+const DRAWER_WIDTH_FULL = 240
+const DRAWER_WIDTH_MINI = 64
 const RESIZE_HANDLE_WIDTH = 4
+const AGENT_TRANSITION = 'width 0.25s ease-in-out'
 
 export function WebAppLayout({
   logo,
@@ -25,16 +36,21 @@ export function WebAppLayout({
   content,
   agentChat,
 }: WebAppLayoutProps): ReactElement {
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const [sidebarMode, setSidebarMode] = useState<SidebarMode>('show')
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [agentOpen, setAgentOpen] = useState(false)
   const [agentWidth, setAgentWidth] = useState(360)
   const [resizing, setResizing] = useState(false)
 
   const toggleSidebar = () => {
-    setSidebarMode((prev) => (prev === 'show' ? 'mini' : prev === 'mini' ? 'hide' : 'show'))
+    if (isMobile) {
+      setMobileOpen((prev) => !prev)
+    } else {
+      setSidebarMode((prev) => (prev === 'show' ? 'mini' : prev === 'mini' ? 'hide' : 'show'))
+    }
   }
-
-  const toggleAgent = () => setAgentOpen((prev) => !prev)
 
   const handleResizeStart = useCallback(
     (e: React.MouseEvent) => {
@@ -59,72 +75,152 @@ export function WebAppLayout({
     [agentWidth],
   )
 
+  const drawerWidth = sidebarMode === 'show' ? DRAWER_WIDTH_FULL : sidebarMode === 'mini' ? DRAWER_WIDTH_MINI : 0
   const agentPanelWidth = agentOpen ? agentWidth + RESIZE_HANDLE_WIDTH : 0
 
   return (
-    <div className="ax-webapp-root">
+    <Box sx={{ display: 'flex', height: '100dvh', overflow: 'hidden' }}>
       {/* Left panel: header + sidebar + main */}
-      <div
-        className="ax-webapp-left"
-        style={{ transition: resizing ? 'none' : 'width 0.25s ease-in-out' }}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          flex: 1,
+          minWidth: 0,
+          overflow: 'hidden',
+          transition: resizing ? 'none' : AGENT_TRANSITION,
+        }}
       >
         {/* Header */}
-        <header className="ax-webapp-header">
-          <div className="ax-webapp-header-left">
-            {logo && <div className="ax-webapp-logo">{logo}</div>}
-            <button className="ax-webapp-menu-btn" onClick={toggleSidebar} type="button" aria-label="Toggle sidebar">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-              </svg>
-            </button>
-          </div>
-          <div className="ax-webapp-header-right">
-            {agentChat && (
-              <button
-                className={cn('ax-webapp-icon-btn', agentOpen && 'ax-webapp-icon-btn--active')}
-                onClick={toggleAgent}
-                type="button"
-                aria-label="Toggle agent"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zM7.5 11.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S9.83 13 9 13s-1.5-.67-1.5-1.5zM16 17H8v-2h8v2zm-1-4c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13z" />
-                </svg>
-              </button>
-            )}
-            {tasksMenu && <div className="ax-webapp-header-slot">{tasksMenu}</div>}
-            {notifyMenu && <div className="ax-webapp-header-slot">{notifyMenu}</div>}
-            {userMenu && <div className="ax-webapp-header-slot">{userMenu}</div>}
-          </div>
-        </header>
-
-        {/* Content row: sidebar + main */}
-        <div className="ax-webapp-body">
-          {sidebar && (
-            <aside
-              className={cn('ax-webapp-sidebar', `ax-webapp-sidebar--${sidebarMode}`)}
-            >
-              {sidebar}
-            </aside>
-          )}
-          <main className="ax-webapp-main">{content}</main>
-        </div>
-      </div>
-
-      {/* Right panel: agent chat */}
-      {agentChat && agentOpen && (
-        <div
-          className="ax-webapp-agent"
-          style={{
-            width: agentPanelWidth,
-            transition: resizing ? 'none' : 'width 0.25s ease-in-out',
+        <AppBar
+          position="sticky"
+          elevation={0}
+          sx={{
+            bgcolor: 'background.paper',
+            borderBottom: '1px solid',
+            borderColor: 'divider',
+            zIndex: (t) => t.zIndex.drawer + 1,
           }}
         >
-          <div className="ax-webapp-resize-handle" onMouseDown={handleResizeStart} />
-          <div className="ax-webapp-agent-content" style={{ width: agentWidth, minWidth: agentWidth }}>
+          <Toolbar variant="dense" sx={{ minHeight: 48 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 1.5 }, flexGrow: 1 }}>
+              {logo}
+              <IconButton onClick={toggleSidebar} size="small" sx={{ color: 'text.secondary' }}>
+                <MenuIcon />
+              </IconButton>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}>
+              {agentChat && (
+                <Tooltip title="AI Assistant">
+                  <IconButton
+                    onClick={() => setAgentOpen((prev) => !prev)}
+                    sx={{ color: agentOpen ? 'primary.main' : 'text.secondary' }}
+                  >
+                    <SmartToyOutlinedIcon />
+                  </IconButton>
+                </Tooltip>
+              )}
+              {tasksMenu}
+              {notifyMenu}
+              {userMenu}
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        {/* Content row: sidebar + main */}
+        <Box sx={{ display: 'flex', flex: 1, minHeight: 0, overflow: 'hidden' }}>
+          {/* Sidebar */}
+          {sidebar && !isMobile && (
+            <Drawer
+              variant="permanent"
+              sx={{
+                width: drawerWidth,
+                flexShrink: 0,
+                transition: 'width 0.25s ease-in-out',
+                '& .MuiDrawer-paper': {
+                  position: 'relative',
+                  width: drawerWidth,
+                  boxSizing: 'border-box',
+                  overflowX: 'hidden',
+                  transition: 'width 0.25s ease-in-out',
+                },
+              }}
+            >
+              {sidebar}
+            </Drawer>
+          )}
+
+          {/* Mobile sidebar */}
+          {sidebar && isMobile && (
+            <Drawer
+              variant="temporary"
+              open={mobileOpen}
+              onClose={() => setMobileOpen(false)}
+              ModalProps={{ keepMounted: true }}
+              sx={{ '& .MuiDrawer-paper': { width: DRAWER_WIDTH_FULL, boxSizing: 'border-box' } }}
+            >
+              {sidebar}
+            </Drawer>
+          )}
+
+          {/* Main body */}
+          <Box component="main" sx={{ flex: 1, overflowY: 'auto', minWidth: 0, p: { xs: 2, sm: 3 } }}>
+            {content}
+          </Box>
+        </Box>
+      </Box>
+
+      {/* Right panel: agent chat (desktop) */}
+      {agentChat && !isMobile && (
+        <Box
+          sx={{
+            display: 'flex',
+            flexShrink: 0,
+            overflow: 'hidden',
+            width: agentPanelWidth,
+            transition: resizing ? 'none' : AGENT_TRANSITION,
+          }}
+        >
+          <Box
+            onMouseDown={handleResizeStart}
+            sx={{
+              width: RESIZE_HANDLE_WIDTH,
+              flexShrink: 0,
+              cursor: 'col-resize',
+              bgcolor: 'divider',
+              '&:hover': { bgcolor: 'primary.main' },
+              transition: 'background-color 0.15s',
+            }}
+          />
+          <Box
+            sx={{
+              width: agentWidth,
+              minWidth: agentWidth,
+              flexShrink: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              borderLeft: '1px solid',
+              borderColor: 'divider',
+            }}
+          >
             {agentChat}
-          </div>
-        </div>
+          </Box>
+        </Box>
       )}
-    </div>
+
+      {/* Mobile: agent as bottom drawer */}
+      {agentChat && isMobile && (
+        <Drawer
+          variant="temporary"
+          anchor="bottom"
+          open={agentOpen}
+          onClose={() => setAgentOpen(false)}
+          sx={{ '& .MuiDrawer-paper': { height: '75dvh', borderRadius: '16px 16px 0 0' } }}
+        >
+          {agentChat}
+        </Drawer>
+      )}
+    </Box>
   )
 }

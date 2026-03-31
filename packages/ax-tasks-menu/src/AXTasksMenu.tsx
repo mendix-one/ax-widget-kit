@@ -4,8 +4,6 @@ import type { AXTasksMenuContainerProps } from '../typings/AXTasksMenuProps'
 
 import { TasksMenu } from './main/TasksMenu'
 
-import './styles/AXTasksMenu.scss'
-
 const sampleTasks = [
   {
     id: 1,

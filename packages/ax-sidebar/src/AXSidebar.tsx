@@ -5,8 +5,6 @@ import type { AXSidebarContainerProps } from '../typings/AXSidebarProps'
 import { Sidebar } from './main/Sidebar'
 import { SidebarIcon } from './main/SidebarIcon'
 
-import './styles/AXSidebar.scss'
-
 const defaultItems = [
   { id: 'dashboard', label: 'Dashboard', icon: <SidebarIcon type="dashboard" /> },
   { id: 'analytics', label: 'Yield Analysis', icon: <SidebarIcon type="analytics" /> },

@@ -4,8 +4,6 @@ import type { AXUserMenuContainerProps } from '../typings/AXUserMenuProps'
 
 import { UserMenu } from './main/UserMenu'
 
-import './styles/AXUserMenu.scss'
-
 export function AXUserMenu(props: AXUserMenuContainerProps): ReactElement {
   return (
     <UserMenu

@@ -1,12 +1,14 @@
+import List from '@mui/material/List'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import Tooltip from '@mui/material/Tooltip'
 import { type ReactElement, type ReactNode, useState } from 'react'
-
-import { cn } from '@ax/shared'
 
 interface NavItem {
   id: string
   label: string
   icon: ReactNode
-  active?: boolean
 }
 
 interface SidebarProps {
@@ -25,23 +27,32 @@ export function Sidebar({ items, collapsed = false, children, onItemClick }: Sid
   }
 
   if (children) {
-    return <div className="ax-sidebar-content">{children}</div>
+    return <>{children}</>
   }
 
   return (
-    <nav className="ax-sidebar-nav">
+    <List>
       {items.map((item) => (
-        <button
-          key={item.id}
-          className={cn('ax-sidebar-item', activeId === item.id && 'ax-sidebar-item--active', collapsed && 'ax-sidebar-item--collapsed')}
-          onClick={() => handleClick(item.id)}
-          type="button"
-          title={collapsed ? item.label : undefined}
-        >
-          <span className="ax-sidebar-item-icon">{item.icon}</span>
-          {!collapsed && <span className="ax-sidebar-item-label">{item.label}</span>}
-        </button>
+        <Tooltip key={item.id} title={collapsed ? item.label : ''} placement="right">
+          <ListItemButton
+            selected={activeId === item.id}
+            onClick={() => handleClick(item.id)}
+            sx={{
+              justifyContent: collapsed ? 'center' : 'initial',
+              '&.Mui-selected': {
+                bgcolor: 'action.selected',
+                color: 'primary.main',
+                '& .MuiListItemIcon-root': { color: 'primary.main' },
+              },
+            }}
+          >
+            <ListItemIcon sx={{ minWidth: collapsed ? 0 : 40, justifyContent: 'center' }}>
+              {item.icon}
+            </ListItemIcon>
+            {!collapsed && <ListItemText primary={item.label} />}
+          </ListItemButton>
+        </Tooltip>
       ))}
-    </nav>
+    </List>
   )
 }

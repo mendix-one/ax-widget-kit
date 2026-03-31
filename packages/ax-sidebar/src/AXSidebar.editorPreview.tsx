@@ -15,5 +15,5 @@ export function preview({ content }: AXSidebarPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXSidebar.scss')
+  return require('./styles/AXSidebarPreview.scss')
 }

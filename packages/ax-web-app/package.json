@@ -24,6 +24,10 @@
     "@mendix/pluggable-widgets-tools": "^11.8.1"
   },
   "dependencies": {
-    "@ax/shared": "*"
+    "@ax/shared": "*",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.3.7",
+    "@mui/icons-material": "^7.3.7"
   }
 }

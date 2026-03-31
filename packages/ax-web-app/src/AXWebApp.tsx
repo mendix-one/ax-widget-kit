@@ -4,8 +4,6 @@ import type { AXWebAppContainerProps } from '../typings/AXWebAppProps'
 
 import { WebAppLayout } from './main/WebAppLayout'
 
-import './styles/AXWebApp.scss'
-
 export function AXWebApp(props: AXWebAppContainerProps): ReactElement {
   return (
     <WebAppLayout
