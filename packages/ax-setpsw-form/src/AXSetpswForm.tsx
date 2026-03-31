@@ -1,5 +1,5 @@
-import { type ReactElement, useEffect, useState } from 'react'
-import { AxThemeProvider } from '@ax/shared'
+import { type ReactElement, useCallback, useEffect, useState } from 'react'
+import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSetpswFormContainerProps } from '../typings/AXSetpswFormProps'
 
@@ -25,6 +25,13 @@ export function AXSetpswForm(props: AXSetpswFormContainerProps): ReactElement {
     store.onSubmit = props.onSubmit?.canExecute ? () => props.onSubmit!.execute() : undefined
     store.onNavigateSignIn = props.onNavigateSignIn?.canExecute ? () => props.onNavigateSignIn!.execute() : undefined
   })
+
+  // Subscribe to event bus (broadcast + private topic)
+  const handleEvent = useCallback((_event: AxEvent) => {
+    // Handle events from other widgets or Mendix nanoflows
+  }, [])
+
+  useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
     <AxThemeProvider>

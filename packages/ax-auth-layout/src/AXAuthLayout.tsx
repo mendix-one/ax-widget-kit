@@ -1,6 +1,12 @@
-import { type ReactElement, useEffect, useMemo, useState } from 'react'
+import { type ReactElement, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { AxThemeProvider, parseThemeTokens, setGlobalThemeTokens } from '@ax/shared'
+import {
+  type AxEvent,
+  AxThemeProvider,
+  parseThemeTokens,
+  setGlobalThemeTokens,
+  useWidgetEvents,
+} from '@ax/shared'
 
 import type { AXAuthLayoutContainerProps } from '../typings/AXAuthLayoutProps'
 
@@ -28,6 +34,16 @@ export function AXAuthLayout(props: AXAuthLayoutContainerProps): ReactElement {
   useEffect(() => {
     store.showBackground = props.showBackground
   }, [store, props.showBackground])
+
+  // Layout widget initializes the event bus and listens
+  const handleEvent = useCallback(
+    (event: AxEvent) => {
+      if (event.type === 'toggleBackground') store.showBackground = !store.showBackground
+    },
+    [store],
+  )
+
+  useWidgetEvents({ widgetName: props.name, onEvent: handleEvent, isLayout: true })
 
   return (
     <AxThemeProvider overrides={themeOverrides} isLayout>

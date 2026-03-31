@@ -9,6 +9,7 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "mobx": "^6.15.0",
-    "mobx-react-lite": "^4.1.1"
+    "mobx-react-lite": "^4.1.1",
+    "nanobus": "^4.5.0"
   }
 }

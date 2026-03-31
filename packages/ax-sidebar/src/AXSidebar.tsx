@@ -1,5 +1,5 @@
-import { type ReactElement, useState } from 'react'
-import { AxThemeProvider } from '@ax/shared'
+import { type ReactElement, useCallback, useState } from 'react'
+import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSidebarContainerProps } from '../typings/AXSidebarProps'
 
@@ -23,6 +23,13 @@ export function AXSidebar(props: AXSidebarContainerProps): ReactElement {
     s.setActiveId(defaultItems[0]?.id ?? '')
     return s
   })
+
+  // Subscribe to event bus (broadcast + private topic)
+  const handleEvent = useCallback((_event: AxEvent) => {
+    // Handle events from other widgets or Mendix nanoflows
+  }, [])
+
+  useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
     <AxThemeProvider>

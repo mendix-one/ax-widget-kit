@@ -1,5 +1,5 @@
-import { type ReactElement, useEffect, useState } from 'react'
-import { AxThemeProvider } from '@ax/shared'
+import { type ReactElement, useCallback, useEffect, useState } from 'react'
+import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXUserMenuContainerProps } from '../typings/AXUserMenuProps'
 
@@ -33,6 +33,13 @@ export function AXUserMenu(props: AXUserMenuContainerProps): ReactElement {
   useEffect(() => {
     store.setOnSettings(props.onSettings?.canExecute ? () => props.onSettings?.execute() : undefined)
   }, [store, props.onSettings?.canExecute])
+
+  // Subscribe to event bus (broadcast + private topic)
+  const handleEvent = useCallback((_event: AxEvent) => {
+    // Handle events from other widgets or Mendix nanoflows
+  }, [])
+
+  useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
     <AxThemeProvider>
