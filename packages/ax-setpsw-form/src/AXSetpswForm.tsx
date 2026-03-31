@@ -1,30 +1,33 @@
-import type { ReactElement } from 'react'
+import { type ReactElement, useEffect, useState } from 'react'
 
 import type { AXSetpswFormContainerProps } from '../typings/AXSetpswFormProps'
 
+import { SetPasswordFormProvider } from './main/context'
 import { SetPasswordForm } from './main/SetPasswordForm'
+import { SetPasswordFormStore } from './main/store'
 
 export function AXSetpswForm(props: AXSetpswFormContainerProps): ReactElement {
-  const password = props.passwordAttr?.value ?? ''
-  const readOnly = props.passwordAttr?.readOnly
+  const [store] = useState(() => new SetPasswordFormStore())
 
-  const setPassword = (v: string) => props.passwordAttr?.setValue(v)
+  // Sync Mendix EditableValue props to store
+  useEffect(() => {
+    store.syncPassword(props.passwordAttr?.value ?? '')
+  }, [props.passwordAttr?.value])
 
-  const handleSubmit = () => {
-    if (props.onSubmit?.canExecute) props.onSubmit.execute()
-  }
+  useEffect(() => {
+    store.setReadOnly(props.passwordAttr?.readOnly ?? false)
+  }, [props.passwordAttr?.readOnly])
 
-  const handleNavigateSignIn = () => {
-    if (props.onNavigateSignIn?.canExecute) props.onNavigateSignIn.execute()
-  }
+  // Sync callbacks
+  useEffect(() => {
+    store.onPasswordChange = (v: string) => props.passwordAttr?.setValue(v)
+    store.onSubmit = props.onSubmit?.canExecute ? () => props.onSubmit!.execute() : undefined
+    store.onNavigateSignIn = props.onNavigateSignIn?.canExecute ? () => props.onNavigateSignIn!.execute() : undefined
+  })
 
   return (
-    <SetPasswordForm
-      password={password}
-      onPasswordChange={setPassword}
-      onSubmit={handleSubmit}
-      onNavigateSignIn={handleNavigateSignIn}
-      readOnly={readOnly}
-    />
+    <SetPasswordFormProvider store={store}>
+      <SetPasswordForm />
+    </SetPasswordFormProvider>
   )
 }
