@@ -1,15 +1,13 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import { observer } from 'mobx-react-lite'
 import { type ReactElement } from 'react'
 
-interface LogoProps {
-  src?: string
-  alt?: string
-  height?: number
-  onClick?: () => void
-}
+import { useLogoStore } from './context'
 
-export function Logo({ src, alt = 'Logo', height = 24, onClick }: LogoProps): ReactElement {
+export const Logo = observer(function Logo(): ReactElement {
+  const { src, alt = 'Logo', height = 24, onClick } = useLogoStore()
+
   if (!src) {
     return (
       <Typography
@@ -42,4 +40,4 @@ export function Logo({ src, alt = 'Logo', height = 24, onClick }: LogoProps): Re
       onClick={onClick}
     />
   )
-}
+})

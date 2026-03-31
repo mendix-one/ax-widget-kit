@@ -10,25 +10,14 @@ import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import { observer } from 'mobx-react-lite'
 import { type ReactElement, useState } from 'react'
 
-interface UserMenuProps {
-  name?: string
-  email?: string
-  onSignOut?: () => void
-  onProfile?: () => void
-  onSettings?: () => void
-}
+import { useUserMenuStore } from './context'
 
-export function UserMenu({
-  name = 'Operator',
-  email = 'operator@amoza.ai',
-  onSignOut,
-  onProfile,
-  onSettings,
-}: UserMenuProps): ReactElement {
+export const UserMenu = observer(function UserMenu(): ReactElement {
+  const store = useUserMenuStore()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const initials = name.slice(0, 2).toUpperCase()
 
   const handleClose = () => setAnchorEl(null)
 
@@ -36,7 +25,7 @@ export function UserMenu({
     <>
       <Tooltip title="Account">
         <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} sx={{ ml: 1 }}>
-          <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main', fontSize: 14 }}>{initials}</Avatar>
+          <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main', fontSize: 14 }}>{store.initials}</Avatar>
         </IconButton>
       </Tooltip>
 
@@ -50,11 +39,11 @@ export function UserMenu({
       >
         {/* User info */}
         <Box sx={{ px: 2, py: 1.5, display: 'flex', alignItems: 'center', gap: 1.5 }}>
-          <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main' }}>{initials}</Avatar>
+          <Avatar sx={{ width: 40, height: 40, bgcolor: 'primary.main' }}>{store.initials}</Avatar>
           <Box>
-            <Typography variant="subtitle2">{name}</Typography>
+            <Typography variant="subtitle2">{store.name}</Typography>
             <Typography variant="caption" color="text.secondary">
-              {email}
+              {store.email}
             </Typography>
           </Box>
         </Box>
@@ -64,7 +53,7 @@ export function UserMenu({
         <MenuItem
           onClick={() => {
             handleClose()
-            onProfile?.()
+            store.onProfile?.()
           }}
         >
           <ListItemIcon>
@@ -75,7 +64,7 @@ export function UserMenu({
         <MenuItem
           onClick={() => {
             handleClose()
-            onSettings?.()
+            store.onSettings?.()
           }}
         >
           <ListItemIcon>
@@ -89,7 +78,7 @@ export function UserMenu({
         <MenuItem
           onClick={() => {
             handleClose()
-            onSignOut?.()
+            store.onSignOut?.()
           }}
           sx={{ color: 'error.main' }}
         >
@@ -101,4 +90,4 @@ export function UserMenu({
       </Menu>
     </>
   )
-}
+})

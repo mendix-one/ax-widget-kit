@@ -84,7 +84,9 @@
   background: none;
   color: #666;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  transition:
+    background 0.15s,
+    color 0.15s;
 }
 
 .ax-webapp-icon-btn:hover {

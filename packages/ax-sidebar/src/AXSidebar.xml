@@ -1,19 +1,25 @@
-<?xml version="1.0" encoding="utf-8"?>
-<widget id="one.mendix.axwidgetkit.AXSidebar" pluginWidget="true" needsEntityContext="false" offlineCapable="true"
-        supportedPlatform="Web"
-        xmlns="http://www.mendix.com/widget/1.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd">
-    <name>AXSidebar</name>
-    <description>Sidebar navigation widget with icon and label nav items</description>
-    <icon/>
-    <properties>
-        <propertyGroup caption="General">
-            <propertyGroup caption="Navigation">
-                <property key="content" type="widgets" required="false">
-                    <caption>Navigation content</caption>
-                    <description>Custom widgets to render in the sidebar</description>
-                </property>
-            </propertyGroup>
-        </propertyGroup>
-    </properties>
+<?xml version="1.0" encoding="utf-8" ?>
+<widget
+  id="one.mendix.axwidgetkit.AXSidebar"
+  pluginWidget="true"
+  needsEntityContext="false"
+  offlineCapable="true"
+  supportedPlatform="Web"
+  xmlns="http://www.mendix.com/widget/1.0/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.mendix.com/widget/1.0/ ../node_modules/mendix/custom_widget.xsd"
+>
+  <name>AXSidebar</name>
+  <description>Sidebar navigation widget with icon and label nav items</description>
+  <icon />
+  <properties>
+    <propertyGroup caption="General">
+      <propertyGroup caption="Navigation">
+        <property key="content" type="widgets" required="false">
+          <caption>Navigation content</caption>
+          <description>Custom widgets to render in the sidebar</description>
+        </property>
+      </propertyGroup>
+    </propertyGroup>
+  </properties>
 </widget>

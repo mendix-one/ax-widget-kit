@@ -10,41 +10,20 @@ import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import { observer } from 'mobx-react-lite'
 import { type ReactElement, useState } from 'react'
 
-interface TaskItem {
-  id: number
-  title: string
-  description: string
-  timestamp: string
-  done: boolean
-}
+import { useTasksMenuStore } from './context'
 
-interface TasksMenuProps {
-  title?: string
-  tasks: TaskItem[]
-  onTaskClick?: (id: number) => void
-}
-
-export function TasksMenu({ title = 'Urgent tasks', tasks, onTaskClick }: TasksMenuProps): ReactElement {
+export const TasksMenu = observer(function TasksMenu(): ReactElement {
+  const store = useTasksMenuStore()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [items, setItems] = useState(tasks)
-  const pendingCount = items.filter((t) => !t.done).length
-
-  const handleMarkDone = (id: number) => {
-    setItems((prev) => prev.map((t) => (t.id === id ? { ...t, done: true } : t)))
-    onTaskClick?.(id)
-  }
-
-  const handleMarkAllDone = () => {
-    setItems((prev) => prev.map((t) => ({ ...t, done: true })))
-  }
 
   return (
     <>
-      <Tooltip title={title}>
+      <Tooltip title={store.title}>
         <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit">
-          <Badge badgeContent={pendingCount} color="error">
+          <Badge badgeContent={store.pendingCount} color="error">
             <AssignmentLateIcon sx={{ color: 'text.secondary' }} />
           </Badge>
         </IconButton>
@@ -77,14 +56,16 @@ export function TasksMenu({ title = 'Urgent tasks', tasks, onTaskClick }: TasksM
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="subtitle2">{title}</Typography>
-            {pendingCount > 0 && <Chip label={pendingCount} size="small" color="error" sx={{ height: 20 }} />}
+            <Typography variant="subtitle2">{store.title}</Typography>
+            {store.pendingCount > 0 && (
+              <Chip label={store.pendingCount} size="small" color="error" sx={{ height: 20 }} />
+            )}
           </Box>
           <Button
             size="small"
             startIcon={<DoneAllIcon sx={{ fontSize: 16 }} />}
-            onClick={handleMarkAllDone}
-            disabled={pendingCount === 0}
+            onClick={() => store.markAllDone()}
+            disabled={store.pendingCount === 0}
             sx={{ textTransform: 'none', fontSize: 12 }}
           >
             Mark all done
@@ -94,7 +75,7 @@ export function TasksMenu({ title = 'Urgent tasks', tasks, onTaskClick }: TasksM
 
         {/* Task list */}
         <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }}>
-          {items.map((task) => (
+          {store.items.map((task) => (
             <Box
               key={task.id}
               sx={{
@@ -110,7 +91,7 @@ export function TasksMenu({ title = 'Urgent tasks', tasks, onTaskClick }: TasksM
                 '&:hover': { bgcolor: 'action.selected' },
                 '&:not(:last-child)': { borderBottom: '1px solid', borderBottomColor: 'divider' },
               }}
-              onClick={() => handleMarkDone(task.id)}
+              onClick={() => store.markDone(task.id)}
             >
               <Box sx={{ mt: 0.25 }}>
                 <AssignmentLateIcon color="error" />
@@ -154,4 +135,4 @@ export function TasksMenu({ title = 'Urgent tasks', tasks, onTaskClick }: TasksM
       </Menu>
     </>
   )
-}
+})

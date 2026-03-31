@@ -40,7 +40,7 @@ export default function SetPswPage() {
       class=""
       tagline={mockDynamic('AI-Powered\nSmart Manufacturing')}
       brandDescription={mockDynamic(
-        'Streamline your semiconductor operations with intelligent planning, real-time monitoring, and predictive analytics.'
+        'Streamline your semiconductor operations with intelligent planning, real-time monitoring, and predictive analytics.',
       )}
       showBackground={true}
       content={

@@ -5,49 +5,24 @@ import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import { type FormEvent, type ReactElement, useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import type { FormEvent, ReactElement } from 'react'
 
-export interface ResetPassFormProps {
-  email: string
-  onEmailChange: (value: string) => void
-  onSubmit: () => void
-  onNavigateSignIn?: () => void
-  readOnly?: boolean
-}
+import { useResetPassFormStore } from './context'
 
-export function ResetPassForm({
-  email,
-  onEmailChange,
-  onSubmit,
-  onNavigateSignIn,
-  readOnly,
-}: ResetPassFormProps): ReactElement {
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [sent, setSent] = useState(false)
+export const ResetPassForm = observer(function ResetPassForm(): ReactElement {
+  const store = useResetPassFormStore()
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    setError('')
-
-    if (!email) {
-      setError('Email is required.')
-      return
-    }
-
-    setLoading(true)
-    onSubmit()
-    setTimeout(() => {
-      setLoading(false)
-      setSent(true)
-    }, 600)
+    store.submit()
   }
 
   return (
     <Box>
       <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
-        {onNavigateSignIn && (
-          <IconButton size="small" onClick={onNavigateSignIn} aria-label="Back to sign in">
+        {store.onNavigateSignIn && (
+          <IconButton size="small" onClick={() => store.onNavigateSignIn?.()} aria-label="Back to sign in">
             <ArrowBackIcon fontSize="small" />
           </IconButton>
         )}
@@ -59,13 +34,19 @@ export function ResetPassForm({
         Enter your email to receive a reset link
       </Typography>
 
-      {sent ? (
+      {store.sent ? (
         <Box>
           <Typography color="success.main" variant="body2" sx={{ mb: 1.5 }}>
             A password reset link has been sent to your email.
           </Typography>
-          {onNavigateSignIn && (
-            <Link component="button" type="button" variant="body2" underline="hover" onClick={onNavigateSignIn}>
+          {store.onNavigateSignIn && (
+            <Link
+              component="button"
+              type="button"
+              variant="body2"
+              underline="hover"
+              onClick={() => store.onNavigateSignIn?.()}
+            >
               Back to Sign In
             </Link>
           )}
@@ -77,26 +58,26 @@ export function ResetPassForm({
             type="email"
             fullWidth
             size="small"
-            value={email}
-            onChange={(e) => onEmailChange(e.target.value)}
-            disabled={readOnly}
+            value={store.email}
+            onChange={(e) => store.setEmail(e.target.value)}
+            disabled={store.readOnly}
             sx={{ mb: 2 }}
           />
 
-          {error && (
+          {store.error && (
             <Typography color="error" variant="body2" sx={{ mb: 2 }}>
-              {error}
+              {store.error}
             </Typography>
           )}
 
-          <Button type="submit" variant="contained" fullWidth disabled={loading || readOnly} sx={{ mb: 2 }}>
-            {loading ? 'Sending\u2026' : 'Send Reset Link'}
+          <Button type="submit" variant="contained" fullWidth disabled={store.loading || store.readOnly} sx={{ mb: 2 }}>
+            {store.loading ? 'Sending\u2026' : 'Send Reset Link'}
           </Button>
 
-          {onNavigateSignIn && (
+          {store.onNavigateSignIn && (
             <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
               Remember your password?{' '}
-              <Link component="button" type="button" underline="hover" onClick={onNavigateSignIn}>
+              <Link component="button" type="button" underline="hover" onClick={() => store.onNavigateSignIn?.()}>
                 Sign In
               </Link>
             </Typography>
@@ -105,4 +86,4 @@ export function ResetPassForm({
       )}
     </Box>
   )
-}
+})

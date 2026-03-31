@@ -24,7 +24,14 @@ function DemoContent() {
       </p>
 
       {/* KPI Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 24 }}>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: 16,
+          marginBottom: 24,
+        }}
+      >
         {[
           { label: 'Overall Yield', value: '92.4%', color: '#4caf50' },
           { label: 'Throughput', value: '1,247 wafers/day', color: '#2196f3' },
@@ -102,20 +109,10 @@ export default function WebAppPage() {
         />
       }
       tasksMenu={
-        <AXTasksMenu
-          name="AXTasksMenu1"
-          class=""
-          title={mockDynamic('Urgent tasks')}
-          onTaskClick={mockAction}
-        />
+        <AXTasksMenu name="AXTasksMenu1" class="" title={mockDynamic('Urgent tasks')} onTaskClick={mockAction} />
       }
       notifyMenu={
-        <AXNotifyMenu
-          name="AXNotifyMenu1"
-          class=""
-          title={mockDynamic('Notifications')}
-          onNotifyClick={mockAction}
-        />
+        <AXNotifyMenu name="AXNotifyMenu1" class="" title={mockDynamic('Notifications')} onNotifyClick={mockAction} />
       }
       userMenu={
         <AXUserMenu
@@ -128,20 +125,10 @@ export default function WebAppPage() {
           onSettings={mockAction}
         />
       }
-      sidebar={
-        <AXSidebar
-          name="AXSidebar1"
-          class=""
-        />
-      }
+      sidebar={<AXSidebar name="AXSidebar1" class="" />}
       content={<DemoContent />}
       agentChat={
-        <AXAgentChat
-          name="AXAgentChat1"
-          class=""
-          title={mockDynamic('AI Assistant')}
-          onSendMessage={mockAction}
-        />
+        <AXAgentChat name="AXAgentChat1" class="" title={mockDynamic('AI Assistant')} onSendMessage={mockAction} />
       }
     />
   )

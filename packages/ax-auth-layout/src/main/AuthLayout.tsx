@@ -2,18 +2,18 @@ import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Typography from '@mui/material/Typography'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import { observer } from 'mobx-react-lite'
 import type { ReactElement, ReactNode } from 'react'
 
 import { AiBg } from './AiBg'
+import { useAuthLayoutStore } from './context'
 
 interface AuthLayoutProps {
-  tagline?: string
-  description?: string
-  showBackground?: boolean
   children?: ReactNode
 }
 
-export function AuthLayout({ tagline, description, showBackground = true, children }: AuthLayoutProps): ReactElement {
+export const AuthLayout = observer(function AuthLayout({ children }: AuthLayoutProps): ReactElement {
+  const { tagline, description, showBackground } = useAuthLayoutStore()
   const isDesktop = useMediaQuery('(min-width:900px)')
   const isLarge = useMediaQuery('(min-width:1200px)')
 
@@ -119,4 +119,4 @@ export function AuthLayout({ tagline, description, showBackground = true, childr
       </Box>
     </Box>
   )
-}
+})

@@ -1,9 +1,11 @@
-import type { ReactElement } from 'react'
+import { type ReactElement, useState } from 'react'
 
 import type { AXSidebarContainerProps } from '../typings/AXSidebarProps'
 
+import { SidebarProvider } from './main/context'
 import { Sidebar } from './main/Sidebar'
 import { SidebarIcon } from './main/SidebarIcon'
+import { SidebarStore } from './main/store'
 
 const defaultItems = [
   { id: 'dashboard', label: 'Dashboard', icon: <SidebarIcon type="dashboard" /> },
@@ -14,5 +16,16 @@ const defaultItems = [
 ]
 
 export function AXSidebar(props: AXSidebarContainerProps): ReactElement {
-  return <Sidebar items={defaultItems}>{props.content}</Sidebar>
+  const [store] = useState(() => {
+    const s = new SidebarStore()
+    s.setItems(defaultItems)
+    s.setActiveId(defaultItems[0]?.id ?? '')
+    return s
+  })
+
+  return (
+    <SidebarProvider store={store}>
+      <Sidebar>{props.content}</Sidebar>
+    </SidebarProvider>
+  )
 }

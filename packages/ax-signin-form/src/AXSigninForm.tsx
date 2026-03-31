@@ -1,38 +1,47 @@
-import type { ReactElement } from 'react'
+import { type ReactElement, useEffect, useState } from 'react'
 
 import type { AXSigninFormContainerProps } from '../typings/AXSigninFormProps'
 
+import { SignInFormProvider } from './main/context'
 import { SignInForm } from './main/SignInForm'
+import { SignInFormStore } from './main/store'
 
 export function AXSigninForm(props: AXSigninFormContainerProps): ReactElement {
-  const email = props.emailAttr?.value ?? ''
-  const password = props.passwordAttr?.value ?? ''
-  const readOnly = props.emailAttr?.readOnly
+  const [store] = useState(() => new SignInFormStore())
 
-  const setEmail = (v: string) => props.emailAttr?.setValue(v)
-  const setPassword = (v: string) => props.passwordAttr?.setValue(v)
+  // Sync Mendix EditableValue props to store
+  useEffect(() => {
+    store.syncEmail(props.emailAttr?.value ?? '')
+  }, [props.emailAttr?.value])
 
-  const handleSubmit = () => {
-    if (props.onSubmit?.canExecute) props.onSubmit.execute()
-  }
+  useEffect(() => {
+    store.syncPassword(props.passwordAttr?.value ?? '')
+  }, [props.passwordAttr?.value])
 
-  const nav = (action: AXSigninFormContainerProps['onNavigateSignUp']) => {
-    if (action?.canExecute) action.execute()
-  }
+  useEffect(() => {
+    store.setReadOnly(props.emailAttr?.readOnly ?? false)
+  }, [props.emailAttr?.readOnly])
+
+  useEffect(() => {
+    store.setShowSSO(props.showSSO)
+  }, [props.showSSO])
+
+  // Sync callbacks
+  useEffect(() => {
+    store.onEmailChange = (v: string) => props.emailAttr?.setValue(v)
+    store.onPasswordChange = (v: string) => props.passwordAttr?.setValue(v)
+    store.onSubmit = props.onSubmit?.canExecute ? () => props.onSubmit!.execute() : undefined
+    store.onNavigateSignUp = props.onNavigateSignUp?.canExecute ? () => props.onNavigateSignUp!.execute() : undefined
+    store.onNavigateResetPass = props.onNavigateResetPass?.canExecute
+      ? () => props.onNavigateResetPass!.execute()
+      : undefined
+    store.onGoogleSSO = props.onGoogleSSO?.canExecute ? () => props.onGoogleSSO!.execute() : undefined
+    store.onMicrosoftSSO = props.onMicrosoftSSO?.canExecute ? () => props.onMicrosoftSSO!.execute() : undefined
+  })
 
   return (
-    <SignInForm
-      email={email}
-      password={password}
-      onEmailChange={setEmail}
-      onPasswordChange={setPassword}
-      onSubmit={handleSubmit}
-      onNavigateSignUp={() => nav(props.onNavigateSignUp)}
-      onNavigateResetPass={() => nav(props.onNavigateResetPass)}
-      onGoogleSSO={() => nav(props.onGoogleSSO)}
-      onMicrosoftSSO={() => nav(props.onMicrosoftSSO)}
-      showSSO={props.showSSO}
-      readOnly={readOnly}
-    />
+    <SignInFormProvider store={store}>
+      <SignInForm />
+    </SignInFormProvider>
   )
 }

@@ -13,7 +13,10 @@ import IconButton from '@mui/material/IconButton'
 import Menu from '@mui/material/Menu'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
+import { observer } from 'mobx-react-lite'
 import { type ReactElement, type ReactNode, useState } from 'react'
+
+import { useNotifyMenuStore } from './context'
 
 type NotifyType = 'danger' | 'warning' | 'info'
 
@@ -23,40 +26,15 @@ const notifyConfig: Record<NotifyType, { color: string; icon: ReactNode }> = {
   info: { color: 'info.main', icon: <InfoOutlinedIcon color="info" /> },
 }
 
-interface NotifyItem {
-  id: number
-  type: NotifyType
-  title: string
-  description: string
-  timestamp: string
-  read: boolean
-}
-
-interface NotifyMenuProps {
-  title?: string
-  notifications: NotifyItem[]
-  onNotifyClick?: (id: number) => void
-}
-
-export function NotifyMenu({ title = 'Notifications', notifications, onNotifyClick }: NotifyMenuProps): ReactElement {
+export const NotifyMenu = observer(function NotifyMenu(): ReactElement {
+  const store = useNotifyMenuStore()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [items, setItems] = useState(notifications)
-  const unreadCount = items.filter((n) => !n.read).length
-
-  const handleMarkRead = (id: number) => {
-    setItems((prev) => prev.map((n) => (n.id === id ? { ...n, read: true } : n)))
-    onNotifyClick?.(id)
-  }
-
-  const handleMarkAllRead = () => {
-    setItems((prev) => prev.map((n) => ({ ...n, read: true })))
-  }
 
   return (
     <>
-      <Tooltip title={title}>
+      <Tooltip title={store.title}>
         <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit">
-          <Badge badgeContent={unreadCount} color="error">
+          <Badge badgeContent={store.unreadCount} color="error">
             <NotificationsNoneIcon sx={{ color: 'text.secondary' }} />
           </Badge>
         </IconButton>
@@ -89,14 +67,14 @@ export function NotifyMenu({ title = 'Notifications', notifications, onNotifyCli
           }}
         >
           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-            <Typography variant="subtitle2">{title}</Typography>
-            {unreadCount > 0 && <Chip label={unreadCount} size="small" color="error" sx={{ height: 20 }} />}
+            <Typography variant="subtitle2">{store.title}</Typography>
+            {store.unreadCount > 0 && <Chip label={store.unreadCount} size="small" color="error" sx={{ height: 20 }} />}
           </Box>
           <Button
             size="small"
             startIcon={<DoneAllIcon sx={{ fontSize: 16 }} />}
-            onClick={handleMarkAllRead}
-            disabled={unreadCount === 0}
+            onClick={() => store.markAllRead()}
+            disabled={store.unreadCount === 0}
             sx={{ textTransform: 'none', fontSize: 12 }}
           >
             Mark all as read
@@ -106,7 +84,7 @@ export function NotifyMenu({ title = 'Notifications', notifications, onNotifyCli
 
         {/* Notification list */}
         <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }}>
-          {items.map((n) => {
+          {store.items.map((n) => {
             const config = notifyConfig[n.type]
             return (
               <Box
@@ -124,7 +102,7 @@ export function NotifyMenu({ title = 'Notifications', notifications, onNotifyCli
                   '&:hover': { bgcolor: 'action.selected' },
                   '&:not(:last-child)': { borderBottom: '1px solid', borderBottomColor: 'divider' },
                 }}
-                onClick={() => handleMarkRead(n.id)}
+                onClick={() => store.markRead(n.id)}
               >
                 <Box sx={{ mt: 0.25 }}>{config.icon}</Box>
                 <Box sx={{ flex: 1, minWidth: 0 }}>
@@ -158,4 +136,4 @@ export function NotifyMenu({ title = 'Notifications', notifications, onNotifyCli
       </Menu>
     </>
   )
-}
+})

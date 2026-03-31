@@ -1,7 +1,9 @@
-import type { ReactElement } from 'react'
+import { type ReactElement, useEffect, useState } from 'react'
 
 import type { AXNotifyMenuContainerProps } from '../typings/AXNotifyMenuProps'
 
+import { NotifyMenuProvider } from './main/context'
+import { NotifyMenuStore } from './main/store'
 import { NotifyMenu } from './main/NotifyMenu'
 
 const sampleNotifications = [
@@ -48,11 +50,23 @@ const sampleNotifications = [
 ]
 
 export function AXNotifyMenu(props: AXNotifyMenuContainerProps): ReactElement {
+  const [store] = useState(() => new NotifyMenuStore())
+
+  useEffect(() => {
+    store.setTitle(props.title?.value ?? 'Notifications')
+  }, [props.title?.value])
+
+  useEffect(() => {
+    store.setItems(sampleNotifications)
+  }, [])
+
+  useEffect(() => {
+    store.setOnNotifyClick(props.onNotifyClick?.canExecute ? () => props.onNotifyClick?.execute() : undefined)
+  }, [props.onNotifyClick?.canExecute])
+
   return (
-    <NotifyMenu
-      title={props.title?.value ?? 'Notifications'}
-      notifications={sampleNotifications}
-      onNotifyClick={props.onNotifyClick?.canExecute ? () => props.onNotifyClick?.execute() : undefined}
-    />
+    <NotifyMenuProvider store={store}>
+      <NotifyMenu />
+    </NotifyMenuProvider>
   )
 }

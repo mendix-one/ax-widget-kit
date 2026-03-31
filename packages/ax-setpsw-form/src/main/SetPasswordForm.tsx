@@ -7,55 +7,23 @@ import InputAdornment from '@mui/material/InputAdornment'
 import Link from '@mui/material/Link'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import { type FormEvent, type ReactElement, useState } from 'react'
+import { observer } from 'mobx-react-lite'
+import type { FormEvent, ReactElement } from 'react'
 
-export interface SetPasswordFormProps {
-  password: string
-  onPasswordChange: (value: string) => void
-  onSubmit: () => void
-  onNavigateSignIn?: () => void
-  readOnly?: boolean
-}
+import { useSetPasswordFormStore } from './context'
 
-export function SetPasswordForm({
-  password,
-  onPasswordChange,
-  onSubmit,
-  onNavigateSignIn,
-  readOnly,
-}: SetPasswordFormProps): ReactElement {
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(false)
+export const SetPasswordForm = observer(function SetPasswordForm(): ReactElement {
+  const store = useSetPasswordFormStore()
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault()
-    setError('')
-
-    if (!password || !confirmPassword) {
-      setError('Both fields are required.')
-      return
-    }
-
-    if (password !== confirmPassword) {
-      setError('Passwords do not match.')
-      return
-    }
-
-    setLoading(true)
-    onSubmit()
-    setTimeout(() => {
-      setLoading(false)
-      setSuccess(true)
-    }, 600)
+    store.submit()
   }
 
   const passwordAdornment = (
     <InputAdornment position="end">
-      <IconButton size="small" onClick={() => setShowPassword(!showPassword)} edge="end">
-        {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
+      <IconButton size="small" onClick={() => store.toggleShowPassword()} edge="end">
+        {store.showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
       </IconButton>
     </InputAdornment>
   )
@@ -69,13 +37,19 @@ export function SetPasswordForm({
         Enter your new password below
       </Typography>
 
-      {success ? (
+      {store.success ? (
         <Box>
           <Typography color="success.main" variant="body2" sx={{ mb: 1.5 }}>
             Your password has been updated successfully.
           </Typography>
-          {onNavigateSignIn && (
-            <Link component="button" type="button" variant="body2" underline="hover" onClick={onNavigateSignIn}>
+          {store.onNavigateSignIn && (
+            <Link
+              component="button"
+              type="button"
+              variant="body2"
+              underline="hover"
+              onClick={() => store.onNavigateSignIn?.()}
+            >
               Back to Sign In
             </Link>
           )}
@@ -84,40 +58,51 @@ export function SetPasswordForm({
         <Box component="form" onSubmit={handleSubmit} noValidate>
           <TextField
             label="New password"
-            type={showPassword ? 'text' : 'password'}
+            type={store.showPassword ? 'text' : 'password'}
             fullWidth
             size="small"
-            value={password}
-            onChange={(e) => onPasswordChange(e.target.value)}
-            disabled={readOnly}
+            value={store.password}
+            onChange={(e) => store.setPassword(e.target.value)}
+            disabled={store.readOnly}
             sx={{ mb: 2 }}
             slotProps={{ input: { endAdornment: passwordAdornment } }}
           />
 
           <TextField
             label="Confirm password"
-            type={showPassword ? 'text' : 'password'}
+            type={store.showPassword ? 'text' : 'password'}
             fullWidth
             size="small"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            disabled={readOnly}
+            value={store.confirmPassword}
+            onChange={(e) => store.setConfirmPassword(e.target.value)}
+            disabled={store.readOnly}
             sx={{ mb: 2 }}
           />
 
-          {error && (
+          {store.error && (
             <Typography color="error" variant="body2" sx={{ mb: 2 }}>
-              {error}
+              {store.error}
             </Typography>
           )}
 
-          <Button type="submit" variant="contained" fullWidth disabled={loading || readOnly} sx={{ mb: 2 }}>
-            {loading ? 'Updating\u2026' : 'Set Password'}
+          <Button
+            type="submit"
+            variant="contained"
+            fullWidth
+            disabled={store.loading || store.readOnly}
+            sx={{ mb: 2 }}
+          >
+            {store.loading ? 'Updating\u2026' : 'Set Password'}
           </Button>
 
-          {onNavigateSignIn && (
+          {store.onNavigateSignIn && (
             <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
-              <Link component="button" type="button" underline="hover" onClick={onNavigateSignIn}>
+              <Link
+                component="button"
+                type="button"
+                underline="hover"
+                onClick={() => store.onNavigateSignIn?.()}
+              >
                 Back to Sign In
               </Link>
             </Typography>
@@ -126,4 +111,4 @@ export function SetPasswordForm({
       )}
     </Box>
   )
-}
+})

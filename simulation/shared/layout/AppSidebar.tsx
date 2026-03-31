@@ -24,9 +24,7 @@ export const AppSidebar = observer(function AppSidebar({ isMobile }: AppSidebarP
   const { t } = useTranslation()
   const { ui } = useStore()
 
-  const navItems = [
-    { label: t('nav.dashboard'), icon: <DashboardIcon />, to: '/' },
-  ]
+  const navItems = [{ label: t('nav.dashboard'), icon: <DashboardIcon />, to: '/' }]
 
   const handleNavClick = () => {
     if (isMobile) ui.setMobileOpen(false)

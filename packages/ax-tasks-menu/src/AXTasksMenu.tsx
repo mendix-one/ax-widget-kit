@@ -1,7 +1,9 @@
-import type { ReactElement } from 'react'
+import { type ReactElement, useEffect, useState } from 'react'
 
 import type { AXTasksMenuContainerProps } from '../typings/AXTasksMenuProps'
 
+import { TasksMenuProvider } from './main/context'
+import { TasksMenuStore } from './main/store'
 import { TasksMenu } from './main/TasksMenu'
 
 const sampleTasks = [
@@ -29,11 +31,23 @@ const sampleTasks = [
 ]
 
 export function AXTasksMenu(props: AXTasksMenuContainerProps): ReactElement {
+  const [store] = useState(() => new TasksMenuStore())
+
+  useEffect(() => {
+    store.setTitle(props.title?.value ?? 'Urgent tasks')
+  }, [props.title?.value])
+
+  useEffect(() => {
+    store.setItems(sampleTasks)
+  }, [])
+
+  useEffect(() => {
+    store.setOnTaskClick(props.onTaskClick?.canExecute ? () => props.onTaskClick?.execute() : undefined)
+  }, [props.onTaskClick?.canExecute])
+
   return (
-    <TasksMenu
-      title={props.title?.value ?? 'Urgent tasks'}
-      tasks={sampleTasks}
-      onTaskClick={props.onTaskClick?.canExecute ? () => props.onTaskClick?.execute() : undefined}
-    />
+    <TasksMenuProvider store={store}>
+      <TasksMenu />
+    </TasksMenuProvider>
   )
 }
