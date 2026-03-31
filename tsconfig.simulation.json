@@ -32,7 +32,14 @@
       "@ax/signin-form/*": ["./packages/ax-signin-form/*"],
       "@ax/signup-form/*": ["./packages/ax-signup-form/*"],
       "@ax/resetpsw-form/*": ["./packages/ax-resetpsw-form/*"],
-      "@ax/setpsw-form/*": ["./packages/ax-setpsw-form/*"]
+      "@ax/setpsw-form/*": ["./packages/ax-setpsw-form/*"],
+      "@ax/web-app/*": ["./packages/ax-web-app/*"],
+      "@ax/logo/*": ["./packages/ax-logo/*"],
+      "@ax/tasks-menu/*": ["./packages/ax-tasks-menu/*"],
+      "@ax/notify-menu/*": ["./packages/ax-notify-menu/*"],
+      "@ax/user-menu/*": ["./packages/ax-user-menu/*"],
+      "@ax/sidebar/*": ["./packages/ax-sidebar/*"],
+      "@ax/agent-chat/*": ["./packages/ax-agent-chat/*"]
     }
   },
   "include": ["simulation"]

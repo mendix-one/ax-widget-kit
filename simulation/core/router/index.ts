@@ -39,6 +39,13 @@ export const router = createBrowserRouter([
     },
   },
   {
+    path: 'web-app',
+    lazy: async () => {
+      const module = await import('../../pages/web-app/WebAppPage')
+      return { Component: module.default }
+    },
+  },
+  {
     Component: Layout,
     children: [
       {

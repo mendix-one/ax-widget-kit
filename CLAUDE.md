@@ -18,6 +18,13 @@ packages/
   ax-signup-form/      — AXSignupForm widget (sign up form: name, email, password, SSO)
   ax-resetpsw-form/    — AXResetpswForm widget (reset password form: email, success state)
   ax-setpsw-form/      — AXSetpswForm widget (set new password form: password, confirm)
+  ax-web-app/          — AXWebApp widget (web app layout: header, sidebar, agent panel, content)
+  ax-logo/             — AXLogo widget (logo display with image/text)
+  ax-tasks-menu/       — AXTasksMenu widget (urgent tasks dropdown menu)
+  ax-notify-menu/      — AXNotifyMenu widget (notifications dropdown menu)
+  ax-user-menu/        — AXUserMenu widget (user avatar, profile, sign-out menu)
+  ax-sidebar/          — AXSidebar widget (sidebar navigation with icons)
+  ax-agent-chat/       — AXAgentChat widget (AI assistant chat panel)
   ax-shared/           — Shared utilities (classname helpers, types, components)
 simulation/            — Vite React app that imports widgets for preview
 ```
@@ -33,6 +40,13 @@ npm run build:signin-form    # Build AXSigninForm
 npm run build:signup-form    # Build AXSignupForm
 npm run build:resetpsw-form  # Build AXResetpswForm
 npm run build:setpsw-form    # Build AXSetpswForm
+npm run build:web-app        # Build AXWebApp
+npm run build:logo           # Build AXLogo
+npm run build:tasks-menu     # Build AXTasksMenu
+npm run build:notify-menu    # Build AXNotifyMenu
+npm run build:user-menu      # Build AXUserMenu
+npm run build:sidebar        # Build AXSidebar
+npm run build:agent-chat     # Build AXAgentChat
 npm run build:all            # Build all widgets
 
 # Widget dev servers
@@ -41,6 +55,13 @@ npm run dev:signin-form      # Dev server for AXSigninForm (port 3003)
 npm run dev:signup-form      # Dev server for AXSignupForm (port 3004)
 npm run dev:resetpsw-form    # Dev server for AXResetpswForm (port 3005)
 npm run dev:setpsw-form      # Dev server for AXSetpswForm (port 3006)
+npm run dev:web-app          # Dev server for AXWebApp (port 3010)
+npm run dev:logo             # Dev server for AXLogo (port 3011)
+npm run dev:tasks-menu       # Dev server for AXTasksMenu (port 3012)
+npm run dev:notify-menu      # Dev server for AXNotifyMenu (port 3016)
+npm run dev:user-menu        # Dev server for AXUserMenu (port 3013)
+npm run dev:sidebar          # Dev server for AXSidebar (port 3014)
+npm run dev:agent-chat       # Dev server for AXAgentChat (port 3015)
 
 # Simulation app (Vite)
 npm run vite                 # Run Vite commands directly
