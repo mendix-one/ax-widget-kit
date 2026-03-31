@@ -1,0 +1,135 @@
+/*
+  AXAuthLayout widget styles
+  Replicates the simulation AuthLayout: gradient background, left text, right card.
+  Prefixed with .ax-layout- to avoid collisions with Mendix Atlas UI.
+*/
+
+.ax-layout-root {
+  min-height: 100dvh;
+  display: flex;
+  background: linear-gradient(135deg, #1a237e 0%, #283593 35%, #3949ab 65%, #5c6bc0 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated SVG background */
+.ax-layout-bg-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Content container */
+.ax-layout-container {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* Left panel — branding */
+.ax-layout-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 24px;
+  color: #fff;
+}
+
+.ax-layout-tagline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  white-space: pre-line;
+  margin: 0;
+}
+
+.ax-layout-description {
+  display: none;
+  margin: 16px 0 0;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 480px;
+  line-height: 1.7;
+  font-size: 1rem;
+}
+
+/* Right panel — form card */
+.ax-layout-right {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.ax-layout-card {
+  width: 100%;
+  background: #fff;
+  border-radius: 24px 24px 0 0;
+  flex: 1;
+}
+
+.ax-layout-content {
+  padding: 32px 24px;
+}
+
+/* ── Desktop (md: 900px+) ─────────────────── */
+@media (min-width: 900px) {
+  .ax-layout-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+  }
+
+  .ax-layout-left {
+    flex: 1;
+    max-width: 560px;
+    padding: 48px 0;
+  }
+
+  .ax-layout-tagline {
+    font-size: 2.5rem;
+  }
+
+  .ax-layout-description {
+    display: block;
+  }
+
+  .ax-layout-right {
+    width: 440px;
+    flex: none;
+    align-items: center;
+    padding: 24px 0;
+  }
+
+  .ax-layout-card {
+    border-radius: 12px;
+    box-shadow:
+      0 5px 5px -3px rgba(0, 0, 0, 0.2),
+      0 8px 10px 1px rgba(0, 0, 0, 0.14),
+      0 3px 14px 2px rgba(0, 0, 0, 0.12);
+    flex: none;
+  }
+
+  .ax-layout-content {
+    padding: 32px 40px;
+  }
+}
+
+/* ── Large desktop (lg: 1200px+) ──────────── */
+@media (min-width: 1200px) {
+  .ax-layout-container {
+    padding: 0 64px;
+  }
+
+  .ax-layout-right {
+    width: 480px;
+  }
+}
