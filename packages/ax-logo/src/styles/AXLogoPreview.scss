@@ -1,0 +1,17 @@
+/*
+  AXLogo widget styles
+  Prefixed with .ax-logo-
+*/
+
+.ax-logo-img {
+  display: block;
+  object-fit: contain;
+}
+
+.ax-logo-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #3f51b5;
+  letter-spacing: -0.5px;
+  user-select: none;
+}
