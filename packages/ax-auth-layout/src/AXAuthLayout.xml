@@ -30,6 +30,12 @@
           <description>Description text below the tagline</description>
         </property>
       </propertyGroup>
+      <propertyGroup caption="Theme">
+        <property key="themeTokens" type="string" required="false">
+          <caption>Theme tokens (JSON)</caption>
+          <description>JSON string with MUI theme overrides (palette, typography, shape, etc.)</description>
+        </property>
+      </propertyGroup>
       <propertyGroup caption="Background">
         <property key="showBackground" type="boolean" defaultValue="true">
           <caption>Show animated background</caption>

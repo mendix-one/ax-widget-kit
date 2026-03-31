@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXLogoContainerProps } from '../typings/AXLogoProps'
 
@@ -26,8 +27,10 @@ export function AXLogo(props: AXLogoContainerProps): ReactElement {
   }, [store, props.onClick?.canExecute])
 
   return (
-    <LogoProvider store={store}>
-      <Logo />
-    </LogoProvider>
+    <AxThemeProvider>
+      <LogoProvider store={store}>
+        <Logo />
+      </LogoProvider>
+    </AxThemeProvider>
   )
 }

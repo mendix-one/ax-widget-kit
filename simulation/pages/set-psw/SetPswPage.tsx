@@ -42,6 +42,7 @@ export default function SetPswPage() {
       brandDescription={mockDynamic(
         'Streamline your semiconductor operations with intelligent planning, real-time monitoring, and predictive analytics.',
       )}
+      themeTokens=""
       showBackground={true}
       content={
         <AXSetpswForm

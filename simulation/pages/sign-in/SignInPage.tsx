@@ -43,6 +43,7 @@ export default function SignInPage() {
       brandDescription={mockDynamic(
         'Streamline your semiconductor operations with intelligent planning, real-time monitoring, and predictive analytics.',
       )}
+      themeTokens=""
       showBackground={true}
       content={
         <AXSigninForm

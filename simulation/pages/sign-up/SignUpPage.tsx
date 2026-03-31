@@ -44,6 +44,7 @@ export default function SignUpPage() {
       brandDescription={mockDynamic(
         'Streamline your semiconductor operations with intelligent planning, real-time monitoring, and predictive analytics.',
       )}
+      themeTokens=""
       showBackground={true}
       content={
         <AXSignupForm

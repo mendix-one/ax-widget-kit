@@ -16,6 +16,7 @@ export interface AXWebAppContainerProps {
     userMenu?: ReactNode;
     sidebar?: ReactNode;
     content?: ReactNode;
+    themeTokens: string;
     agentChat?: ReactNode;
 }
 
@@ -36,5 +37,6 @@ export interface AXWebAppPreviewProps {
     userMenu: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
     sidebar: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
     content: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
+    themeTokens: string;
     agentChat: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
 }

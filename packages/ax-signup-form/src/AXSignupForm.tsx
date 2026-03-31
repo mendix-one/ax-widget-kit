@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXSignupFormContainerProps } from '../typings/AXSignupFormProps'
 
@@ -42,8 +43,10 @@ export function AXSignupForm(props: AXSignupFormContainerProps): ReactElement {
   })
 
   return (
-    <SignUpFormProvider store={store}>
-      <SignUpForm />
-    </SignUpFormProvider>
+    <AxThemeProvider>
+      <SignUpFormProvider store={store}>
+        <SignUpForm />
+      </SignUpFormProvider>
+    </AxThemeProvider>
   )
 }

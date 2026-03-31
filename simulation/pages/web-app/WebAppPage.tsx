@@ -98,6 +98,7 @@ export default function WebAppPage() {
     <AXWebApp
       name="AXWebApp1"
       class=""
+      themeTokens=""
       logo={
         <AXLogo
           name="AXLogo1"

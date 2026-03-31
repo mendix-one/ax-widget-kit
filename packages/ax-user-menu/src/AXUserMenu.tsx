@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXUserMenuContainerProps } from '../typings/AXUserMenuProps'
 
@@ -34,8 +35,10 @@ export function AXUserMenu(props: AXUserMenuContainerProps): ReactElement {
   }, [store, props.onSettings?.canExecute])
 
   return (
-    <UserMenuProvider store={store}>
-      <UserMenu />
-    </UserMenuProvider>
+    <AxThemeProvider>
+      <UserMenuProvider store={store}>
+        <UserMenu />
+      </UserMenuProvider>
+    </AxThemeProvider>
   )
 }

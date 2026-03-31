@@ -1,4 +1,6 @@
-import { type ReactElement, useEffect, useState } from 'react'
+import { type ReactElement, useEffect, useMemo, useState } from 'react'
+
+import { AxThemeProvider, parseThemeTokens, setGlobalThemeTokens } from '@ax/shared'
 
 import type { AXAuthLayoutContainerProps } from '../typings/AXAuthLayoutProps'
 
@@ -8,6 +10,12 @@ import { AuthLayoutStore } from './main/store'
 
 export function AXAuthLayout(props: AXAuthLayoutContainerProps): ReactElement {
   const [store] = useState(() => new AuthLayoutStore())
+
+  const themeOverrides = useMemo(() => parseThemeTokens(props.themeTokens), [props.themeTokens])
+
+  useEffect(() => {
+    if (themeOverrides) setGlobalThemeTokens(themeOverrides)
+  }, [themeOverrides])
 
   useEffect(() => {
     store.tagline = props.tagline?.value
@@ -22,8 +30,10 @@ export function AXAuthLayout(props: AXAuthLayoutContainerProps): ReactElement {
   }, [store, props.showBackground])
 
   return (
-    <AuthLayoutProvider store={store}>
-      <AuthLayout>{props.content}</AuthLayout>
-    </AuthLayoutProvider>
+    <AxThemeProvider overrides={themeOverrides} isLayout>
+      <AuthLayoutProvider store={store}>
+        <AuthLayout>{props.content}</AuthLayout>
+      </AuthLayoutProvider>
+    </AxThemeProvider>
   )
 }

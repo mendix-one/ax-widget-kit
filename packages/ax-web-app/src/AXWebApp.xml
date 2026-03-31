@@ -44,6 +44,12 @@
           <description>Widgets to display in the main content area</description>
         </property>
       </propertyGroup>
+      <propertyGroup caption="Theme">
+        <property key="themeTokens" type="string" required="false">
+          <caption>Theme tokens (JSON)</caption>
+          <description>JSON string with MUI theme overrides (palette, typography, shape, etc.)</description>
+        </property>
+      </propertyGroup>
       <propertyGroup caption="Agent">
         <property key="agentChat" type="widgets" required="false">
           <caption>Agent chat</caption>

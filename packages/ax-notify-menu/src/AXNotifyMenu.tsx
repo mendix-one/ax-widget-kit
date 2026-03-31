@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXNotifyMenuContainerProps } from '../typings/AXNotifyMenuProps'
 
@@ -65,8 +66,10 @@ export function AXNotifyMenu(props: AXNotifyMenuContainerProps): ReactElement {
   }, [props.onNotifyClick?.canExecute])
 
   return (
-    <NotifyMenuProvider store={store}>
-      <NotifyMenu />
-    </NotifyMenuProvider>
+    <AxThemeProvider>
+      <NotifyMenuProvider store={store}>
+        <NotifyMenu />
+      </NotifyMenuProvider>
+    </AxThemeProvider>
   )
 }

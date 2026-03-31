@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXTasksMenuContainerProps } from '../typings/AXTasksMenuProps'
 
@@ -46,8 +47,10 @@ export function AXTasksMenu(props: AXTasksMenuContainerProps): ReactElement {
   }, [props.onTaskClick?.canExecute])
 
   return (
-    <TasksMenuProvider store={store}>
-      <TasksMenu />
-    </TasksMenuProvider>
+    <AxThemeProvider>
+      <TasksMenuProvider store={store}>
+        <TasksMenu />
+      </TasksMenuProvider>
+    </AxThemeProvider>
   )
 }

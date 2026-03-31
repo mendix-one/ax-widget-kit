@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXSetpswFormContainerProps } from '../typings/AXSetpswFormProps'
 
@@ -26,8 +27,10 @@ export function AXSetpswForm(props: AXSetpswFormContainerProps): ReactElement {
   })
 
   return (
-    <SetPasswordFormProvider store={store}>
-      <SetPasswordForm />
-    </SetPasswordFormProvider>
+    <AxThemeProvider>
+      <SetPasswordFormProvider store={store}>
+        <SetPasswordForm />
+      </SetPasswordFormProvider>
+    </AxThemeProvider>
   )
 }

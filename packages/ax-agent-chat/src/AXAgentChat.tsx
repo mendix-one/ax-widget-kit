@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXAgentChatContainerProps } from '../typings/AXAgentChatProps'
 
@@ -18,8 +19,10 @@ export function AXAgentChat(props: AXAgentChatContainerProps): ReactElement {
   }, [store, props.onSendMessage?.canExecute])
 
   return (
-    <AgentChatProvider store={store}>
-      <AgentChat />
-    </AgentChatProvider>
+    <AxThemeProvider>
+      <AgentChatProvider store={store}>
+        <AgentChat />
+      </AgentChatProvider>
+    </AxThemeProvider>
   )
 }

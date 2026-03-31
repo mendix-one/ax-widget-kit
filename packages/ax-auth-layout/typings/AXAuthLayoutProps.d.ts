@@ -14,6 +14,7 @@ export interface AXAuthLayoutContainerProps {
     content?: ReactNode;
     tagline?: DynamicValue<string>;
     brandDescription?: DynamicValue<string>;
+    themeTokens: string;
     showBackground: boolean;
 }
 
@@ -31,5 +32,6 @@ export interface AXAuthLayoutPreviewProps {
     content: { widgetCount: number; renderer: ComponentType<{ children: ReactNode; caption?: string }> };
     tagline: string;
     brandDescription: string;
+    themeTokens: string;
     showBackground: boolean;
 }

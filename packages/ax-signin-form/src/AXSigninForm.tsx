@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXSigninFormContainerProps } from '../typings/AXSigninFormProps'
 
@@ -40,8 +41,10 @@ export function AXSigninForm(props: AXSigninFormContainerProps): ReactElement {
   })
 
   return (
-    <SignInFormProvider store={store}>
-      <SignInForm />
-    </SignInFormProvider>
+    <AxThemeProvider>
+      <SignInFormProvider store={store}>
+        <SignInForm />
+      </SignInFormProvider>
+    </AxThemeProvider>
   )
 }

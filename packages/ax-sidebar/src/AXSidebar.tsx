@@ -1,4 +1,5 @@
 import { type ReactElement, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXSidebarContainerProps } from '../typings/AXSidebarProps'
 
@@ -24,8 +25,10 @@ export function AXSidebar(props: AXSidebarContainerProps): ReactElement {
   })
 
   return (
-    <SidebarProvider store={store}>
-      <Sidebar>{props.content}</Sidebar>
-    </SidebarProvider>
+    <AxThemeProvider>
+      <SidebarProvider store={store}>
+        <Sidebar>{props.content}</Sidebar>
+      </SidebarProvider>
+    </AxThemeProvider>
   )
 }

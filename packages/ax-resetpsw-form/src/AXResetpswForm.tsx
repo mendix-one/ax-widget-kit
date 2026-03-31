@@ -1,4 +1,5 @@
 import { type ReactElement, useEffect, useState } from 'react'
+import { AxThemeProvider } from '@ax/shared'
 
 import type { AXResetpswFormContainerProps } from '../typings/AXResetpswFormProps'
 
@@ -26,8 +27,10 @@ export function AXResetpswForm(props: AXResetpswFormContainerProps): ReactElemen
   })
 
   return (
-    <ResetPassFormProvider store={store}>
-      <ResetPassForm />
-    </ResetPassFormProvider>
+    <AxThemeProvider>
+      <ResetPassFormProvider store={store}>
+        <ResetPassForm />
+      </ResetPassFormProvider>
+    </AxThemeProvider>
   )
 }
