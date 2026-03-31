@@ -1,3 +1,12 @@
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import Link from '@mui/material/Link'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import { type FormEvent, type ReactElement, useState } from 'react'
 
 export interface SetPasswordFormProps {
@@ -43,71 +52,78 @@ export function SetPasswordForm({
     }, 600)
   }
 
+  const passwordAdornment = (
+    <InputAdornment position="end">
+      <IconButton size="small" onClick={() => setShowPassword(!showPassword)} edge="end">
+        {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
+      </IconButton>
+    </InputAdornment>
+  )
+
   return (
-    <div className="ax-auth-form">
-      <h2 className="ax-auth-title">Set New Password</h2>
-      <p className="ax-auth-subtitle">Enter your new password below</p>
+    <Box>
+      <Typography variant="h5" sx={{ fontWeight: 600, mb: 0.5 }}>
+        Set New Password
+      </Typography>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        Enter your new password below
+      </Typography>
 
       {success ? (
-        <div className="ax-auth-success">
-          <p className="ax-auth-success-text">Your password has been updated successfully.</p>
+        <Box>
+          <Typography color="success.main" variant="body2" sx={{ mb: 1.5 }}>
+            Your password has been updated successfully.
+          </Typography>
           {onNavigateSignIn && (
-            <button type="button" className="ax-auth-link" onClick={onNavigateSignIn}>
+            <Link component="button" type="button" variant="body2" underline="hover" onClick={onNavigateSignIn}>
               Back to Sign In
-            </button>
+            </Link>
           )}
-        </div>
+        </Box>
       ) : (
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="ax-auth-field">
-            <label htmlFor="ax-setpsw-password">New password</label>
-            <div className="ax-auth-password-wrap">
-              <input
-                id="ax-setpsw-password"
-                type={showPassword ? 'text' : 'password'}
-                value={password}
-                onChange={(e) => onPasswordChange(e.target.value)}
-                disabled={readOnly}
-                className="form-control"
-              />
-              <button
-                type="button"
-                className="ax-auth-toggle-pw"
-                onClick={() => setShowPassword(!showPassword)}
-                aria-label="Toggle password visibility"
-              >
-                {showPassword ? '\u{1F648}' : '\u{1F441}'}
-              </button>
-            </div>
-          </div>
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <TextField
+            label="New password"
+            type={showPassword ? 'text' : 'password'}
+            fullWidth
+            size="small"
+            value={password}
+            onChange={(e) => onPasswordChange(e.target.value)}
+            disabled={readOnly}
+            sx={{ mb: 2 }}
+            slotProps={{ input: { endAdornment: passwordAdornment } }}
+          />
 
-          <div className="ax-auth-field">
-            <label htmlFor="ax-setpsw-confirm">Confirm password</label>
-            <input
-              id="ax-setpsw-confirm"
-              type={showPassword ? 'text' : 'password'}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              disabled={readOnly}
-              className="form-control"
-            />
-          </div>
+          <TextField
+            label="Confirm password"
+            type={showPassword ? 'text' : 'password'}
+            fullWidth
+            size="small"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            disabled={readOnly}
+            sx={{ mb: 2 }}
+          />
 
-          {error && <p className="ax-auth-error">{error}</p>}
+          {error && (
+            <Typography color="error" variant="body2" sx={{ mb: 2 }}>
+              {error}
+            </Typography>
+          )}
 
-          <button type="submit" className="ax-auth-submit" disabled={loading || readOnly}>
+          <Button type="submit" variant="contained" fullWidth disabled={loading || readOnly} sx={{ mb: 2 }}>
             {loading ? 'Updating\u2026' : 'Set Password'}
-          </button>
+          </Button>
 
           {onNavigateSignIn && (
-            <p className="ax-auth-footer">
-              <button type="button" className="ax-auth-link" onClick={onNavigateSignIn}>
+            <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
+              <Link component="button" type="button" underline="hover" onClick={onNavigateSignIn}>
                 Back to Sign In
-              </button>
-            </p>
+              </Link>
+            </Typography>
           )}
-        </form>
+        </Box>
       )}
-    </div>
+    </Box>
   )
 }

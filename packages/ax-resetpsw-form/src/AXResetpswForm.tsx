@@ -4,8 +4,6 @@ import type { AXResetpswFormContainerProps } from '../typings/AXResetpswFormProp
 
 import { ResetPassForm } from './main/ResetPassForm'
 
-import './styles/AXResetpswForm.scss'
-
 export function AXResetpswForm(props: AXResetpswFormContainerProps): ReactElement {
   const email = props.emailAttr?.value ?? ''
   const readOnly = props.emailAttr?.readOnly

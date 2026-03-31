@@ -4,8 +4,6 @@ import type { AXAuthLayoutContainerProps } from '../typings/AXAuthLayoutProps'
 
 import { AuthLayout } from './main/AuthLayout'
 
-import './styles/AXAuthLayout.scss'
-
 export function AXAuthLayout(props: AXAuthLayoutContainerProps): ReactElement {
   return (
     <AuthLayout

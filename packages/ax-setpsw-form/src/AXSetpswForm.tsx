@@ -4,8 +4,6 @@ import type { AXSetpswFormContainerProps } from '../typings/AXSetpswFormProps'
 
 import { SetPasswordForm } from './main/SetPasswordForm'
 
-import './styles/AXSetpswForm.scss'
-
 export function AXSetpswForm(props: AXSetpswFormContainerProps): ReactElement {
   const password = props.passwordAttr?.value ?? ''
   const readOnly = props.passwordAttr?.readOnly

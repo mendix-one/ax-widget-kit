@@ -4,8 +4,6 @@ import type { AXSigninFormContainerProps } from '../typings/AXSigninFormProps'
 
 import { SignInForm } from './main/SignInForm'
 
-import './styles/AXSigninForm.scss'
-
 export function AXSigninForm(props: AXSigninFormContainerProps): ReactElement {
   const email = props.emailAttr?.value ?? ''
   const password = props.passwordAttr?.value ?? ''

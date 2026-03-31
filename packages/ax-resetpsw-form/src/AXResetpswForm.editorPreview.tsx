@@ -11,5 +11,5 @@ export function preview(_props: AXResetpswFormPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXResetpswForm.scss')
+  return require('./styles/AXResetpswFormPreview.scss')
 }

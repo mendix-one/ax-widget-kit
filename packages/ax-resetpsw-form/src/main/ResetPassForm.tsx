@@ -1,3 +1,10 @@
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import { type FormEvent, type ReactElement, useState } from 'react'
 
 export interface ResetPassFormProps {
@@ -37,56 +44,65 @@ export function ResetPassForm({
   }
 
   return (
-    <div className="ax-auth-form">
-      <div className="ax-auth-title-row">
+    <Box>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 0.5 }}>
         {onNavigateSignIn && (
-          <button type="button" className="ax-auth-back" onClick={onNavigateSignIn} aria-label="Back to sign in">
-            \u2190
-          </button>
+          <IconButton size="small" onClick={onNavigateSignIn} aria-label="Back to sign in">
+            <ArrowBackIcon fontSize="small" />
+          </IconButton>
         )}
-        <h2 className="ax-auth-title">Reset Password</h2>
-      </div>
-      <p className="ax-auth-subtitle">Enter your email to receive a reset link</p>
+        <Typography variant="h5" sx={{ fontWeight: 600 }}>
+          Reset Password
+        </Typography>
+      </Box>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        Enter your email to receive a reset link
+      </Typography>
 
       {sent ? (
-        <div className="ax-auth-success">
-          <p className="ax-auth-success-text">A password reset link has been sent to your email.</p>
+        <Box>
+          <Typography color="success.main" variant="body2" sx={{ mb: 1.5 }}>
+            A password reset link has been sent to your email.
+          </Typography>
           {onNavigateSignIn && (
-            <button type="button" className="ax-auth-link" onClick={onNavigateSignIn}>
+            <Link component="button" type="button" variant="body2" underline="hover" onClick={onNavigateSignIn}>
               Back to Sign In
-            </button>
+            </Link>
           )}
-        </div>
+        </Box>
       ) : (
-        <form onSubmit={handleSubmit} noValidate>
-          <div className="ax-auth-field">
-            <label htmlFor="ax-resetpsw-email">Email</label>
-            <input
-              id="ax-resetpsw-email"
-              type="email"
-              value={email}
-              onChange={(e) => onEmailChange(e.target.value)}
-              disabled={readOnly}
-              className="form-control"
-            />
-          </div>
+        <Box component="form" onSubmit={handleSubmit} noValidate>
+          <TextField
+            label="Email"
+            type="email"
+            fullWidth
+            size="small"
+            value={email}
+            onChange={(e) => onEmailChange(e.target.value)}
+            disabled={readOnly}
+            sx={{ mb: 2 }}
+          />
 
-          {error && <p className="ax-auth-error">{error}</p>}
+          {error && (
+            <Typography color="error" variant="body2" sx={{ mb: 2 }}>
+              {error}
+            </Typography>
+          )}
 
-          <button type="submit" className="ax-auth-submit" disabled={loading || readOnly}>
+          <Button type="submit" variant="contained" fullWidth disabled={loading || readOnly} sx={{ mb: 2 }}>
             {loading ? 'Sending\u2026' : 'Send Reset Link'}
-          </button>
+          </Button>
 
           {onNavigateSignIn && (
-            <p className="ax-auth-footer">
+            <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
               Remember your password?{' '}
-              <button type="button" className="ax-auth-link" onClick={onNavigateSignIn}>
+              <Link component="button" type="button" underline="hover" onClick={onNavigateSignIn}>
                 Sign In
-              </button>
-            </p>
+              </Link>
+            </Typography>
           )}
-        </form>
+        </Box>
       )}
-    </div>
+    </Box>
   )
 }

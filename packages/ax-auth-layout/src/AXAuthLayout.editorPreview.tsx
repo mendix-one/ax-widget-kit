@@ -18,5 +18,5 @@ export function preview({ content }: AXAuthLayoutPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXAuthLayout.scss')
+  return require('./styles/AXAuthLayoutPreview.scss')
 }

@@ -4,8 +4,6 @@ import type { AXSignupFormContainerProps } from '../typings/AXSignupFormProps'
 
 import { SignUpForm } from './main/SignUpForm'
 
-import './styles/AXSignupForm.scss'
-
 export function AXSignupForm(props: AXSignupFormContainerProps): ReactElement {
   const fullName = props.fullNameAttr?.value ?? ''
   const email = props.emailAttr?.value ?? ''

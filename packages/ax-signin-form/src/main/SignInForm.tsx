@@ -1,3 +1,13 @@
+import Visibility from '@mui/icons-material/Visibility'
+import VisibilityOff from '@mui/icons-material/VisibilityOff'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import InputAdornment from '@mui/material/InputAdornment'
+import Link from '@mui/material/Link'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import { type FormEvent, type ReactElement, useState } from 'react'
 
 export interface SignInFormProps {
@@ -46,87 +56,104 @@ export function SignInForm({
   }
 
   return (
-    <div className="ax-auth-form">
-      <h2 className="ax-auth-title">Sign In</h2>
-      <p className="ax-auth-subtitle">Welcome back — sign in to continue</p>
+    <Box>
+      <Typography variant="h5" sx={{ fontWeight: 600, mb: 0.5 }}>
+        Sign In
+      </Typography>
+      <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
+        Welcome back — sign in to continue
+      </Typography>
 
       {showSSO && (
         <>
-          <div className="ax-auth-sso">
-            <button type="button" className="ax-auth-sso-btn" onClick={onGoogleSSO} disabled={readOnly}>
-              <img src={googleSvg} alt="" className="ax-auth-sso-icon" />
+          <Box sx={{ display: 'flex', gap: 1.5, mb: 3 }}>
+            <Button
+              variant="outlined"
+              fullWidth
+              onClick={onGoogleSSO}
+              disabled={readOnly}
+              startIcon={<Box component="img" src={googleSvg} alt="" sx={{ width: 20, height: 20 }} />}
+              sx={{ textTransform: 'none', color: 'text.primary', borderColor: 'divider' }}
+            >
               Google
-            </button>
-            <button type="button" className="ax-auth-sso-btn" onClick={onMicrosoftSSO} disabled={readOnly}>
-              <img src={microsoftSvg} alt="" className="ax-auth-sso-icon" />
+            </Button>
+            <Button
+              variant="outlined"
+              fullWidth
+              onClick={onMicrosoftSSO}
+              disabled={readOnly}
+              startIcon={<Box component="img" src={microsoftSvg} alt="" sx={{ width: 20, height: 20 }} />}
+              sx={{ textTransform: 'none', color: 'text.primary', borderColor: 'divider' }}
+            >
               Microsoft
-            </button>
-          </div>
-          <div className="ax-auth-divider">
-            <span>or continue with</span>
-          </div>
+            </Button>
+          </Box>
+          <Divider sx={{ mb: 3, fontSize: 12, color: 'text.disabled' }}>or continue with</Divider>
         </>
       )}
 
-      <form onSubmit={handleSubmit} noValidate>
-        <div className="ax-auth-field">
-          <label htmlFor="ax-signin-email">Email</label>
-          <input
-            id="ax-signin-email"
-            type="email"
-            value={email}
-            onChange={(e) => onEmailChange(e.target.value)}
-            disabled={readOnly}
-            className="form-control"
-          />
-        </div>
+      <Box component="form" onSubmit={handleSubmit} noValidate>
+        <TextField
+          label="Email"
+          type="email"
+          fullWidth
+          size="small"
+          value={email}
+          onChange={(e) => onEmailChange(e.target.value)}
+          disabled={readOnly}
+          sx={{ mb: 2 }}
+        />
 
-        <div className="ax-auth-field">
-          <label htmlFor="ax-signin-password">Password</label>
-          <div className="ax-auth-password-wrap">
-            <input
-              id="ax-signin-password"
-              type={showPassword ? 'text' : 'password'}
-              value={password}
-              onChange={(e) => onPasswordChange(e.target.value)}
-              disabled={readOnly}
-              className="form-control"
-            />
-            <button
-              type="button"
-              className="ax-auth-toggle-pw"
-              onClick={() => setShowPassword(!showPassword)}
-              aria-label="Toggle password visibility"
-            >
-              {showPassword ? '\u{1F648}' : '\u{1F441}'}
-            </button>
-          </div>
-        </div>
+        <TextField
+          label="Password"
+          type={showPassword ? 'text' : 'password'}
+          fullWidth
+          size="small"
+          value={password}
+          onChange={(e) => onPasswordChange(e.target.value)}
+          disabled={readOnly}
+          sx={{ mb: 1 }}
+          slotProps={{
+            input: {
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton size="small" onClick={() => setShowPassword(!showPassword)} edge="end">
+                    {showPassword ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            },
+          }}
+        />
 
         {onNavigateResetPass && (
-          <div className="ax-auth-link-row ax-auth-link-right">
-            <button type="button" className="ax-auth-link" onClick={onNavigateResetPass}>
+          <Box sx={{ textAlign: 'right', mb: 2 }}>
+            <Link component="button" type="button" variant="body2" underline="hover" onClick={onNavigateResetPass}>
               Forgot password?
-            </button>
-          </div>
+            </Link>
+          </Box>
         )}
 
-        {error && <p className="ax-auth-error">{error}</p>}
+        {error && (
+          <Typography color="error" variant="body2" sx={{ mb: 2 }}>
+            {error}
+          </Typography>
+        )}
 
-        <button type="submit" className="ax-auth-submit" disabled={loading || readOnly}>
+        <Button type="submit" variant="contained" fullWidth disabled={loading || readOnly} sx={{ mb: 2 }}>
           {loading ? 'Signing in\u2026' : 'Sign In'}
-        </button>
+        </Button>
 
         {onNavigateSignUp && (
-          <p className="ax-auth-footer">
+          <Typography variant="body2" color="text.secondary" sx={{ textAlign: 'center' }}>
             Don&apos;t have an account?{' '}
-            <button type="button" className="ax-auth-link" onClick={onNavigateSignUp}>
+            <Link component="button" type="button" underline="hover" onClick={onNavigateSignUp}>
               Sign Up
-            </button>
-          </p>
+            </Link>
+          </Typography>
         )}
-      </form>
-    </div>
+      </Box>
+    </Box>
   )
 }
 

@@ -11,5 +11,5 @@ export function preview(_props: AXSigninFormPreviewProps): ReactElement {
 }
 
 export function getPreviewCss(): string {
-  return require('./styles/AXSigninForm.scss')
+  return require('./styles/AXSigninFormPreview.scss')
 }
