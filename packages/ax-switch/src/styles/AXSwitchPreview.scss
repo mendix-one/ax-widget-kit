@@ -1,0 +1,56 @@
+/*
+  AXSwitch widget preview styles
+  Preview styles for Studio Pro design mode.
+*/
+
+.ax-preview-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &__control {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &__track {
+    border-radius: 7px;
+  }
+
+  &__thumb {
+    position: absolute;
+    border-radius: 50%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__label {
+    font-size: 14px;
+    color: #333;
+    line-height: 1.4;
+    user-select: none;
+  }
+
+  // Size: small
+  &--small {
+    gap: 6px;
+
+    .ax-preview-switch__label {
+      font-size: 13px;
+    }
+
+    .ax-preview-switch__track {
+      border-radius: 5px;
+    }
+  }
+}

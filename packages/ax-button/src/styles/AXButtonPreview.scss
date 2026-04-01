@@ -1,0 +1,29 @@
+/*
+  AXButton widget preview styles
+*/
+
+.ax-preview-button {
+  font-family: Roboto, Arial, sans-serif;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  cursor: default;
+  box-sizing: border-box;
+  line-height: 1.75;
+  white-space: nowrap;
+  user-select: none;
+
+  &--full-width {
+    display: flex;
+    width: 100%;
+  }
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}

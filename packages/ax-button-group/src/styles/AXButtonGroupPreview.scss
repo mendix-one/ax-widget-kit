@@ -1,0 +1,26 @@
+/*
+  AXButtonGroup widget preview styles
+*/
+
+.ax-preview-button-group {
+  display: inline-flex;
+  box-sizing: border-box;
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--full-width {
+    display: flex;
+    width: 100%;
+  }
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
