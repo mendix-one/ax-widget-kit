@@ -21,7 +21,7 @@ export const Sidebar = observer(function Sidebar({ collapsed = false, children }
   }
 
   return (
-    <List>
+    <List role="navigation" aria-label="Sidebar navigation">
       {store.items.map((item) => (
         <Tooltip key={item.id} title={collapsed ? item.label : ''} placement="right">
           <ListItemButton

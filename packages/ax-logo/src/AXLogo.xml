@@ -35,5 +35,10 @@
         <description>Action when logo is clicked</description>
       </property>
     </propertyGroup>
+    <propertyGroup caption="Common">
+      <systemProperty key="Name" />
+      <systemProperty key="TabIndex" />
+      <systemProperty key="Visibility" />
+    </propertyGroup>
   </properties>
 </widget>

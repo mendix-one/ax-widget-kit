@@ -5,6 +5,8 @@ import { ButtonPreview } from './preview/ButtonPreview'
 
 export function preview(props: AXButtonPreviewProps): ReactElement {
   return (
+    <ErrorBoundary>
+    <div className={props.class} style={props.style}>
     <ButtonPreview
       label={props.label}
       variant={props.variant}
@@ -13,7 +15,9 @@ export function preview(props: AXButtonPreviewProps): ReactElement {
       disabled={props.readOnly || props.disabled}
       fullWidth={props.fullWidth}
     />
-  )
+      </div>
+    </ErrorBoundary>
+)
 }
 
 export function getPreviewCss(): string {

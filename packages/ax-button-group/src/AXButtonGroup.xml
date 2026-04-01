@@ -69,5 +69,10 @@
         </property>
       </propertyGroup>
     </propertyGroup>
+    <propertyGroup caption="Common">
+      <systemProperty key="Name" />
+      <systemProperty key="TabIndex" />
+      <systemProperty key="Visibility" />
+    </propertyGroup>
   </properties>
 </widget>

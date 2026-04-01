@@ -19,6 +19,8 @@ export class ToggleButtonStore {
   onValueChange?: (v: string) => void
   onChangeAction?: () => void
 
+  validation: string | undefined = undefined
+  loading = false
   constructor() {
     makeAutoObservable(this)
   }
@@ -60,5 +62,13 @@ export class ToggleButtonStore {
 
   setFullWidth(v: boolean) {
     this.fullWidth = v
+  }
+
+  setValidation(v: string | undefined) {
+    this.validation = v
+  }
+
+  setLoading(v: boolean) {
+    this.loading = v
   }
 }

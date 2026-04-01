@@ -5,6 +5,8 @@ import { TextFieldPreview } from './preview/TextFieldPreview'
 
 export function preview(props: AXTextFieldPreviewProps): ReactElement {
   return (
+    <ErrorBoundary>
+    <div className={props.class} style={props.style}>
     <TextFieldPreview
       label={props.label}
       placeholder={props.placeholder}
@@ -18,7 +20,9 @@ export function preview(props: AXTextFieldPreviewProps): ReactElement {
       helperText={props.helperText}
       disabled={props.readOnly}
     />
-  )
+      </div>
+    </ErrorBoundary>
+)
 }
 
 export function getPreviewCss(): string {

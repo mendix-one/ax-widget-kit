@@ -19,6 +19,8 @@ export class SelectStore {
   onValueChange?: (v: string) => void
   onChangeAction?: () => void
 
+  validation: string | undefined = undefined
+  loading = false
   constructor() {
     makeAutoObservable(this)
   }
@@ -60,5 +62,13 @@ export class SelectStore {
 
   setHelperText(v: string) {
     this.helperText = v
+  }
+
+  setValidation(v: string | undefined) {
+    this.validation = v
+  }
+
+  setLoading(v: boolean) {
+    this.loading = v
   }
 }

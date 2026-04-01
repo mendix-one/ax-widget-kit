@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, useWidgetEvents , isLoading } from '@ax/shared'
 
 import type { AXSelectContainerProps } from '../typings/AXSelectProps'
 
@@ -53,6 +53,16 @@ export function AXSelect(props: AXSelectContainerProps): ReactElement {
     store.onValueChange = (v: string) => props.valueAttr?.setValue(v)
     store.onChangeAction = props.onChange?.canExecute ? () => props.onChange!.execute() : undefined
   })
+
+
+  // Sync validation + loading state
+  useEffect(() => {
+    store.setValidation(props.valueAttr?.validation)
+  }, [props.valueAttr?.validation])
+
+  useEffect(() => {
+    store.setLoading(isLoading(props.valueAttr))
+  }, [props.valueAttr?.status])
 
   // Subscribe to event bus (broadcast + private topic)
   const handleEvent = useCallback((_event: AxEvent) => {

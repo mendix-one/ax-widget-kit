@@ -2,11 +2,27 @@
   AXUserMenu widget preview styles
 */
 
+/* AX Design Tokens — override via Atlas UI or custom CSS */
+/* --ax-color-primary: #3F51B5 */
+/* --ax-color-primary-light: rgba(63, 81, 181, 0.08) */
+/* --ax-color-secondary: #009688 */
+/* --ax-color-success: #4CAF50 */
+/* --ax-color-warning: #FF9800 */
+/* --ax-color-error: #d32f2f */
+/* --ax-color-info: #2196F3 */
+/* --ax-color-text: #333 */
+/* --ax-color-text-secondary: #666 */
+/* --ax-color-border: #c4c4c4 */
+/* --ax-color-bg: #fff */
+/* --ax-font-family: Roboto, Arial, sans-serif */
+/* --ax-border-radius: 4px */
+
+
 .ax-preview-user-menu {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: var(--ax-font-family, Roboto, Arial, sans-serif);
   box-sizing: border-box;
 
   &__trigger {
@@ -25,7 +41,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #3f51b5;
+    background: var(--ax-color-primary, #3F51B5);
     color: #fff;
     font-size: 13px;
     font-weight: 500;

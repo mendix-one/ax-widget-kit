@@ -3,6 +3,22 @@
   Prefix: .ax-preview-auth-layout
 */
 
+/* AX Design Tokens — override via Atlas UI or custom CSS */
+/* --ax-color-primary: #3F51B5 */
+/* --ax-color-primary-light: rgba(63, 81, 181, 0.08) */
+/* --ax-color-secondary: #009688 */
+/* --ax-color-success: #4CAF50 */
+/* --ax-color-warning: #FF9800 */
+/* --ax-color-error: #d32f2f */
+/* --ax-color-info: #2196F3 */
+/* --ax-color-text: #333 */
+/* --ax-color-text-secondary: #666 */
+/* --ax-color-border: #c4c4c4 */
+/* --ax-color-bg: #fff */
+/* --ax-font-family: Roboto, Arial, sans-serif */
+/* --ax-border-radius: 4px */
+
+
 .ax-preview-auth-layout {
   display: flex;
   flex-direction: row;
@@ -11,14 +27,14 @@
   background: linear-gradient(135deg, #1a237e 0%, #283593 35%, #3949ab 65%, #5c6bc0 100%);
   border-radius: 6px;
   overflow: hidden;
-  font-family: Roboto, Arial, sans-serif;
+  font-family: var(--ax-font-family, Roboto, Arial, sans-serif);
 
   &--no-bg {
     background: #f5f5f5;
 
     .ax-preview-auth-layout-tagline,
     .ax-preview-auth-layout-description {
-      color: #333;
+      color: var(--ax-color-text, #333);
     }
 
     .ax-preview-auth-layout-description {

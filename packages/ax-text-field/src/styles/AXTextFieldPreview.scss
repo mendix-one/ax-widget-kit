@@ -2,13 +2,29 @@
   AXTextField widget preview styles
 */
 
+/* AX Design Tokens — override via Atlas UI or custom CSS */
+/* --ax-color-primary: #3F51B5 */
+/* --ax-color-primary-light: rgba(63, 81, 181, 0.08) */
+/* --ax-color-secondary: #009688 */
+/* --ax-color-success: #4CAF50 */
+/* --ax-color-warning: #FF9800 */
+/* --ax-color-error: #d32f2f */
+/* --ax-color-info: #2196F3 */
+/* --ax-color-text: #333 */
+/* --ax-color-text-secondary: #666 */
+/* --ax-color-border: #c4c4c4 */
+/* --ax-color-bg: #fff */
+/* --ax-font-family: Roboto, Arial, sans-serif */
+/* --ax-border-radius: 4px */
+
+
 .ax-preview-textfield {
-  font-family: Roboto, Arial, sans-serif;
+  font-family: var(--ax-font-family, Roboto, Arial, sans-serif);
   display: inline-flex;
   flex-direction: column;
   position: relative;
   font-size: 14px;
-  color: #333;
+  color: var(--ax-color-text, #333);
 
   &--full-width {
     display: flex;
@@ -39,14 +55,14 @@
 
   &__helper {
     font-size: 12px;
-    color: #666;
+    color: var(--ax-color-text-secondary, #666);
     margin-top: 4px;
     padding: 0 12px;
   }
 }
 
 .ax-preview-textfield-outlined {
-  border: 1px solid #c4c4c4;
+  border: 1px solid var(--ax-color-border, #c4c4c4);
   border-radius: 4px;
   background: #fff;
 }
@@ -56,7 +72,7 @@
   top: -8px;
   left: 8px;
   font-size: 12px;
-  color: #666;
+  color: var(--ax-color-text-secondary, #666);
   background: #fff;
   padding: 0 4px;
   line-height: 16px;
@@ -74,7 +90,7 @@
   top: 4px;
   left: 12px;
   font-size: 11px;
-  color: #666;
+  color: var(--ax-color-text-secondary, #666);
   line-height: 14px;
   z-index: 1;
 }
@@ -88,7 +104,7 @@
   top: 2px;
   left: 0;
   font-size: 11px;
-  color: #666;
+  color: var(--ax-color-text-secondary, #666);
   line-height: 14px;
   z-index: 1;
 }

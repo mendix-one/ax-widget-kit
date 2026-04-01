@@ -26,7 +26,7 @@
 
   &__label {
     font-size: 14px;
-    color: #333;
+    color: var(--ax-color-text, #333);
     line-height: 1.4;
     user-select: none;
   }

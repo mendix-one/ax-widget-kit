@@ -33,7 +33,7 @@ export const NotifyMenu = observer(function NotifyMenu(): ReactElement {
   return (
     <>
       <Tooltip title={store.title}>
-        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit">
+        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit" aria-haspopup="true" aria-expanded={Boolean(anchorEl)}>
           <Badge badgeContent={store.unreadCount} color="error">
             <NotificationsNoneIcon sx={{ color: 'text.secondary' }} />
           </Badge>
@@ -83,12 +83,13 @@ export const NotifyMenu = observer(function NotifyMenu(): ReactElement {
         <Divider sx={{ position: 'sticky', top: 48, zIndex: 1 }} />
 
         {/* Notification list */}
-        <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }}>
+        <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }} role="list">
           {store.items.map((n) => {
             const config = notifyConfig[n.type]
             return (
               <Box
                 key={n.id}
+                role="listitem"
                 sx={{
                   px: 2,
                   py: 1.5,

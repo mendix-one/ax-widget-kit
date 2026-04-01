@@ -5,6 +5,8 @@ import { SwitchPreview } from './preview/SwitchPreview'
 
 export function preview(props: AXSwitchPreviewProps): ReactElement {
   return (
+    <ErrorBoundary>
+    <div className={props.class} style={props.style}>
     <SwitchPreview
       label={props.label}
       color={props.color}
@@ -12,7 +14,9 @@ export function preview(props: AXSwitchPreviewProps): ReactElement {
       disabled={props.readOnly || props.disabled}
       labelPlacement={props.labelPlacement}
     />
-  )
+      </div>
+    </ErrorBoundary>
+)
 }
 
 export function getPreviewCss(): string {

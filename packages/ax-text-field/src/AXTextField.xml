@@ -97,5 +97,11 @@
         <description>Action to execute when the value changes</description>
       </property>
     </propertyGroup>
+    <propertyGroup caption="Common">
+      <systemProperty key="Name" />
+      <systemProperty key="TabIndex" />
+      <systemProperty key="Visibility" />
+      <systemProperty key="Editability" />
+    </propertyGroup>
   </properties>
 </widget>

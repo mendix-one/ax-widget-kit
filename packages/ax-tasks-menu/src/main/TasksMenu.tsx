@@ -22,7 +22,7 @@ export const TasksMenu = observer(function TasksMenu(): ReactElement {
   return (
     <>
       <Tooltip title={store.title}>
-        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit">
+        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} color="inherit" aria-haspopup="true" aria-expanded={Boolean(anchorEl)}>
           <Badge badgeContent={store.pendingCount} color="error">
             <AssignmentLateIcon sx={{ color: 'text.secondary' }} />
           </Badge>
@@ -74,10 +74,11 @@ export const TasksMenu = observer(function TasksMenu(): ReactElement {
         <Divider sx={{ position: 'sticky', top: 48, zIndex: 1 }} />
 
         {/* Task list */}
-        <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }}>
+        <Box sx={{ overflowY: 'auto', flex: 1, maxHeight: 420 }} role="list">
           {store.items.map((task) => (
             <Box
               key={task.id}
+              role="listitem"
               sx={{
                 px: 2,
                 py: 1.5,

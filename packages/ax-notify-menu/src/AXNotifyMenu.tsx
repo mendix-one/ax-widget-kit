@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, executeAction, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXNotifyMenuContainerProps } from '../typings/AXNotifyMenuProps'
 
@@ -62,7 +62,7 @@ export function AXNotifyMenu(props: AXNotifyMenuContainerProps): ReactElement {
   }, [])
 
   useEffect(() => {
-    store.setOnNotifyClick(props.onNotifyClick?.canExecute ? () => props.onNotifyClick?.execute() : undefined)
+    store.setOnNotifyClick(() => executeAction(props.onNotifyClick))
   }, [props.onNotifyClick?.canExecute])
 
   // Subscribe to event bus (broadcast + private topic)
@@ -73,10 +73,14 @@ export function AXNotifyMenu(props: AXNotifyMenuContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <NotifyMenuProvider store={store}>
-        <NotifyMenu />
-      </NotifyMenuProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <div className={props.class} style={{ ...props.style, display: 'inline-flex' }}>
+        <AxThemeProvider>
+          <NotifyMenuProvider store={store}>
+            <NotifyMenu />
+          </NotifyMenuProvider>
+        </AxThemeProvider>
+      </div>
+    </ErrorBoundary>
   )
 }

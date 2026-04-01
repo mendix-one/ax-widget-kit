@@ -13,7 +13,7 @@
   &__group-label {
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: var(--ax-color-text, #333);
     margin-bottom: 4px;
   }
 
@@ -56,7 +56,7 @@
 
   &__label {
     font-size: 14px;
-    color: #333;
+    color: var(--ax-color-text, #333);
     line-height: 1.4;
     user-select: none;
   }

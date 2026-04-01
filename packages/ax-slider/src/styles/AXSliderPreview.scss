@@ -3,6 +3,22 @@
   Preview styles for Studio Pro design mode.
 */
 
+/* AX Design Tokens — override via Atlas UI or custom CSS */
+/* --ax-color-primary: #3F51B5 */
+/* --ax-color-primary-light: rgba(63, 81, 181, 0.08) */
+/* --ax-color-secondary: #009688 */
+/* --ax-color-success: #4CAF50 */
+/* --ax-color-warning: #FF9800 */
+/* --ax-color-error: #d32f2f */
+/* --ax-color-info: #2196F3 */
+/* --ax-color-text: #333 */
+/* --ax-color-text-secondary: #666 */
+/* --ax-color-border: #c4c4c4 */
+/* --ax-color-bg: #fff */
+/* --ax-font-family: Roboto, Arial, sans-serif */
+/* --ax-border-radius: 4px */
+
+
 .ax-preview-slider {
   display: flex;
   flex-direction: column;
@@ -17,7 +33,7 @@
 
   &__label {
     font-size: 13px;
-    color: #333;
+    color: var(--ax-color-text, #333);
     margin-bottom: 2px;
   }
 
@@ -30,7 +46,7 @@
   &__min-label,
   &__max-label {
     font-size: 11px;
-    color: #666;
+    color: var(--ax-color-text-secondary, #666);
     flex-shrink: 0;
     min-width: 16px;
     text-align: center;
@@ -47,7 +63,7 @@
   &__track {
     position: relative;
     width: 100%;
-    background-color: #c4c4c4;
+    background-color: var(--ax-color-border, #c4c4c4);
     border-radius: 2px;
   }
 
@@ -102,7 +118,7 @@
     position: absolute;
     width: 2px;
     height: 6px;
-    background-color: #c4c4c4;
+    background-color: var(--ax-color-border, #c4c4c4);
     border-radius: 1px;
     transform: translateX(-50%);
   }

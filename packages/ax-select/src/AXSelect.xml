@@ -38,7 +38,13 @@
               <caption>Label</caption>
               <description>Option display label</description>
             </property>
-          </properties>
+            <propertyGroup caption="Common">
+      <systemProperty key="Name" />
+      <systemProperty key="TabIndex" />
+      <systemProperty key="Visibility" />
+      <systemProperty key="Editability" />
+    </propertyGroup>
+  </properties>
         </property>
       </propertyGroup>
       <propertyGroup caption="Appearance">

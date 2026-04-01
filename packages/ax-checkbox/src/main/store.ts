@@ -11,6 +11,8 @@ export class CheckboxStore {
   onCheckedChange?: (v: boolean) => void
   onChangeAction?: () => void
 
+  validation: string | undefined = undefined
+  loading = false
   constructor() {
     makeAutoObservable(this)
   }
@@ -44,5 +46,13 @@ export class CheckboxStore {
 
   setDisabled(v: boolean) {
     this.disabled = v
+  }
+
+  setValidation(v: string | undefined) {
+    this.validation = v
+  }
+
+  setLoading(v: boolean) {
+    this.loading = v
   }
 }

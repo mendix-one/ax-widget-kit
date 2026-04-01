@@ -3,6 +3,22 @@
   Prefixed with .ax-preview-logo
 */
 
+/* AX Design Tokens — override via Atlas UI or custom CSS */
+/* --ax-color-primary: #3F51B5 */
+/* --ax-color-primary-light: rgba(63, 81, 181, 0.08) */
+/* --ax-color-secondary: #009688 */
+/* --ax-color-success: #4CAF50 */
+/* --ax-color-warning: #FF9800 */
+/* --ax-color-error: #d32f2f */
+/* --ax-color-info: #2196F3 */
+/* --ax-color-text: #333 */
+/* --ax-color-text-secondary: #666 */
+/* --ax-color-border: #c4c4c4 */
+/* --ax-color-bg: #fff */
+/* --ax-font-family: Roboto, Arial, sans-serif */
+/* --ax-border-radius: 4px */
+
+
 .ax-preview-logo {
   display: inline-flex;
   align-items: center;
@@ -28,13 +44,13 @@
 
   &__img-icon {
     font-size: 14px;
-    color: #666;
+    color: var(--ax-color-text-secondary, #666);
     flex-shrink: 0;
   }
 
   &__img-url {
     font-size: 10px;
-    color: #666;
+    color: var(--ax-color-text-secondary, #666);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -50,7 +66,7 @@
   &__label {
     font-weight: 700;
     font-size: 14px;
-    color: #3F51B5;
+    color: var(--ax-color-primary, #3F51B5);
     letter-spacing: -0.3px;
     white-space: nowrap;
   }

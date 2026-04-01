@@ -5,6 +5,8 @@ import { SelectPreview } from './preview/SelectPreview'
 
 export function preview(props: AXSelectPreviewProps): ReactElement {
   return (
+    <ErrorBoundary>
+    <div className={props.class} style={props.style}>
     <SelectPreview
       label={props.label || 'Select'}
       options={props.options}
@@ -14,7 +16,9 @@ export function preview(props: AXSelectPreviewProps): ReactElement {
       fullWidth={props.fullWidth}
       helperText={props.helperText}
     />
-  )
+      </div>
+    </ErrorBoundary>
+)
 }
 
 export function getPreviewCss(): string {

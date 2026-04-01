@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import Skeleton from '@mui/material/Skeleton'
 import MuiSlider from '@mui/material/Slider'
 import Typography from '@mui/material/Typography'
 import { observer } from 'mobx-react-lite'
@@ -8,6 +9,8 @@ import { useSliderStore } from './context'
 
 export const Slider = observer(function Slider(): ReactElement {
   const store = useSliderStore()
+
+  if (store.loading) return <Skeleton variant="rounded" width="100%" height={store.size === 'small' ? 24 : 36} />
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -28,6 +31,11 @@ export const Slider = observer(function Slider(): ReactElement {
         valueLabelDisplay={store.valueLabelDisplay}
         onChange={(_e, v) => store.setValue(v as number)}
       />
+      {store.validation && (
+        <Typography color="error" variant="caption">
+          {store.validation}
+        </Typography>
+      )}
     </Box>
   )
 })
