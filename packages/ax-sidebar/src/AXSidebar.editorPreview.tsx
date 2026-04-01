@@ -1,16 +1,13 @@
 import { type ReactElement } from 'react'
 
 import { type AXSidebarPreviewProps } from '../typings/AXSidebarProps'
+import { SidebarPreview } from './preview/SidebarPreview'
 
-export function preview({ content }: AXSidebarPreviewProps): ReactElement {
-  const Content = content.renderer
+export function preview(props: AXSidebarPreviewProps): ReactElement {
   return (
-    <div style={{ padding: 8, border: '1px dashed #ccc', borderRadius: 4, color: '#666', fontSize: 12 }}>
-      <div>AXSidebar</div>
-      <Content>
-        <div />
-      </Content>
-    </div>
+    <SidebarPreview
+      content={props.content}
+    />
   )
 }
 

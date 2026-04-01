@@ -1,125 +1,35 @@
 /*
-  AXUserMenu widget styles
-  Prefixed with .ax-user-menu-
+  AXUserMenu widget preview styles
 */
 
-.ax-user-menu {
-  position: relative;
+.ax-preview-user-menu {
   display: inline-flex;
-}
-
-.ax-user-menu-trigger {
-  display: flex;
   align-items: center;
   justify-content: center;
-  border: none;
-  background: none;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 50%;
-  transition: background 0.15s;
-}
+  font-family: Roboto, Arial, sans-serif;
+  box-sizing: border-box;
 
-.ax-user-menu-trigger:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    border-radius: 50%;
+    cursor: default;
+  }
 
-.ax-user-menu-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #3f51b5;
-  color: #fff;
-  font-size: 13px;
-  font-weight: 500;
-  user-select: none;
-}
-
-.ax-user-menu-avatar--lg {
-  width: 40px;
-  height: 40px;
-  font-size: 15px;
-}
-
-.ax-user-menu-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-}
-
-.ax-user-menu-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 101;
-  width: 280px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow:
-    0 5px 5px -3px rgba(0, 0, 0, 0.2),
-    0 8px 10px 1px rgba(0, 0, 0, 0.14),
-    0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
-}
-
-.ax-user-menu-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px;
-}
-
-.ax-user-menu-info-text {
-  min-width: 0;
-}
-
-.ax-user-menu-name {
-  font-size: 0.875rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ax-user-menu-email {
-  font-size: 0.75rem;
-  color: #666;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ax-user-menu-divider {
-  height: 1px;
-  background: #e0e0e0;
-}
-
-.ax-user-menu-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  width: 100%;
-  padding: 10px 16px;
-  border: none;
-  background: none;
-  font-size: 0.875rem;
-  color: #333;
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.15s;
-}
-
-.ax-user-menu-item:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.ax-user-menu-item--danger {
-  color: #d32f2f;
-}
-
-.ax-user-menu-item--danger:hover {
-  background: rgba(211, 47, 47, 0.04);
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #3f51b5;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    user-select: none;
+    box-sizing: border-box;
+  }
 }

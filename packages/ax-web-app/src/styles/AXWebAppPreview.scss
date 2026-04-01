@@ -1,175 +1,156 @@
 /*
-  AXWebApp layout styles
-  Web application layout with header, sidebar, agent panel, and content area.
-  Prefixed with .ax-webapp- to avoid collisions.
+  AXWebApp Studio Pro preview styles
+  Prefixed with .ax-preview-webapp
 */
 
-.ax-webapp-root {
+.ax-preview-webapp {
   display: flex;
-  height: 100dvh;
-  overflow: hidden;
+  flex-direction: column;
+  height: 240px;
   font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
-}
-
-/* ── Left panel (header + sidebar + main) ── */
-.ax-webapp-left {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  min-width: 0;
+  font-size: 12px;
+  color: #333;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   overflow: hidden;
-}
+  box-sizing: border-box;
 
-/* ── Header ─────────────────────────────── */
-.ax-webapp-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 48px;
-  min-height: 48px;
-  padding: 0 12px;
-  border-bottom: 1px solid #e0e0e0;
-  background: #fff;
-  z-index: 10;
-}
-
-.ax-webapp-header-left {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.ax-webapp-header-right {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.ax-webapp-header-slot {
-  display: flex;
-  align-items: center;
-}
-
-.ax-webapp-logo {
-  display: flex;
-  align-items: center;
-}
-
-.ax-webapp-menu-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border: none;
-  border-radius: 50%;
-  background: none;
-  color: #666;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.ax-webapp-menu-btn:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.ax-webapp-icon-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: none;
-  color: #666;
-  cursor: pointer;
-  transition:
-    background 0.15s,
-    color 0.15s;
-}
-
-.ax-webapp-icon-btn:hover {
-  background: rgba(0, 0, 0, 0.04);
-}
-
-.ax-webapp-icon-btn--active {
-  color: #3f51b5;
-}
-
-/* ── Body (sidebar + main) ─────────────── */
-.ax-webapp-body {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* ── Sidebar ───────────────────────────── */
-.ax-webapp-sidebar {
-  flex-shrink: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  border-right: 1px solid #e0e0e0;
-  background: #fff;
-  transition: width 0.25s ease-in-out;
-}
-
-.ax-webapp-sidebar--show {
-  width: 240px;
-}
-
-.ax-webapp-sidebar--mini {
-  width: 64px;
-}
-
-.ax-webapp-sidebar--hide {
-  width: 0;
-  border-right: none;
-}
-
-/* ── Main content ──────────────────────── */
-.ax-webapp-main {
-  flex: 1;
-  overflow-y: auto;
-  min-width: 0;
-  padding: 24px;
-}
-
-/* ── Agent panel ───────────────────────── */
-.ax-webapp-agent {
-  display: flex;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.ax-webapp-resize-handle {
-  width: 4px;
-  flex-shrink: 0;
-  cursor: col-resize;
-  background: #e0e0e0;
-  transition: background 0.15s;
-}
-
-.ax-webapp-resize-handle:hover {
-  background: #3f51b5;
-}
-
-.ax-webapp-agent-content {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  border-left: 1px solid #e0e0e0;
-}
-
-/* ── Responsive: mobile ────────────────── */
-@media (max-width: 600px) {
-  .ax-webapp-main {
-    padding: 16px;
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  .ax-webapp-sidebar--show {
+  /* ── Header ─────────────────────────────── */
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+    min-height: 48px;
+    padding: 0 12px;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  &__header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-text {
+    font-weight: 700;
+    font-size: 14px;
+    color: #3F51B5;
+    letter-spacing: -0.3px;
+  }
+
+  &__hamburger {
+    font-size: 16px;
+    color: #666;
+    cursor: default;
+  }
+
+  &__icon-bell {
+    font-size: 16px;
+    color: #666;
+  }
+
+  &__icon-circle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #3F51B5;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+  }
+
+  &__avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #3F51B5;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Body ────────────────────────────────── */
+  &__body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* ── Sidebar ─────────────────────────────── */
+  &__sidebar {
     width: 200px;
+    flex-shrink: 0;
+    background: #fff;
+    border-right: 1px solid #e0e0e0;
+    overflow-y: auto;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    padding: 4px 0;
+  }
+
+  &__nav-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    color: #666;
+    font-size: 12px;
+    cursor: default;
+
+    &--active {
+      color: #3F51B5;
+      background: rgba(63, 81, 181, 0.08);
+    }
+  }
+
+  &__nav-icon {
+    font-size: 10px;
+    flex-shrink: 0;
+  }
+
+  /* ── Main content ────────────────────────── */
+  &__main {
+    flex: 1;
+    min-width: 0;
+    background: #f5f5f5;
+    padding: 12px;
+    overflow-y: auto;
+  }
+
+  &__content-placeholder {
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    padding-top: 40px;
   }
 }

@@ -1,7 +1,9 @@
 import { type ReactElement } from 'react'
+import { type AXUserMenuPreviewProps } from '../typings/AXUserMenuProps'
+import { UserMenuPreview } from './preview/UserMenuPreview'
 
-export function preview(): ReactElement {
-  return <div style={{ padding: 8, color: '#666', fontSize: 12 }}>AXUser Menu</div>
+export function preview(props: AXUserMenuPreviewProps): ReactElement {
+  return <UserMenuPreview userName={props.userName} userEmail={props.userEmail} />
 }
 
 export function getPreviewCss(): string {
