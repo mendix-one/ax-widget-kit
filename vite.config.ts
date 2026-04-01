@@ -34,5 +34,8 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     allowedHosts: ['dev.amoza.xyz'],
+    watch: {
+      ignored: ['**/sample/**'],
+    },
   },
 })

@@ -51,5 +51,6 @@
       "@ax/toggle-button/*": ["./packages/ax-toggle-button/*"]
     }
   },
-  "include": ["simulation"]
+  "include": ["simulation"],
+  "exclude": ["node_modules", "dist", "sample"]
 }
