@@ -49,7 +49,7 @@ The internal `LogoStore` (MobX) manages the following state:
 
 The widget subscribes to both `ax:broadcast` and its private topic (`ax:{widgetName}`, e.g. `ax:AXLogo1`). The current event handler is a placeholder ready for custom event handling.
 
-| Event Type | Payload | Description |
+| Event Action | Payload | Description |
 |------------|---------|-------------|
 | *(custom)* | *(custom)* | Extend the handler in the container to react to custom events |
 
@@ -71,8 +71,8 @@ This widget does not emit events to the bus. It communicates back to Mendix thro
 
 ```js
 // Send a custom event to a specific logo instance
-window.__AX_EVENT_BUS__.emit('ax:AXLogo1', { type: 'refresh', payload: {} })
+window.__AX_EVENT_BUS__.emit('ax:AXLogo1', { action: 'refresh', payload: {} })
 
 // Broadcast an event to all widgets (including this one)
-window.__AX_EVENT_BUS__.emit('ax:broadcast', { type: 'theme-changed', payload: { mode: 'dark' } })
+window.__AX_EVENT_BUS__.emit('ax:broadcast', { action: 'theme-changed', payload: { mode: 'dark' } })
 ```

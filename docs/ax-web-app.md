@@ -75,7 +75,7 @@ Computed getters:
 
 Events this widget handles on its private topic (`ax:{widgetName}`):
 
-| Event Type | Payload | Description |
+| Event Action | Payload | Description |
 |------------|---------|-------------|
 | `toggleSidebar` | -- | Cycles sidebar mode: show -> mini -> hide -> show |
 | `toggleAgent` | -- | Toggles the agent chat panel open/closed |
@@ -98,10 +98,10 @@ This widget does not emit events itself, but as the layout widget it **initializ
 
 ```js
 // Toggle the sidebar from a Mendix nanoflow (JavaScript action)
-window.__AX_EVENT_BUS__.emit('ax:AXWebApp1', { type: 'toggleSidebar' })
+window.__AX_EVENT_BUS__.emit('ax:AXWebApp1', { action: 'toggleSidebar' })
 
 // Toggle the agent chat panel
-window.__AX_EVENT_BUS__.emit('ax:AXWebApp1', { type: 'toggleAgent' })
+window.__AX_EVENT_BUS__.emit('ax:AXWebApp1', { action: 'toggleAgent' })
 ```
 
 ## Theme Tokens

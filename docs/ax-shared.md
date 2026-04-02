@@ -238,17 +238,17 @@ function getEventBus(): Nanobus | undefined
 Emits an event to a specific topic on the bus.
 
 ```typescript
-function emitEvent(topic: string, event: { type: string; payload?: unknown }): void
+function emitEvent(topic: string, event: { action: string; payload?: unknown }): void
 ```
 
 ```typescript
 import { emitEvent, AX_BROADCAST, widgetTopic } from '@ax/shared'
 
 // Broadcast to all widgets
-emitEvent(AX_BROADCAST, { type: 'theme-changed', payload: { mode: 'dark' } })
+emitEvent(AX_BROADCAST, { action: 'theme-changed', payload: { mode: 'dark' } })
 
 // Send to a specific widget instance
-emitEvent(widgetTopic('AXSigninForm1'), { type: 'reset' })
+emitEvent(widgetTopic('AXSigninForm1'), { action: 'reset' })
 ```
 
 ### widgetTopic
@@ -287,7 +287,7 @@ import { useWidgetEvents, type AxEvent } from '@ax/shared'
 
 // In a child widget container
 const handleEvent = useCallback((event: AxEvent) => {
-  if (event.type === 'reset') {
+  if (event.action === 'reset') {
     store.reset()
   }
 }, [])
@@ -310,7 +310,7 @@ window.__AX_EVENT_BUS__.emit('ax:broadcast', {
 })
 
 // Send to a specific widget
-window.__AX_EVENT_BUS__.emit('ax:AXSigninForm1', { type: 'reset' })
+window.__AX_EVENT_BUS__.emit('ax:AXSigninForm1', { action: 'reset' })
 ```
 
 ---

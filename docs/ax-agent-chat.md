@@ -72,12 +72,12 @@ The widget renders as a full-height chat panel with three sections:
 
 ### Listening
 
-| Topic | Event Type | Payload | Description |
+| Topic | Event Action | Payload | Description |
 |-------|------------|---------|-------------|
 | `ax:broadcast` | *(any)* | *(varies)* | Receives broadcast events from all widgets |
 | `ax:{widgetName}` | *(any)* | *(varies)* | Receives private events targeted at this widget instance |
 
-The widget subscribes to the event bus via `useWidgetEvents` but does not currently handle specific event types. The handler is a placeholder for future event-driven behavior (e.g., receiving agent responses pushed from the server).
+The widget subscribes to the event bus via `useWidgetEvents` but does not currently handle specific event actions. The handler is a placeholder for future event-driven behavior (e.g., receiving agent responses pushed from the server).
 
 ### Emitting
 
@@ -111,6 +111,6 @@ if (bus) {
 
 // Broadcast to all widgets
 if (bus) {
-  bus.emit('ax:broadcast', { type: 'theme-changed', payload: { mode: 'dark' } })
+  bus.emit('ax:broadcast', { action: 'theme-changed', payload: { mode: 'dark' } })
 }
 ```

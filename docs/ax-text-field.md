@@ -84,12 +84,12 @@ Each AXText Field instance subscribes to the AX event bus on two topics:
 
 ### Listening
 
-| Topic | Event Type | Payload | Description |
+| Topic | Event Action | Payload | Description |
 |-------|------------|---------|-------------|
 | `ax:broadcast` | *(any)* | *(varies)* | Receives all broadcast events from other widgets or nanoflows |
 | `ax:{widgetName}` | *(any)* | *(varies)* | Receives events targeted at this specific widget instance |
 
-The event handler is currently a placeholder (`_event: AxEvent`) -- extend it to handle custom event types such as `reset`, `set-error`, or `focus`.
+The event handler is currently a placeholder (`_event: AxEvent`) -- extend it to handle custom event actions such as `reset`, `set-error`, or `focus`.
 
 ## Example
 

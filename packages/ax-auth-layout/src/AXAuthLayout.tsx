@@ -39,7 +39,7 @@ export function AXAuthLayout(props: AXAuthLayoutContainerProps): ReactElement {
   // Layout widget initializes the event bus and listens
   const handleEvent = useCallback(
     (event: AxEvent) => {
-      if (event.type === 'toggleBackground') store.showBackground = !store.showBackground
+      if (event.action === 'toggleBackground') store.showBackground = !store.showBackground
     },
     [store],
   )

@@ -4,7 +4,7 @@
  * Emit an event to ALL AX widgets on the page via the shared event bus.
  * Widgets listen on the 'ax:broadcast' topic.
  *
- * @param {string} eventType - Event action type (e.g. 'theme-changed', 'refresh', 'reset')
+ * @param {string} eventType - Event action name (e.g. 'theme-changed', 'refresh', 'reset')
  * @param {string} [payloadJson] - Optional JSON string payload (parsed by receiving widgets)
  * @returns {boolean} - true if the event was emitted, false if the event bus is not initialized
  *
@@ -37,7 +37,7 @@ function AX_BroadcastEvent(eventType, payloadJson) {
     }
   }
 
-  bus.emit('ax:broadcast', { type: eventType, payload: payload })
+  bus.emit('ax:broadcast', { action: eventType, payload: payload })
   return true
 }
 // END USER CODE

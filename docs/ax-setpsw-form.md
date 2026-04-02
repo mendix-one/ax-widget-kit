@@ -62,7 +62,7 @@ After a successful submit, `success` is set to `true` and the form displays a su
 
 The widget subscribes to both `ax:broadcast` and its private topic (`ax:{widgetName}`, e.g. `ax:AXSetpswForm1`). The current event handler is a placeholder ready for custom event handling.
 
-| Event Type | Payload | Description |
+| Event Action | Payload | Description |
 |------------|---------|-------------|
 | *(custom)* | *(custom)* | Extend the handler in the container to react to custom events |
 
@@ -85,8 +85,8 @@ This widget does not emit events to the bus. It communicates back to Mendix thro
 
 ```js
 // Send a custom event to a specific set-password form instance
-window.__AX_EVENT_BUS__.emit('ax:AXSetpswForm1', { type: 'reset', payload: {} })
+window.__AX_EVENT_BUS__.emit('ax:AXSetpswForm1', { action: 'reset', payload: {} })
 
 // Broadcast an event to all widgets
-window.__AX_EVENT_BUS__.emit('ax:broadcast', { type: 'theme-changed', payload: { mode: 'dark' } })
+window.__AX_EVENT_BUS__.emit('ax:broadcast', { action: 'theme-changed', payload: { mode: 'dark' } })
 ```

@@ -22,7 +22,7 @@ interface UseWidgetEventsOptions {
  * 1. `ax:broadcast` — common topic, all widgets receive
  * 2. `ax:{widgetName}` — private topic, only this widget instance
  *
- * The handler receives `{ type: string, payload?: unknown }`.
+ * The handler receives `{ action: string, payload?: unknown }`.
  */
 export function useWidgetEvents({ widgetName, onEvent, isLayout }: UseWidgetEventsOptions): void {
   const handlerRef = useRef(onEvent)

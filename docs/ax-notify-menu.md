@@ -70,12 +70,12 @@ Clicking a notification marks it as read and fires the configured action. A "Mar
 
 ### Listening
 
-| Topic | Event Type | Payload | Description |
+| Topic | Event Action | Payload | Description |
 |-------|------------|---------|-------------|
 | `ax:broadcast` | *(any)* | *(varies)* | Receives broadcast events from all widgets |
 | `ax:{widgetName}` | *(any)* | *(varies)* | Receives private events targeted at this widget instance |
 
-The widget subscribes to the event bus via `useWidgetEvents` but does not currently handle specific event types. The handler is a placeholder for future event-driven behavior (e.g., refreshing notifications from an external source).
+The widget subscribes to the event bus via `useWidgetEvents` but does not currently handle specific event actions. The handler is a placeholder for future event-driven behavior (e.g., refreshing notifications from an external source).
 
 ### Emitting
 
@@ -98,11 +98,11 @@ To send an event to this widget from a Mendix JavaScript action:
 // Target a specific widget instance
 const bus = window.__AX_EVENT_BUS__
 if (bus) {
-  bus.emit('ax:AXNotifyMenu1', { type: 'refresh', payload: {} })
+  bus.emit('ax:AXNotifyMenu1', { action: 'refresh', payload: {} })
 }
 
 // Broadcast to all widgets
 if (bus) {
-  bus.emit('ax:broadcast', { type: 'theme-changed', payload: { mode: 'dark' } })
+  bus.emit('ax:broadcast', { action: 'theme-changed', payload: { mode: 'dark' } })
 }
 ```

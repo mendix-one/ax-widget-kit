@@ -58,7 +58,7 @@ The internal `AuthLayoutStore` (MobX) manages the following state:
 
 Events this widget handles on its private topic (`ax:{widgetName}`):
 
-| Event Type | Payload | Description |
+| Event Action | Payload | Description |
 |------------|---------|-------------|
 | `toggleBackground` | -- | Toggles the animated SVG background on/off |
 
@@ -82,7 +82,7 @@ This widget does not emit events itself, but as a layout widget it **initializes
 
 ```js
 // Toggle the animated background on/off
-window.__AX_EVENT_BUS__.emit('ax:AXAuthLayout1', { type: 'toggleBackground' })
+window.__AX_EVENT_BUS__.emit('ax:AXAuthLayout1', { action: 'toggleBackground' })
 ```
 
 ## Theme Tokens
