@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXToggleButtonContainerProps } from '../typings/AXToggleButtonProps'
 
@@ -62,10 +62,12 @@ export function AXToggleButton(props: AXToggleButtonContainerProps): ReactElemen
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <ToggleButtonProvider store={store}>
-        <ToggleButton />
-      </ToggleButtonProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <ToggleButtonProvider store={store}>
+          <ToggleButton />
+        </ToggleButtonProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

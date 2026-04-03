@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXSliderContainerProps } from '../typings/AXSliderProps'
 
@@ -65,10 +65,12 @@ export function AXSlider(props: AXSliderContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SliderProvider store={store}>
-        <Slider />
-      </SliderProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SliderProvider store={store}>
+          <Slider />
+        </SliderProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

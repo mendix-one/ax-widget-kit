@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSetpswFormContainerProps } from '../typings/AXSetpswFormProps'
 
@@ -34,10 +34,12 @@ export function AXSetpswForm(props: AXSetpswFormContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SetPasswordFormProvider store={store}>
-        <SetPasswordForm />
-      </SetPasswordFormProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SetPasswordFormProvider store={store}>
+          <SetPasswordForm />
+        </SetPasswordFormProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

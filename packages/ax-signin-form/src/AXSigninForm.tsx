@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSigninFormContainerProps } from '../typings/AXSigninFormProps'
 
@@ -48,10 +48,12 @@ export function AXSigninForm(props: AXSigninFormContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SignInFormProvider store={store}>
-        <SignInForm />
-      </SignInFormProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SignInFormProvider store={store}>
+          <SignInForm />
+        </SignInFormProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

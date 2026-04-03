@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSidebarContainerProps } from '../typings/AXSidebarProps'
 
@@ -32,10 +32,12 @@ export function AXSidebar(props: AXSidebarContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SidebarProvider store={store}>
-        <Sidebar>{props.content}</Sidebar>
-      </SidebarProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SidebarProvider store={store}>
+          <Sidebar>{props.content}</Sidebar>
+        </SidebarProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

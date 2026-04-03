@@ -3,6 +3,7 @@ import { type ReactElement, useCallback, useEffect, useMemo, useState } from 're
 import {
   type AxEvent,
   AxThemeProvider,
+  ErrorBoundary,
   parseThemeTokens,
   setGlobalThemeTokens,
   useWidgetEvents,
@@ -35,18 +36,20 @@ export function AXWebApp(props: AXWebAppContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent, isLayout: true })
 
   return (
-    <AxThemeProvider overrides={themeOverrides} isLayout>
-      <WebAppProvider store={store}>
-        <WebAppLayout
-          logo={props.logo}
-          tasksMenu={props.tasksMenu}
-          notifyMenu={props.notifyMenu}
-          userMenu={props.userMenu}
-          sidebar={props.sidebar}
-          content={props.content}
-          agentChat={props.agentChat}
-        />
-      </WebAppProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider overrides={themeOverrides} isLayout>
+        <WebAppProvider store={store}>
+          <WebAppLayout
+            logo={props.logo}
+            tasksMenu={props.tasksMenu}
+            notifyMenu={props.notifyMenu}
+            userMenu={props.userMenu}
+            sidebar={props.sidebar}
+            content={props.content}
+            agentChat={props.agentChat}
+          />
+        </WebAppProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

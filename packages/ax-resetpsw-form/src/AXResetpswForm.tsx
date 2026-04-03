@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXResetpswFormContainerProps } from '../typings/AXResetpswFormProps'
 
@@ -34,10 +34,12 @@ export function AXResetpswForm(props: AXResetpswFormContainerProps): ReactElemen
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <ResetPassFormProvider store={store}>
-        <ResetPassForm />
-      </ResetPassFormProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <ResetPassFormProvider store={store}>
+          <ResetPassForm />
+        </ResetPassFormProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

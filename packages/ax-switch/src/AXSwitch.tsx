@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents , isLoading } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents, isLoading } from '@ax/shared'
 
 import type { AXSwitchContainerProps } from '../typings/AXSwitchProps'
 
@@ -59,10 +59,12 @@ export function AXSwitch(props: AXSwitchContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SwitchProvider store={store}>
-        <Switch />
-      </SwitchProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SwitchProvider store={store}>
+          <Switch />
+        </SwitchProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

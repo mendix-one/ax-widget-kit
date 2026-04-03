@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXButtonContainerProps } from '../typings/AXButtonProps'
 
@@ -48,10 +48,12 @@ export function AXButton(props: AXButtonContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <ButtonProvider store={store}>
-        <Button />
-      </ButtonProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <ButtonProvider store={store}>
+          <Button />
+        </ButtonProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

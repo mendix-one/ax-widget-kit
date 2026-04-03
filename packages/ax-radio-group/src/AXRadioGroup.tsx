@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXRadioGroupContainerProps } from '../typings/AXRadioGroupProps'
 
@@ -58,10 +58,12 @@ export function AXRadioGroup(props: AXRadioGroupContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <RadioGroupProvider store={store}>
-        <RadioGroup />
-      </RadioGroupProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <RadioGroupProvider store={store}>
+          <RadioGroup />
+        </RadioGroupProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

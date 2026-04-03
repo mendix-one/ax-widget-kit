@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXCheckboxContainerProps } from '../typings/AXCheckboxProps'
 
@@ -45,10 +45,12 @@ export function AXCheckbox(props: AXCheckboxContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <CheckboxProvider store={store}>
-        <Checkbox />
-      </CheckboxProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <CheckboxProvider store={store}>
+          <Checkbox />
+        </CheckboxProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

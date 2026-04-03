@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXTextFieldContainerProps } from '../typings/AXTextFieldProps'
 
@@ -77,10 +77,12 @@ export function AXTextField(props: AXTextFieldContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <TextFieldProvider store={store}>
-        <TextField />
-      </TextFieldProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <TextFieldProvider store={store}>
+          <TextField />
+        </TextFieldProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

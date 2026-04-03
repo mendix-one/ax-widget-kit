@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXAgentChatContainerProps } from '../typings/AXAgentChatProps'
 
@@ -26,10 +26,12 @@ export function AXAgentChat(props: AXAgentChatContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <AgentChatProvider store={store}>
-        <AgentChat />
-      </AgentChatProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <AgentChatProvider store={store}>
+          <AgentChat />
+        </AgentChatProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

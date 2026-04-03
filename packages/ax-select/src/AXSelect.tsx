@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents , isLoading } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents, isLoading } from '@ax/shared'
 
 import type { AXSelectContainerProps } from '../typings/AXSelectProps'
 
@@ -72,10 +72,12 @@ export function AXSelect(props: AXSelectContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SelectProvider store={store}>
-        <Select />
-      </SelectProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SelectProvider store={store}>
+          <Select />
+        </SelectProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

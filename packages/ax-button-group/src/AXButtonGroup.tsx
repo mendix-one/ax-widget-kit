@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { type AxEvent, AxThemeProvider, useWidgetEvents } from '@ax/shared'
+import { type AxEvent, AxThemeProvider, ErrorBoundary, useWidgetEvents } from '@ax/shared'
 
 import type { AXButtonGroupContainerProps } from '../typings/AXButtonGroupProps'
 
@@ -43,10 +43,12 @@ export function AXButtonGroup(props: AXButtonGroupContainerProps): ReactElement 
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <ButtonGroupProvider store={store}>
-        <ButtonGroup>{props.content}</ButtonGroup>
-      </ButtonGroupProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <ButtonGroupProvider store={store}>
+          <ButtonGroup>{props.content}</ButtonGroup>
+        </ButtonGroupProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

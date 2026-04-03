@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXLogoContainerProps } from '../typings/AXLogoProps'
 
@@ -34,10 +34,12 @@ export function AXLogo(props: AXLogoContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <LogoProvider store={store}>
-        <Logo />
-      </LogoProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <LogoProvider store={store}>
+          <Logo />
+        </LogoProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }

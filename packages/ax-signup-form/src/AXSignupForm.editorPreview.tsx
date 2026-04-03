@@ -1,13 +1,16 @@
 import { ReactElement } from 'react'
+import { ErrorBoundary } from '@ax/shared'
 
 import { AXSignupFormPreviewProps } from '../typings/AXSignupFormProps'
 import { SignUpFormPreview } from './preview/SignUpFormPreview'
 
 export function preview(props: AXSignupFormPreviewProps): ReactElement {
   return (
-    <SignUpFormPreview
-      showSSO={props.showSSO}
-    />
+    <ErrorBoundary>
+      <SignUpFormPreview
+        showSSO={props.showSSO}
+      />
+    </ErrorBoundary>
   )
 }
 

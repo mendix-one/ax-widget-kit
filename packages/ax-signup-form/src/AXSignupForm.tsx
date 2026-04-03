@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSignupFormContainerProps } from '../typings/AXSignupFormProps'
 
@@ -50,10 +50,12 @@ export function AXSignupForm(props: AXSignupFormContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <SignUpFormProvider store={store}>
-        <SignUpForm />
-      </SignUpFormProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <AxThemeProvider>
+        <SignUpFormProvider store={store}>
+          <SignUpForm />
+        </SignUpFormProvider>
+      </AxThemeProvider>
+    </ErrorBoundary>
   )
 }
