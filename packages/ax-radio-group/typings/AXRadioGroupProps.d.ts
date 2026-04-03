@@ -6,13 +6,18 @@
 import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
+export interface OptionsType {
+    optValue: string;
+    optLabel?: DynamicValue<string>;
+}
+
 export type ColorEnum = "primary" | "secondary" | "success" | "warning" | "error" | "info";
 
 export type SizeEnum = "small" | "medium";
 
-export interface AXRadioGroupOptionsType {
+export interface OptionsPreviewType {
     optValue: string;
-    optLabel?: DynamicValue<string>;
+    optLabel: string;
 }
 
 export interface AXRadioGroupContainerProps {
@@ -22,7 +27,7 @@ export interface AXRadioGroupContainerProps {
     tabIndex?: number;
     valueAttr?: EditableValue<string>;
     label?: DynamicValue<string>;
-    options: AXRadioGroupOptionsType[];
+    options: OptionsType[];
     row: boolean;
     color: ColorEnum;
     size: SizeEnum;
@@ -30,12 +35,10 @@ export interface AXRadioGroupContainerProps {
     onChange?: ActionValue;
 }
 
-export interface AXRadioGroupOptionsPreviewType {
-    optValue: string;
-    optLabel: string;
-}
-
 export interface AXRadioGroupPreviewProps {
+    /**
+     * @deprecated Deprecated since version 9.18.0. Please use class property instead.
+     */
     className: string;
     class: string;
     style: string;
@@ -45,7 +48,7 @@ export interface AXRadioGroupPreviewProps {
     translate: (text: string) => string;
     valueAttr: string;
     label: string;
-    options: AXRadioGroupOptionsPreviewType[];
+    options: OptionsPreviewType[];
     row: boolean;
     color: ColorEnum;
     size: SizeEnum;

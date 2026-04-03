@@ -21,12 +21,15 @@ export interface AXSwitchContainerProps {
     label?: DynamicValue<string>;
     color: ColorEnum;
     size: SizeEnum;
-    disabled: boolean;
     labelPlacement: LabelPlacementEnum;
+    disabled: boolean;
     onChange?: ActionValue;
 }
 
 export interface AXSwitchPreviewProps {
+    /**
+     * @deprecated Deprecated since version 9.18.0. Please use class property instead.
+     */
     className: string;
     class: string;
     style: string;
@@ -38,7 +41,7 @@ export interface AXSwitchPreviewProps {
     label: string;
     color: ColorEnum;
     size: SizeEnum;
-    disabled: boolean;
     labelPlacement: LabelPlacementEnum;
+    disabled: boolean;
     onChange: {} | null;
 }

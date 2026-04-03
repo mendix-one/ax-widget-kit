@@ -1,4 +1,5 @@
 import { type ReactElement } from 'react'
+import { ErrorBoundary } from '@ax/shared'
 
 import { type AXSwitchPreviewProps } from '../typings/AXSwitchProps'
 import { SwitchPreview } from './preview/SwitchPreview'
@@ -6,7 +7,7 @@ import { SwitchPreview } from './preview/SwitchPreview'
 export function preview(props: AXSwitchPreviewProps): ReactElement {
   return (
     <ErrorBoundary>
-    <div className={props.class} style={props.style}>
+    <div className={props.class} style={props.styleObject}>
     <SwitchPreview
       label={props.label}
       color={props.color}

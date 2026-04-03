@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { ErrorBoundary } from '@ax/shared'
 
 import { AXButtonPreviewProps } from '../typings/AXButtonProps'
 import { ButtonPreview } from './preview/ButtonPreview'
@@ -6,7 +7,7 @@ import { ButtonPreview } from './preview/ButtonPreview'
 export function preview(props: AXButtonPreviewProps): ReactElement {
   return (
     <ErrorBoundary>
-    <div className={props.class} style={props.style}>
+    <div className={props.class} style={props.styleObject}>
     <ButtonPreview
       label={props.label}
       variant={props.variant}

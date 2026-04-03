@@ -6,18 +6,18 @@
 import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
+export interface OptionsType {
+    optValue: string;
+    optLabel?: DynamicValue<string>;
+}
+
 export type ColorEnum = "primary" | "secondary" | "success" | "warning" | "error" | "info";
 
 export type SizeEnum = "small" | "medium" | "large";
 
 export type OrientationEnum = "horizontal" | "vertical";
 
-export interface AXToggleButtonOptionsType {
-    optValue: string;
-    optLabel?: DynamicValue<string>;
-}
-
-export interface AXToggleButtonOptionsPreviewType {
+export interface OptionsPreviewType {
     optValue: string;
     optLabel: string;
 }
@@ -28,17 +28,20 @@ export interface AXToggleButtonContainerProps {
     style?: CSSProperties;
     tabIndex?: number;
     valueAttr?: EditableValue<string>;
-    options: AXToggleButtonOptionsType[];
+    options: OptionsType[];
     exclusive: boolean;
+    disabled: boolean;
+    fullWidth: boolean;
     color: ColorEnum;
     size: SizeEnum;
     orientation: OrientationEnum;
-    disabled: boolean;
-    fullWidth: boolean;
     onChange?: ActionValue;
 }
 
 export interface AXToggleButtonPreviewProps {
+    /**
+     * @deprecated Deprecated since version 9.18.0. Please use class property instead.
+     */
     className: string;
     class: string;
     style: string;
@@ -47,12 +50,12 @@ export interface AXToggleButtonPreviewProps {
     renderMode: "design" | "xray" | "structure";
     translate: (text: string) => string;
     valueAttr: string;
-    options: AXToggleButtonOptionsPreviewType[];
+    options: OptionsPreviewType[];
     exclusive: boolean;
+    disabled: boolean;
+    fullWidth: boolean;
     color: ColorEnum;
     size: SizeEnum;
     orientation: OrientationEnum;
-    disabled: boolean;
-    fullWidth: boolean;
     onChange: {} | null;
 }

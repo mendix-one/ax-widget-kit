@@ -6,13 +6,18 @@
 import { CSSProperties } from "react";
 import { ActionValue, DynamicValue, EditableValue } from "mendix";
 
+export interface OptionsType {
+    optValue: string;
+    optLabel?: DynamicValue<string>;
+}
+
 export type VariantEnum = "outlined" | "filled" | "standard";
 
 export type SizeEnum = "small" | "medium";
 
-export interface AXSelectOptionsType {
+export interface OptionsPreviewType {
     optValue: string;
-    optLabel?: DynamicValue<string>;
+    optLabel: string;
 }
 
 export interface AXSelectContainerProps {
@@ -22,7 +27,7 @@ export interface AXSelectContainerProps {
     tabIndex?: number;
     valueAttr?: EditableValue<string>;
     label?: DynamicValue<string>;
-    options: AXSelectOptionsType[];
+    options: OptionsType[];
     variant: VariantEnum;
     size: SizeEnum;
     disabled: boolean;
@@ -31,12 +36,10 @@ export interface AXSelectContainerProps {
     onChange?: ActionValue;
 }
 
-export interface AXSelectOptionsPreviewType {
-    optValue: string;
-    optLabel: string;
-}
-
 export interface AXSelectPreviewProps {
+    /**
+     * @deprecated Deprecated since version 9.18.0. Please use class property instead.
+     */
     className: string;
     class: string;
     style: string;
@@ -46,7 +49,7 @@ export interface AXSelectPreviewProps {
     translate: (text: string) => string;
     valueAttr: string;
     label: string;
-    options: AXSelectOptionsPreviewType[];
+    options: OptionsPreviewType[];
     variant: VariantEnum;
     size: SizeEnum;
     disabled: boolean;

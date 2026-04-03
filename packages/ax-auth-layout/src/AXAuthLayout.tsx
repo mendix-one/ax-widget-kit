@@ -3,7 +3,6 @@ import { type ReactElement, useCallback, useEffect, useMemo, useState } from 're
 import {
   type AxEvent,
   AxThemeProvider,
-  ErrorBoundary,
   parseThemeTokens,
   setGlobalThemeTokens,
   useWidgetEvents,

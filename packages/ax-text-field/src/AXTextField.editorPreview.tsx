@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { ErrorBoundary } from '@ax/shared'
 
 import { AXTextFieldPreviewProps } from '../typings/AXTextFieldProps'
 import { TextFieldPreview } from './preview/TextFieldPreview'
@@ -6,7 +7,7 @@ import { TextFieldPreview } from './preview/TextFieldPreview'
 export function preview(props: AXTextFieldPreviewProps): ReactElement {
   return (
     <ErrorBoundary>
-    <div className={props.class} style={props.style}>
+    <div className={props.class} style={props.styleObject}>
     <TextFieldPreview
       label={props.label}
       placeholder={props.placeholder}
