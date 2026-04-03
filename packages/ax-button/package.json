@@ -1,6 +1,6 @@
 {
   "name": "@ax/button",
-  "widgetName": "AXButton",
+  "widgetName": "AxButton",
   "version": "1.0.0",
   "description": "AX Button Widget",
   "copyright": "Mendix One",

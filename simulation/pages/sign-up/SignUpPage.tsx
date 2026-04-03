@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router'
 
 import type { EditableValue } from 'mendix'
 
-import { AXAuthLayout } from '@ax/auth-layout/src/AXAuthLayout'
-import { AXSignupForm } from '@ax/signup-form/src/AXSignupForm'
+import { AxAuthLayout } from '@ax/auth-layout/src/AxAuthLayout'
+import { AxSignupForm } from '@ax/signup-form/src/AxSignupForm'
 
 function useMockAttr(initial = '') {
   const [value, setVal] = useState(initial)
@@ -37,8 +37,8 @@ export default function SignUpPage() {
   const navAction = (path: string) => ({ ...mockAction, execute: () => navigate(path) })
 
   return (
-    <AXAuthLayout
-      name="AXAuthLayout1"
+    <AxAuthLayout
+      name="AxAuthLayout1"
       class=""
       tagline={mockDynamic('AI-Powered\nSmart Manufacturing')}
       brandDescription={mockDynamic(
@@ -47,8 +47,8 @@ export default function SignUpPage() {
       themeTokens=""
       showBackground={true}
       content={
-        <AXSignupForm
-          name="AXSignupForm1"
+        <AxSignupForm
+          name="AxSignupForm1"
           class=""
           fullNameAttr={fullNameAttr}
           emailAttr={emailAttr}

@@ -1,4 +1,4 @@
-import { AXAuthLayout } from '@ax/auth-layout/src/AXAuthLayout'
+import { AxAuthLayout } from '@ax/auth-layout/src/AxAuthLayout'
 
 function mockDynamic(value: string) {
   return { status: 'available' as const, value }
@@ -6,8 +6,8 @@ function mockDynamic(value: string) {
 
 export default function AuthLayoutPage() {
   return (
-    <AXAuthLayout
-      name="AXAuthLayout1"
+    <AxAuthLayout
+      name="AxAuthLayout1"
       class=""
       tagline={mockDynamic('AI-Powered\nSmart Manufacturing')}
       brandDescription={mockDynamic(

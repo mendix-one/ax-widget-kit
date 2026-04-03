@@ -1,6 +1,6 @@
 {
   "name": "@ax/web-app",
-  "widgetName": "AXWebApp",
+  "widgetName": "AxWebApp",
   "version": "1.0.0",
   "description": "AX Web App Layout Widget",
   "copyright": "Mendix One",

@@ -4,7 +4,7 @@ import { getEventBus, initEventBus } from './bus'
 import { AX_BROADCAST, type AxEventHandler, widgetTopic } from './types'
 
 interface UseWidgetEventsOptions {
-  /** Widget instance name from Mendix props (e.g. 'AXSigninForm1') */
+  /** Widget instance name from Mendix props (e.g. 'AxSigninForm1') */
   widgetName: string
   /** Handler called for events on both broadcast and private topics */
   onEvent: AxEventHandler

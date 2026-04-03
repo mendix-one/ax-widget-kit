@@ -1,6 +1,6 @@
 {
   "name": "@ax/sidebar",
-  "widgetName": "AXSidebar",
+  "widgetName": "AxSidebar",
   "version": "1.0.0",
   "description": "AX Sidebar Widget",
   "copyright": "Mendix One",

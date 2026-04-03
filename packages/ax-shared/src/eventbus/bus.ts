@@ -3,7 +3,7 @@ import Nanobus from 'nanobus'
 const GLOBAL_KEY = '__AX_EVENT_BUS__'
 
 /**
- * Initialize the global event bus. Called by layout widgets (AXWebApp, AXAuthLayout).
+ * Initialize the global event bus. Called by layout widgets (AxWebApp, AxAuthLayout).
  * If a bus already exists on window, it is returned as-is (idempotent).
  */
 export function initEventBus(): Nanobus {
@@ -29,7 +29,7 @@ export function getEventBus(): Nanobus | undefined {
  *
  * ```js
  * window.__AX_EVENT_BUS__.emit('ax:broadcast', { action: 'theme-changed', payload: { mode: 'dark' } })
- * window.__AX_EVENT_BUS__.emit('ax:AXSigninForm1', { action: 'reset' })
+ * window.__AX_EVENT_BUS__.emit('ax:AxSigninForm1', { action: 'reset' })
  * ```
  */
 export function emitEvent(topic: string, event: { action: string; payload?: unknown }): void {

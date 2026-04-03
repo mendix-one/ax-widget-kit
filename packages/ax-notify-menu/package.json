@@ -1,6 +1,6 @@
 {
   "name": "@ax/notify-menu",
-  "widgetName": "AXNotifyMenu",
+  "widgetName": "AxNotifyMenu",
   "version": "1.0.0",
   "description": "AX Notify Menu Widget",
   "copyright": "Mendix One",

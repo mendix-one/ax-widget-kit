@@ -1,6 +1,6 @@
 {
   "name": "@ax/resetpsw-form",
-  "widgetName": "AXResetpswForm",
+  "widgetName": "AxResetpswForm",
   "version": "1.0.0",
   "description": "AX Reset Password Form Widget",
   "copyright": "Mendix One",

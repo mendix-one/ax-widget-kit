@@ -1,6 +1,6 @@
 {
   "name": "@ax/toggle-button",
-  "widgetName": "AXToggleButton",
+  "widgetName": "AxToggleButton",
   "version": "1.0.0",
   "description": "AX Toggle Button Widget",
   "copyright": "Mendix One",

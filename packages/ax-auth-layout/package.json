@@ -1,6 +1,6 @@
 {
   "name": "@ax/auth-layout",
-  "widgetName": "AXAuthLayout",
+  "widgetName": "AxAuthLayout",
   "version": "1.0.0",
   "description": "AX Auth Layout Widget",
   "copyright": "Mendix One",

@@ -1,6 +1,6 @@
 {
   "name": "@ax/agent-chat",
-  "widgetName": "AXAgentChat",
+  "widgetName": "AxAgentChat",
   "version": "1.0.0",
   "description": "AX Agent Chat Widget",
   "copyright": "Mendix One",

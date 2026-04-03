@@ -1,10 +1,10 @@
-import { AXAgentChat } from '@ax/agent-chat/src/AXAgentChat'
-import { AXLogo } from '@ax/logo/src/AXLogo'
-import { AXNotifyMenu } from '@ax/notify-menu/src/AXNotifyMenu'
-import { AXSidebar } from '@ax/sidebar/src/AXSidebar'
-import { AXTasksMenu } from '@ax/tasks-menu/src/AXTasksMenu'
-import { AXUserMenu } from '@ax/user-menu/src/AXUserMenu'
-import { AXWebApp } from '@ax/web-app/src/AXWebApp'
+import { AxAgentChat } from '@ax/agent-chat/src/AxAgentChat'
+import { AxLogo } from '@ax/logo/src/AxLogo'
+import { AxNotifyMenu } from '@ax/notify-menu/src/AxNotifyMenu'
+import { AxSidebar } from '@ax/sidebar/src/AxSidebar'
+import { AxTasksMenu } from '@ax/tasks-menu/src/AxTasksMenu'
+import { AxUserMenu } from '@ax/user-menu/src/AxUserMenu'
+import { AxWebApp } from '@ax/web-app/src/AxWebApp'
 
 import aPlannerDark from '../../assets/a-planner-ai-dark.png'
 import aPlannerLight from '../../assets/a-planner-ai-light.png'
@@ -95,13 +95,13 @@ export default function WebAppPage() {
   const logo = isDark ? aPlannerDark : aPlannerLight
 
   return (
-    <AXWebApp
-      name="AXWebApp1"
+    <AxWebApp
+      name="AxWebApp1"
       class=""
       themeTokens=""
       logo={
-        <AXLogo
-          name="AXLogo1"
+        <AxLogo
+          name="AxLogo1"
           class=""
           logoUrl={mockDynamic(logo)}
           altText={mockDynamic('aPlanner')}
@@ -110,14 +110,14 @@ export default function WebAppPage() {
         />
       }
       tasksMenu={
-        <AXTasksMenu name="AXTasksMenu1" class="" title={mockDynamic('Urgent tasks')} onTaskClick={mockAction} />
+        <AxTasksMenu name="AxTasksMenu1" class="" title={mockDynamic('Urgent tasks')} onTaskClick={mockAction} />
       }
       notifyMenu={
-        <AXNotifyMenu name="AXNotifyMenu1" class="" title={mockDynamic('Notifications')} onNotifyClick={mockAction} />
+        <AxNotifyMenu name="AxNotifyMenu1" class="" title={mockDynamic('Notifications')} onNotifyClick={mockAction} />
       }
       userMenu={
-        <AXUserMenu
-          name="AXUserMenu1"
+        <AxUserMenu
+          name="AxUserMenu1"
           class=""
           userName={mockDynamic('AI Planner')}
           userEmail={mockDynamic('contact@aplanner.ai')}
@@ -126,10 +126,10 @@ export default function WebAppPage() {
           onSettings={mockAction}
         />
       }
-      sidebar={<AXSidebar name="AXSidebar1" class="" />}
+      sidebar={<AxSidebar name="AxSidebar1" class="" />}
       content={<DemoContent />}
       agentChat={
-        <AXAgentChat name="AXAgentChat1" class="" title={mockDynamic('AI Assistant')} onSendMessage={mockAction} />
+        <AxAgentChat name="AxAgentChat1" class="" title={mockDynamic('AI Assistant')} onSendMessage={mockAction} />
       }
     />
   )

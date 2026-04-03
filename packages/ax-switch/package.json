@@ -1,6 +1,6 @@
 {
   "name": "@ax/switch",
-  "widgetName": "AXSwitch",
+  "widgetName": "AxSwitch",
   "version": "1.0.0",
   "description": "AX Switch Widget",
   "copyright": "Mendix One",

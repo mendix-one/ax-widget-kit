@@ -1,6 +1,6 @@
 {
   "name": "@ax/user-menu",
-  "widgetName": "AXUserMenu",
+  "widgetName": "AxUserMenu",
   "version": "1.0.0",
   "description": "AX User Menu Widget",
   "copyright": "Mendix One",

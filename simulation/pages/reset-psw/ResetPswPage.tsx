@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router'
 
 import type { EditableValue } from 'mendix'
 
-import { AXAuthLayout } from '@ax/auth-layout/src/AXAuthLayout'
-import { AXResetpswForm } from '@ax/resetpsw-form/src/AXResetpswForm'
+import { AxAuthLayout } from '@ax/auth-layout/src/AxAuthLayout'
+import { AxResetpswForm } from '@ax/resetpsw-form/src/AxResetpswForm'
 
 function useMockAttr(initial = '') {
   const [value, setVal] = useState(initial)
@@ -35,8 +35,8 @@ export default function ResetPswPage() {
   const navAction = (path: string) => ({ ...mockAction, execute: () => navigate(path) })
 
   return (
-    <AXAuthLayout
-      name="AXAuthLayout1"
+    <AxAuthLayout
+      name="AxAuthLayout1"
       class=""
       tagline={mockDynamic('AI-Powered\nSmart Manufacturing')}
       brandDescription={mockDynamic(
@@ -45,8 +45,8 @@ export default function ResetPswPage() {
       themeTokens=""
       showBackground={true}
       content={
-        <AXResetpswForm
-          name="AXResetpswForm1"
+        <AxResetpswForm
+          name="AxResetpswForm1"
           class=""
           emailAttr={emailAttr}
           onSubmit={mockAction}

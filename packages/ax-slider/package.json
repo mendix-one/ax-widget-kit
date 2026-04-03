@@ -1,6 +1,6 @@
 {
   "name": "@ax/slider",
-  "widgetName": "AXSlider",
+  "widgetName": "AxSlider",
   "version": "1.0.0",
   "description": "AX Slider Widget",
   "copyright": "Mendix One",

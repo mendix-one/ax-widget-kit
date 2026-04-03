@@ -1,6 +1,6 @@
 {
   "name": "@ax/checkbox",
-  "widgetName": "AXCheckbox",
+  "widgetName": "AxCheckbox",
   "version": "1.0.0",
   "description": "AX Checkbox Widget",
   "copyright": "Mendix One",

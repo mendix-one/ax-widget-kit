@@ -1,6 +1,6 @@
 {
   "name": "@ax/tasks-menu",
-  "widgetName": "AXTasksMenu",
+  "widgetName": "AxTasksMenu",
   "version": "1.0.0",
   "description": "AX Tasks Menu Widget",
   "copyright": "Mendix One",

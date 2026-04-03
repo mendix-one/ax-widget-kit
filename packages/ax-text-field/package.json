@@ -1,6 +1,6 @@
 {
   "name": "@ax/text-field",
-  "widgetName": "AXTextField",
+  "widgetName": "AxTextField",
   "version": "1.0.0",
   "description": "AX Text Field Widget",
   "copyright": "Mendix One",

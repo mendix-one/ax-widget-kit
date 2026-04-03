@@ -1,6 +1,6 @@
 {
   "name": "@ax/signup-form",
-  "widgetName": "AXSignupForm",
+  "widgetName": "AxSignupForm",
   "version": "1.0.0",
   "description": "AX Sign Up Form Widget",
   "copyright": "Mendix One",

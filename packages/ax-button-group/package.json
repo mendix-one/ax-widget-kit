@@ -1,6 +1,6 @@
 {
   "name": "@ax/button-group",
-  "widgetName": "AXButtonGroup",
+  "widgetName": "AxButtonGroup",
   "version": "1.0.0",
   "description": "AX Button Group Widget",
   "copyright": "Mendix One",

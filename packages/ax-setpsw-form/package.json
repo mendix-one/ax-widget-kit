@@ -1,6 +1,6 @@
 {
   "name": "@ax/setpsw-form",
-  "widgetName": "AXSetpswForm",
+  "widgetName": "AxSetpswForm",
   "version": "1.0.0",
   "description": "AX Set New Password Form Widget",
   "copyright": "Mendix One",

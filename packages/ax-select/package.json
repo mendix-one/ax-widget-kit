@@ -1,6 +1,6 @@
 {
   "name": "@ax/select",
-  "widgetName": "AXSelect",
+  "widgetName": "AxSelect",
   "version": "1.0.0",
   "description": "AX Select Widget",
   "copyright": "Mendix One",

@@ -1,6 +1,6 @@
 {
   "name": "@ax/radio-group",
-  "widgetName": "AXRadioGroup",
+  "widgetName": "AxRadioGroup",
   "version": "1.0.0",
   "description": "AX Radio Group Widget",
   "copyright": "Mendix One",
