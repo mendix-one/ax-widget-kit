@@ -24,7 +24,7 @@ export const UserMenu = observer(function UserMenu(): ReactElement {
   return (
     <>
       <Tooltip title="Account">
-        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} sx={{ ml: 1 }}>
+        <IconButton onClick={(e) => setAnchorEl(e.currentTarget)} sx={{ ml: 1 }} aria-haspopup="true" aria-expanded={Boolean(anchorEl)}>
           <Avatar sx={{ width: 32, height: 32, bgcolor: 'primary.main', fontSize: 14 }}>{store.initials}</Avatar>
         </IconButton>
       </Tooltip>

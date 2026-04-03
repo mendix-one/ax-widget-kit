@@ -1,9 +1,16 @@
 import { type ReactElement } from 'react'
 
 import { type AXLogoPreviewProps } from '../typings/AXLogoProps'
+import { LogoPreview } from './preview/LogoPreview'
 
-export function preview({ altText }: AXLogoPreviewProps): ReactElement {
-  return <div style={{ padding: 8, color: '#3f51b5', fontWeight: 700 }}>{altText || 'AXLogo'}</div>
+export function preview(props: AXLogoPreviewProps): ReactElement {
+  return (
+    <LogoPreview
+      logoUrl={props.logoUrl}
+      altText={props.altText}
+      height={props.height}
+    />
+  )
 }
 
 export function getPreviewCss(): string {

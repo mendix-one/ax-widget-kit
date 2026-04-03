@@ -20,10 +20,22 @@ export default defineConfig({
       '@ax/user-menu': resolve(__dirname, 'packages/ax-user-menu'),
       '@ax/sidebar': resolve(__dirname, 'packages/ax-sidebar'),
       '@ax/agent-chat': resolve(__dirname, 'packages/ax-agent-chat'),
+      '@ax/text-field': resolve(__dirname, 'packages/ax-text-field'),
+      '@ax/button': resolve(__dirname, 'packages/ax-button'),
+      '@ax/button-group': resolve(__dirname, 'packages/ax-button-group'),
+      '@ax/checkbox': resolve(__dirname, 'packages/ax-checkbox'),
+      '@ax/radio-group': resolve(__dirname, 'packages/ax-radio-group'),
+      '@ax/select': resolve(__dirname, 'packages/ax-select'),
+      '@ax/slider': resolve(__dirname, 'packages/ax-slider'),
+      '@ax/switch': resolve(__dirname, 'packages/ax-switch'),
+      '@ax/toggle-button': resolve(__dirname, 'packages/ax-toggle-button'),
     },
   },
   server: {
     host: '0.0.0.0',
     allowedHosts: ['dev.amoza.xyz'],
+    watch: {
+      ignored: ['**/sample/**'],
+    },
   },
 })

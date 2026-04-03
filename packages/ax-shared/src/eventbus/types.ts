@@ -2,8 +2,8 @@
  * Event payload for inter-widget communication.
  */
 export interface AxEvent {
-  /** Event action type (e.g. 'reset', 'theme-changed', 'navigate') */
-  type: string
+  /** Event action name (e.g. 'reset', 'theme-changed', 'navigate') */
+  action: string
   /** Optional data payload */
   payload?: unknown
 }

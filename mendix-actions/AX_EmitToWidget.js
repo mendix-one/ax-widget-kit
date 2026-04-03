@@ -6,7 +6,7 @@
  * property set in Studio Pro (e.g. 'AXSigninForm1', 'AXAgentChat1').
  *
  * @param {string} widgetName - Target widget instance name (e.g. 'AXSigninForm1')
- * @param {string} eventType - Event action type (e.g. 'reset', 'open', 'navigate')
+ * @param {string} eventType - Event action name (e.g. 'reset', 'open', 'navigate')
  * @param {string} [payloadJson] - Optional JSON string payload
  * @returns {boolean} - true if the event was emitted, false if bus not initialized or invalid params
  *
@@ -40,7 +40,7 @@ function AX_EmitToWidget(widgetName, eventType, payloadJson) {
     }
   }
 
-  bus.emit('ax:' + widgetName, { type: eventType, payload: payload })
+  bus.emit('ax:' + widgetName, { action: eventType, payload: payload })
   return true
 }
 // END USER CODE

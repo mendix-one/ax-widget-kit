@@ -39,8 +39,18 @@
       "@ax/notify-menu/*": ["./packages/ax-notify-menu/*"],
       "@ax/user-menu/*": ["./packages/ax-user-menu/*"],
       "@ax/sidebar/*": ["./packages/ax-sidebar/*"],
-      "@ax/agent-chat/*": ["./packages/ax-agent-chat/*"]
+      "@ax/agent-chat/*": ["./packages/ax-agent-chat/*"],
+      "@ax/text-field/*": ["./packages/ax-text-field/*"],
+      "@ax/button/*": ["./packages/ax-button/*"],
+      "@ax/button-group/*": ["./packages/ax-button-group/*"],
+      "@ax/checkbox/*": ["./packages/ax-checkbox/*"],
+      "@ax/radio-group/*": ["./packages/ax-radio-group/*"],
+      "@ax/select/*": ["./packages/ax-select/*"],
+      "@ax/slider/*": ["./packages/ax-slider/*"],
+      "@ax/switch/*": ["./packages/ax-switch/*"],
+      "@ax/toggle-button/*": ["./packages/ax-toggle-button/*"]
     }
   },
-  "include": ["simulation"]
+  "include": ["simulation"],
+  "exclude": ["node_modules", "dist", "sample"]
 }

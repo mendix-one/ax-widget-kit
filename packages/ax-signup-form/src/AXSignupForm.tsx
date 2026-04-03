@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, executeAction, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXSignupFormContainerProps } from '../typings/AXSignupFormProps'
 

@@ -22,6 +22,7 @@ export const AgentChat = observer(function AgentChat(): ReactElement {
     <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', bgcolor: 'background.default' }}>
       {/* Header */}
       <Box
+        role="banner"
         sx={{
           display: 'flex',
           alignItems: 'center',
@@ -41,11 +42,11 @@ export const AgentChat = observer(function AgentChat(): ReactElement {
       </Box>
 
       {/* Messages */}
-      <Box sx={{ flex: 1, overflowY: 'auto', px: 2, py: 2 }}>
+      <Box sx={{ flex: 1, overflowY: 'auto', px: 2, py: 2 }} role="log" aria-live="polite">
         {store.messages.map((msg) => {
           const isUser = msg.role === 'user'
           return (
-            <Box key={msg.id} sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', mb: 2 }}>
+            <Box key={msg.id} role="article" sx={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start', mb: 2 }}>
               <Box
                 sx={{
                   display: 'flex',
@@ -120,6 +121,7 @@ export const AgentChat = observer(function AgentChat(): ReactElement {
             }
           }}
           sx={{ flex: 1, '& .MuiOutlinedInput-root': { py: 0.75, fontSize: 14 } }}
+          slotProps={{ input: { 'aria-label': 'Type a message' } }}
         />
         <IconButton size="small" onClick={() => store.sendMessage()} disabled={!store.canSend} sx={{ mb: 0.5 }}>
           <SendIcon fontSize="small" color={store.canSend ? 'primary' : 'disabled'} />

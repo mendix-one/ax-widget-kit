@@ -28,11 +28,11 @@ export function getEventBus(): Nanobus | undefined {
  * Can be called from widget code, Mendix nanoflows, or browser console:
  *
  * ```js
- * window.__AX_EVENT_BUS__.emit('ax:broadcast', { type: 'theme-changed', payload: { mode: 'dark' } })
- * window.__AX_EVENT_BUS__.emit('ax:AXSigninForm1', { type: 'reset' })
+ * window.__AX_EVENT_BUS__.emit('ax:broadcast', { action: 'theme-changed', payload: { mode: 'dark' } })
+ * window.__AX_EVENT_BUS__.emit('ax:AXSigninForm1', { action: 'reset' })
  * ```
  */
-export function emitEvent(topic: string, event: { type: string; payload?: unknown }): void {
+export function emitEvent(topic: string, event: { action: string; payload?: unknown }): void {
   const bus = getEventBus()
   if (bus) bus.emit(topic, event)
 }

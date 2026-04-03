@@ -1,7 +1,9 @@
 import { type ReactElement } from 'react'
+import { type AXTasksMenuPreviewProps } from '../typings/AXTasksMenuProps'
+import { TasksMenuPreview } from './preview/TasksMenuPreview'
 
-export function preview(): ReactElement {
-  return <div style={{ padding: 8, color: '#666', fontSize: 12 }}>AXTasks Menu</div>
+export function preview(props: AXTasksMenuPreviewProps): ReactElement {
+  return <TasksMenuPreview title={props.title} />
 }
 
 export function getPreviewCss(): string {

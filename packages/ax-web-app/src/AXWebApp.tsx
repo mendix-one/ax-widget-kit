@@ -1,6 +1,13 @@
 import { type ReactElement, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { type AxEvent, AxThemeProvider, parseThemeTokens, setGlobalThemeTokens, useWidgetEvents } from '@ax/shared'
+import {
+  type AxEvent,
+  AxThemeProvider,
+  ErrorBoundary,
+  parseThemeTokens,
+  setGlobalThemeTokens,
+  useWidgetEvents,
+} from '@ax/shared'
 
 import type { AXWebAppContainerProps } from '../typings/AXWebAppProps'
 
@@ -20,8 +27,8 @@ export function AXWebApp(props: AXWebAppContainerProps): ReactElement {
   // Layout widget initializes the event bus and listens
   const handleEvent = useCallback(
     (event: AxEvent) => {
-      if (event.type === 'toggleSidebar') store.toggleSidebar(false)
-      else if (event.type === 'toggleAgent') store.toggleAgent()
+      if (event.action === 'toggleSidebar') store.toggleSidebar(false)
+      else if (event.action === 'toggleAgent') store.toggleAgent()
     },
     [store],
   )

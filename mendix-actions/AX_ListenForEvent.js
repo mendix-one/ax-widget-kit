@@ -38,7 +38,7 @@ function AX_ListenForEvent(topic, eventType, timeoutMs) {
     }, timeout)
 
     function handler(event) {
-      if (event && event.type === eventType) {
+      if (event && event.action === eventType) {
         clearTimeout(timer)
         bus.removeListener(topic, handler)
         resolve(event.payload ? JSON.stringify(event.payload) : '{}')

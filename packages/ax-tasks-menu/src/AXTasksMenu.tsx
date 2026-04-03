@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, executeAction, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXTasksMenuContainerProps } from '../typings/AXTasksMenuProps'
 
@@ -43,7 +43,7 @@ export function AXTasksMenu(props: AXTasksMenuContainerProps): ReactElement {
   }, [])
 
   useEffect(() => {
-    store.setOnTaskClick(props.onTaskClick?.canExecute ? () => props.onTaskClick?.execute() : undefined)
+    store.setOnTaskClick(() => executeAction(props.onTaskClick))
   }, [props.onTaskClick?.canExecute])
 
   // Subscribe to event bus (broadcast + private topic)
@@ -54,10 +54,14 @@ export function AXTasksMenu(props: AXTasksMenuContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <TasksMenuProvider store={store}>
-        <TasksMenu />
-      </TasksMenuProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <div className={props.class} style={{ ...props.style, display: 'inline-flex' }}>
+        <AxThemeProvider>
+          <TasksMenuProvider store={store}>
+            <TasksMenu />
+          </TasksMenuProvider>
+        </AxThemeProvider>
+      </div>
+    </ErrorBoundary>
   )
 }

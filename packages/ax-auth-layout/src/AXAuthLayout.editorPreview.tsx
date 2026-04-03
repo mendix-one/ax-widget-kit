@@ -1,19 +1,16 @@
 import { ReactElement } from 'react'
 
 import { AXAuthLayoutPreviewProps } from '../typings/AXAuthLayoutProps'
+import { AuthLayoutPreview } from './preview/AuthLayoutPreview'
 
-export function preview({ content }: AXAuthLayoutPreviewProps): ReactElement {
-  const Content = content.renderer
-
+export function preview(props: AXAuthLayoutPreviewProps): ReactElement {
   return (
-    <div style={{ padding: 16, border: '1px dashed #ccc', borderRadius: 4, textAlign: 'center', color: '#666' }}>
-      <div>AXAuth Layout</div>
-      <div style={{ marginTop: 8, padding: 12, border: '1px dashed #ddd', borderRadius: 4, minHeight: 60 }}>
-        <Content>
-          <div />
-        </Content>
-      </div>
-    </div>
+    <AuthLayoutPreview
+      content={props.content}
+      tagline={props.tagline}
+      brandDescription={props.brandDescription}
+      showBackground={props.showBackground}
+    />
   )
 }
 

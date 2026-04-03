@@ -1,7 +1,19 @@
 import { type ReactElement } from 'react'
 
-export function preview(): ReactElement {
-  return <div style={{ padding: 8, color: '#666', fontSize: 12 }}>AXAgent Chat</div>
+import { type AXAgentChatPreviewProps } from '../typings/AXAgentChatProps'
+import { AgentChatPreview } from './preview/AgentChatPreview'
+
+export function preview(props: AXAgentChatPreviewProps): ReactElement {
+  return (
+    <ErrorBoundary>
+    <div className={props.class} style={{ ...props.style, display: "flex", flexDirection: "column" as const, height: "100%" }}>
+    <AgentChatPreview
+      title={props.title}
+      welcomeMessage={props.welcomeMessage}
+    />
+      </div>
+    </ErrorBoundary>
+)
 }
 
 export function getPreviewCss(): string {

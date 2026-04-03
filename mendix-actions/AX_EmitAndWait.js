@@ -52,7 +52,7 @@ function AX_EmitAndWait(widgetName, eventType, payloadJson, timeoutMs) {
     }, timeout)
 
     function handler(event) {
-      if (event && event.type === responseType) {
+      if (event && event.action === responseType) {
         clearTimeout(timer)
         bus.removeListener(topic, handler)
         resolve(event.payload ? JSON.stringify(event.payload) : '{}')
@@ -60,7 +60,7 @@ function AX_EmitAndWait(widgetName, eventType, payloadJson, timeoutMs) {
     }
 
     bus.on(topic, handler)
-    bus.emit(topic, { type: eventType, payload: payload })
+    bus.emit(topic, { action: eventType, payload: payload })
   })
 }
 // END USER CODE

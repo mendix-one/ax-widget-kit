@@ -1,5 +1,5 @@
 import { type ReactElement, useCallback, useEffect, useState } from 'react'
-import { AxThemeProvider, useWidgetEvents, type AxEvent } from '@ax/shared'
+import { AxThemeProvider, ErrorBoundary, executeAction, useWidgetEvents, type AxEvent } from '@ax/shared'
 
 import type { AXUserMenuContainerProps } from '../typings/AXUserMenuProps'
 
@@ -23,15 +23,15 @@ export function AXUserMenu(props: AXUserMenuContainerProps): ReactElement {
   }, [store, props.userEmail?.value])
 
   useEffect(() => {
-    store.setOnSignOut(props.onSignOut?.canExecute ? () => props.onSignOut?.execute() : undefined)
+    store.setOnSignOut(() => executeAction(props.onSignOut))
   }, [store, props.onSignOut?.canExecute])
 
   useEffect(() => {
-    store.setOnProfile(props.onProfile?.canExecute ? () => props.onProfile?.execute() : undefined)
+    store.setOnProfile(() => executeAction(props.onProfile))
   }, [store, props.onProfile?.canExecute])
 
   useEffect(() => {
-    store.setOnSettings(props.onSettings?.canExecute ? () => props.onSettings?.execute() : undefined)
+    store.setOnSettings(() => executeAction(props.onSettings))
   }, [store, props.onSettings?.canExecute])
 
   // Subscribe to event bus (broadcast + private topic)
@@ -42,10 +42,14 @@ export function AXUserMenu(props: AXUserMenuContainerProps): ReactElement {
   useWidgetEvents({ widgetName: props.name, onEvent: handleEvent })
 
   return (
-    <AxThemeProvider>
-      <UserMenuProvider store={store}>
-        <UserMenu />
-      </UserMenuProvider>
-    </AxThemeProvider>
+    <ErrorBoundary>
+      <div className={props.class} style={{ ...props.style, display: 'inline-flex' }}>
+        <AxThemeProvider>
+          <UserMenuProvider store={store}>
+            <UserMenu />
+          </UserMenuProvider>
+        </AxThemeProvider>
+      </div>
+    </ErrorBoundary>
   )
 }

@@ -1,13 +1,10 @@
 import { ReactElement } from 'react'
 
 import { AXResetpswFormPreviewProps } from '../typings/AXResetpswFormProps'
+import { ResetPassFormPreview } from './preview/ResetPassFormPreview'
 
 export function preview(_props: AXResetpswFormPreviewProps): ReactElement {
-  return (
-    <div style={{ padding: 16, border: '1px dashed #ccc', borderRadius: 4, textAlign: 'center', color: '#666' }}>
-      AXResetpsw Form — Reset Password
-    </div>
-  )
+  return <ResetPassFormPreview />
 }
 
 export function getPreviewCss(): string {

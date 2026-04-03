@@ -1,18 +1,19 @@
 import { type ReactElement } from 'react'
 
 import { type AXWebAppPreviewProps } from '../typings/AXWebAppProps'
+import { WebAppPreview } from './preview/WebAppPreview'
 
-export function preview({ content }: AXWebAppPreviewProps): ReactElement {
-  const Content = content.renderer
+export function preview(props: AXWebAppPreviewProps): ReactElement {
   return (
-    <div style={{ padding: 16, border: '1px dashed #ccc', borderRadius: 4, textAlign: 'center', color: '#666' }}>
-      <div>AXWeb App Layout</div>
-      <div style={{ marginTop: 8, padding: 12, border: '1px dashed #ddd', borderRadius: 4, minHeight: 60 }}>
-        <Content>
-          <div />
-        </Content>
-      </div>
-    </div>
+    <WebAppPreview
+      logo={props.logo}
+      tasksMenu={props.tasksMenu}
+      notifyMenu={props.notifyMenu}
+      userMenu={props.userMenu}
+      sidebar={props.sidebar}
+      content={props.content}
+      agentChat={props.agentChat}
+    />
   )
 }
 

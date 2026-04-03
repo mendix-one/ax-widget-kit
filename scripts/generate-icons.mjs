@@ -29,6 +29,15 @@ const widgets = [
   { name: 'AXUserMenu', pkg: 'ax-user-menu', icon: 'account_circle' },
   { name: 'AXSidebar', pkg: 'ax-sidebar', icon: 'view_sidebar' },
   { name: 'AXAgentChat', pkg: 'ax-agent-chat', icon: 'smart_toy' },
+  { name: 'AXTextField', pkg: 'ax-text-field', icon: 'text_fields' },
+  { name: 'AXButton', pkg: 'ax-button', icon: 'smart_button' },
+  { name: 'AXButtonGroup', pkg: 'ax-button-group', icon: 'view_week' },
+  { name: 'AXCheckbox', pkg: 'ax-checkbox', icon: 'check_box' },
+  { name: 'AXRadioGroup', pkg: 'ax-radio-group', icon: 'radio_button_checked' },
+  { name: 'AXSelect', pkg: 'ax-select', icon: 'arrow_drop_down_circle' },
+  { name: 'AXSlider', pkg: 'ax-slider', icon: 'tune' },
+  { name: 'AXSwitch', pkg: 'ax-switch', icon: 'toggle_on' },
+  { name: 'AXToggleButton', pkg: 'ax-toggle-button', icon: 'toggle_off' },
 ]
 
 async function fetchSvg(iconName) {

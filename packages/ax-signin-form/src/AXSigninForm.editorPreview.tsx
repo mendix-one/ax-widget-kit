@@ -1,12 +1,13 @@
 import { ReactElement } from 'react'
 
 import { AXSigninFormPreviewProps } from '../typings/AXSigninFormProps'
+import { SignInFormPreview } from './preview/SignInFormPreview'
 
-export function preview(_props: AXSigninFormPreviewProps): ReactElement {
+export function preview(props: AXSigninFormPreviewProps): ReactElement {
   return (
-    <div style={{ padding: 16, border: '1px dashed #ccc', borderRadius: 4, textAlign: 'center', color: '#666' }}>
-      AXSignin Form — Sign In
-    </div>
+    <SignInFormPreview
+      showSSO={props.showSSO}
+    />
   )
 }
 
