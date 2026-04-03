@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "vite": "vite",
-    "build:all": "npm run build --workspaces",
+    "build:shared": "npm run build -w @ax/shared",
+    "build:all": "npm run build:shared && npm run build --workspaces --if-present",
     "dev:auth-layout": "npm run dev -w @ax/auth-layout",
     "dev:signin-form": "npm run dev -w @ax/signin-form",
     "dev:signup-form": "npm run dev -w @ax/signup-form",

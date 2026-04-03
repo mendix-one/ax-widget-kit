@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@ax/shared': resolve(__dirname, 'packages/ax-shared'),
+      '@ax/shared': resolve(__dirname, 'packages/ax-shared/src'),
       '@ax/auth-layout': resolve(__dirname, 'packages/ax-auth-layout'),
       '@ax/signin-form': resolve(__dirname, 'packages/ax-signin-form'),
       '@ax/signup-form': resolve(__dirname, 'packages/ax-signup-form'),

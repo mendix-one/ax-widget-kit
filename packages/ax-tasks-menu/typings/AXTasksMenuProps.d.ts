@@ -16,6 +16,9 @@ export interface AXTasksMenuContainerProps {
 }
 
 export interface AXTasksMenuPreviewProps {
+    /**
+     * @deprecated Deprecated since version 9.18.0. Please use class property instead.
+     */
     className: string;
     class: string;
     style: string;
