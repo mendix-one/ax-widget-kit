@@ -14,7 +14,7 @@ export function createWidgetContext<T>(displayName?: string) {
   if (displayName) Context.displayName = displayName
 
   function Provider({ store, children }: { store: T; children: ReactNode }) {
-    return <Context value={store}>{children}</Context>
+    return <Context.Provider value={store}>{children}</Context.Provider>
   }
 
   function useStore(): T {
